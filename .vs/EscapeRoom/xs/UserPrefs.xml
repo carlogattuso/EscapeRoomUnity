@@ -1,0 +1,39 @@
+﻿<Properties StartupConfiguration="{4190FBC9-CD5D-FA5A-360D-403CAE57297A}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Player.cs">
+    <Files>
+      <File FileName="Assets/Scripts/GameManager.cs" Line="93" Column="6" />
+      <File FileName="Assets/Scripts/APIAndroid.cs" Line="34" Column="45" />
+      <File FileName="Assets/Scripts/RedDoor.cs" Line="25" Column="78" />
+      <File FileName="Assets/Scripts/BoardManager.cs" Line="25" Column="32" />
+      <File FileName="Assets/Scripts/Weapon.cs" Line="24" Column="10" />
+      <File FileName="Assets/Scripts/Object.cs" Line="3" Column="2" />
+      <File FileName="Assets/Scripts/BlueDoor.cs" Line="24" Column="78" />
+      <File FileName="Assets/Scripts/Enemy.cs" Line="118" Column="30" />
+      <File FileName="Assets/Scripts/Player.cs" Line="219" Column="1" />
+      <File FileName="Assets/Scripts/MovingObject.cs" Line="94" Column="6" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="EscapeRoom" expanded="True">
+            <Node name="Assets" expanded="True">
+              <Node name="Scripts" expanded="True">
+                <Node name="Player.cs" selected="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="c3db2345-74fa-40d6-9bdd-222f9c6b1f7e" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
