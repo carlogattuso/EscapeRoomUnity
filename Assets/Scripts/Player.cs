@@ -7,12 +7,13 @@ using UnityEngine.UI;   //Allows us to use UI.
 public class Player : MovingObject
 {
     public float restartLevelDelay = 1f;        //Delay time in seconds to restart level.
-    public int pointsPerFood = 10;              //Number of points to add to player food points when picking up a food object.
-    public int pointsPerSoda = 20;              //Number of points to add to player food points when picking up a soda object.
-    public int wallDamage = 1;
+    public int pointsPerPurplePotion = 10;              //Number of points to add to player food points when picking up a food object.
+    public int pointsPerRedPotion = 20;              //Number of points to add to player food points when picking up a soda object.
+
+    public int enemyDamage = 10;
+    public Text lifeText;
 
     private Animator animator;                  //Used to store a reference to the Player's animator component.
-    private int food;                           //Used to store player food points total during level.
     private Vector2 touchOrigin = -Vector2.one; //Used to store location of screen touch origin for mobile controls.
 
     private RedDoor redDoor;
@@ -34,21 +35,9 @@ public class Player : MovingObject
         //Get a component reference to the Player's animator component
         animator = GetComponent<Animator>();
 
-        //Get the current food point total stored in GameManager.instance between levels.
-        food = GameManager.instance.playerFoodPoints;
-
         //Call the Start function of the MovingObject base class.
         base.Start();
     }
-
-
-    //This function is called when the behaviour becomes disabled or inactive.
-    private void OnDisable()
-    {
-        //When Player object is disabled, store the current local food total in the GameManager so it can be re-loaded in next level.
-        GameManager.instance.playerFoodPoints = food;
-    }
-
 
     private void Update()
     {
@@ -163,9 +152,6 @@ public class Player : MovingObject
     //AttemptMove takes a generic parameter T which for Player will be of the type Wall, it also takes integers for x and y direction to move in.
     protected override void AttemptMove<T>(ref int xDir, ref int yDir)
     {
-        //Every time player moves, subtract from food points total.
-        food--;
-
         //Call the AttemptMove method of the base class, passing in the component T (in this case Wall) and x and y direction to move.
         base.AttemptMove<T>(ref xDir, ref yDir);
 
@@ -209,10 +195,6 @@ public class Player : MovingObject
             yellowDoor.ShowDialog();
         }
 
-
-        //Since the player has moved and lost food points, check if the game has ended.
-        CheckIfGameOver();
-
         //Set the playersTurn boolean of GameManager to false now that players turn is over.
         GameManager.instance.playersTurn = false;
     }
@@ -234,7 +216,7 @@ public class Player : MovingObject
         //Set the attack trigger of the player's animation controller in order to play the player's attack animation.
         animator.SetBool("Attack", true);
 
-        Debug.Log("Enemy Damaged");
+        hitEnemy.DamageEnemy(enemyDamage);
     }
 
 
@@ -255,7 +237,7 @@ public class Player : MovingObject
         else if (other.tag == "Food")
         {
             //Add pointsPerFood to the players current food total.
-            food += pointsPerFood;
+            //food += pointsPerFood;
 
             //Disable the food object the player collided with.
             other.gameObject.SetActive(false);
@@ -265,7 +247,7 @@ public class Player : MovingObject
         else if (other.tag == "Soda")
         {
             //Add pointsPerSoda to players food points total
-            food += pointsPerSoda;
+            //food += pointsPerSoda;
 
             //Disable the soda object the player collided with.
             other.gameObject.SetActive(false);
@@ -285,13 +267,12 @@ public class Player : MovingObject
 
     //LoseFood is called when an enemy attacks the player.
     //It takes a parameter loss which specifies how many points to lose.
-    public void LoseFood(int loss)
+    public void LoseLife(int loss)
     {
-        //Set the trigger for the player animator to transition to the playerHit animation.
-        //animator.SetTrigger("PlayerHit");
-
         //Subtract lost food points from the players total.
-        food -= loss;
+        GameManager.instance.playerStats.setLife(GameManager.instance.playerStats.getLife() - loss);
+
+        lifeText.text="Life: "+ GameManager.instance.playerStats.getLife();
 
         //Check to see if game has ended.
         CheckIfGameOver();
@@ -301,7 +282,7 @@ public class Player : MovingObject
     private void CheckIfGameOver()
     {
         //Check if food point total is less than or equal to zero.
-        if (food <= 0)
+        if (GameManager.instance.playerStats.getLife() <= 0)
         {
             //Call the GameOver function of GameManager.
             GameManager.instance.GameOver();

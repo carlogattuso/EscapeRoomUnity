@@ -5,8 +5,8 @@ using Random = UnityEngine.Random;      //Tells Random to use the Unity Engine r
 
 public class BoardManager : MonoBehaviour
 {
-    private int columns;                                        
-    private int rows;   
+    private int columns = 0;                                        
+    private int rows = 0;   
 
     //Outer blocking walls
     public GameObject[] topOuterWalls;

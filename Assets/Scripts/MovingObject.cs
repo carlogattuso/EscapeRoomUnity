@@ -122,118 +122,95 @@ public abstract class MovingObject : MonoBehaviour
                     {
                         if (xDir == 1 && yDir == 0)
                         {
-                            canMove = Move(0, 1, out hit);
+                            if (canMove = Move(-1, 0, out hit))
+                            {
+                                xDir = -1;
+                                yDir = 0;
+                                return;
+                            }
 
-                            if (canMove)
+                            else if (canMove = Move(0, 1, out hit))
                             {
                                 xDir = 0;
                                 yDir = 1;
                                 return;
                             }
 
-                            canMove = Move(0, -1, out hit);
-
-                            if (canMove)
+                            else
                             {
                                 xDir = 0;
                                 yDir = -1;
-                                return;
-                            }
-
-                            canMove = Move(-1, 0, out hit);
-
-                            if (canMove)
-                            {
-                                xDir = -1;
-                                yDir =  0;
                                 return;
                             }
 
                         }
                         if (xDir == 0 && yDir == 1)
                         {
-                            canMove = Move(1, 0, out hit);
-
-                            if (canMove)
+                            if (canMove = Move(1, 0, out hit))
                             {
                                 xDir = 1;
                                 yDir = 0;
                                 return;
                             }
 
-                            canMove = Move(-1, 0, out hit);
-
-                            if (canMove)
+                            else if (canMove = Move(-1, 0, out hit))
                             {
                                 xDir = -1;
                                 yDir = 0;
                                 return;
                             }
 
-                            canMove = Move(0, -1, out hit);
-
-                            if (canMove)
+                            else
                             {
+
                                 xDir = 0;
                                 yDir = -1;
                                 return;
                             }
-
                         }
                         if (xDir == -1 && yDir == 0)
                         {
-                            canMove = Move(0, 1, out hit);
+                            if (canMove = Move(1, 0, out hit))
+                            {
+                                xDir = 1;
+                                yDir = 0;
+                                return;
+                            }
 
-                            if (canMove)
+                            else if (canMove = Move(0, 1, out hit))
                             {
                                 xDir = 0;
                                 yDir = 1;
                                 return;
                             }
 
-                            canMove = Move(0, -1, out hit);
-
-                            if (canMove)
+                            else
                             {
                                 xDir = 0;
-                                yDir = -1;
-                                return;
-                            }
-
-                            canMove = Move(1, 0, out hit);
-
-                            if (canMove)
-                            {
-                                xDir = 1;
-                                yDir = 0;
+                                yDir = 1;
                                 return;
                             }
 
                         }
                         if (xDir == 0 && yDir == -1)
                         {
-                            canMove = Move(1, 0, out hit);
-
-                            if (canMove)
+                            if (canMove = Move(1, 0, out hit))
                             {
                                 xDir = 1;
                                 yDir = 0;
                                 return;
                             }
 
-                            canMove = Move(-1, 0, out hit);
-
-                            if (canMove)
+                            else if (canMove = Move(-1, 0, out hit))
                             {
                                 xDir = -1;
                                 yDir =  0;
                                 return;
                             }
 
-                            canMove = Move(0, 1, out hit);
-
-                            if (canMove)
+                            else
                             {
+
                                 xDir = 0;
                                 yDir = 1;
                                 return;

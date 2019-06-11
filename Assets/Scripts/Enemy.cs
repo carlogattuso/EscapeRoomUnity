@@ -1,11 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+using UnityEngine.UI;
 //Enemy inherits from MovingObject, our base class for objects that can move, Player also inherits from this.
 public class Enemy : MovingObject
 {
-    public int playerDamage;                            //The amount of food points to subtract from the player when attacking.
+    int MinDist = 4;
 
+    //Health system of the enemy
+    public int playerDamage;                            
+    public int enemyLife;
+
+    private Text enemiesSlainedText;
 
     private Animator animator;                          //Variable of type Animator to store a reference to the enemy's Animator component.
     private Transform target;                           //Transform to attempt to move toward each turn.
@@ -17,6 +22,8 @@ public class Enemy : MovingObject
     private bool attacking;
     public float attackTime;
     private float attackTimeCounter;
+
+    private bool movable=false;
 
     //Start overrides the virtual Start function of the base class.
     protected override void Start()
@@ -35,6 +42,19 @@ public class Enemy : MovingObject
         base.Start();
     }
 
+    void Update()
+    {
+        if (Vector3.Distance(transform.position,target.position) >= MinDist)
+        {
+            movable = false;
+            playerMoving = false;
+            animator.SetBool("PlayerMoving", playerMoving);
+        }
+        else
+        {
+            movable = true;
+        }
+    }
 
     //Override the AttemptMove function of MovingObject to include functionality needed for Enemy to skip turns.
     //See comments in MovingObject for more on how base AttemptMove function works.
@@ -106,15 +126,36 @@ public class Enemy : MovingObject
         //Declare hitPlayer and set it to equal the encountered component.
         Player hitPlayer = component as Player;
 
-        //Call the LoseFood function of hitPlayer passing it playerDamage, the amount of foodpoints to be subtracted.
-        //hitPlayer.LoseFood(playerDamage);
-
         attacking = true;
         attackTimeCounter = attackTime;
 
         //Set the attack trigger of animator to trigger Enemy attack animation.
         animator.SetBool("Attack", true);
 
-        Debug.Log("Damaged");
+        hitPlayer.LoseLife(playerDamage);
+    }
+
+    public void DamageEnemy(int damage)
+    {
+        this.enemyLife -= damage;
+        ChechIfDisable();
+        Debug.Log("enemyLife: " + enemyLife);
+    }
+
+    public void ChechIfDisable()
+    {
+        if (this.enemyLife <= 0) {
+            GameManager.instance.playerStats.setEnemiesSlained(GameManager.instance.playerStats.getEnemiesSlained()+1);
+            enemiesSlainedText = GameObject.Find("SlainedEnemies").GetComponent<Text>();
+            enemiesSlainedText.text = "Enemies Slained: "+ GameManager.instance.playerStats.getEnemiesSlained();
+            this.gameObject.SetActive(false);
+            GameManager.instance.RemoveEnemyofList(this);
+            StopAllCoroutines();
+        }
+    }
+
+    public bool CheckIfMovable()
+    {
+        return this.movable;
     }
 }

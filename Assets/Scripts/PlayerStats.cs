@@ -51,9 +51,9 @@ public class PlayerStats
         return this.enemiesSlained;
     }
 
-    public void setEnemies(int cash)
+    public void setEnemiesSlained(int enemies)
     {
-        this.cash = cash;
+        this.enemiesSlained = enemies;
     }
 
     public int getLife()

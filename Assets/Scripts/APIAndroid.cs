@@ -29,9 +29,9 @@ public class APIAndroid
         string level1 =      "bbbbbbbOOOOOOOOOOOOOObbbbbbb" +
                              "bbbbbbbLTTTTTTTTTTTTRbbbbbbb" +
                              "bbbbbbbL            Rbbbbbbb" +
+                             "bbbbbbbL  N         Rbbbbbbb" +
                              "bbbbbbbL            Rbbbbbbb" +
-                             "bbbbbbbL            Rbbbbbbb" +
-                             "bbbbbbbL            Rbbbbbbb" +
+                             "bbbbbbbL      N     Rbbbbbbb" +
                              "bbbbbbbL            Rbbbbbbb" +
                              "bbbbbbblBwBc CBBwBBBrbbbbbbb" +
                              "bbbbbbbbbbOL1ROObbbbbbbbbbbb" +
@@ -41,8 +41,8 @@ public class APIAndroid
                              "bbbbbbbbbbL    RbLTTTTRbbbbb" +
                              "bbbbbbbbbbL    RbL    Rbbbbb" +
                              "bbbbbbbbbbL    RbL    Rbbbbb" +
-                             "bbbbbbbbbbL    RbL    Rbbbbb" +
-                             "bbbbbbbbbbL    RbL    Rbbbbb" +
+                             "bbbbbbbbbbL    RbL  N Rbbbbb" +
+                             "bbbbbbbbbbL N  RbL    Rbbbbb" +
                              "OOOOOOOOObL    Rblc Cwrbbbbb" +
                              "LTTTTTTTTTT    RbbL2Rbbbbbbb" +
                              "L              TTTT Rbbbbbbb" +
@@ -50,7 +50,7 @@ public class APIAndroid
                              "lwwBc CwBBBwBBwBwBwBrbbbbbbb" +
                              "OOOOL3ROObbbbbbbbbbbbbbbbbbb" +
                              "LTTTT TTRbbbbbbbbbbbbbbbbbbb" +
-                             "L     N Rbbbbbbbbbbbbbbbbbbb" +
+                             "L       Rbbbbbbbbbbbbbbbbbbb" +
                              "L       Rbbbbbbbbbbbbbbbbbbb" +
                              "L       Rbbbbbbbbbbbbbbbbbbb" +
                              "lwBBwBBBrbbbbbbbbbbbbbbbbbbb";
