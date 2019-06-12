@@ -8,6 +8,8 @@ public class Map
     private int dimension;
     private List<Box> boxes = new List<Box>();
 
+    public Map() { }
+
     public Map(string levelString, int dimension, List<Box> boxes)
     {
         this.levelString = levelString;

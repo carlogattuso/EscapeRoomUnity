@@ -12,6 +12,7 @@ public class DoorDialogueManager : MonoBehaviour
     public Text continueButtonText;
     public Button keyButton;
     public Button clueButton;
+    public Button showClueButton;
     public InputField inputField;
 
     private float letterTime = 0.02f;
@@ -30,8 +31,11 @@ public class DoorDialogueManager : MonoBehaviour
 
         keyButton.interactable = false;
         clueButton.interactable = false;
+        showClueButton.interactable = false;
+        inputField.interactable = false;
+
         continueButtonText.text = "Continue >>";
-        inputField.text = "";
+        inputField.text = null;
 
         animator.SetBool("IsOpen", true);
 
@@ -59,6 +63,8 @@ public class DoorDialogueManager : MonoBehaviour
             continueButtonText.text = "Exit";
             keyButton.interactable = true;
             clueButton.interactable = true;
+            showClueButton.interactable = true;
+            inputField.interactable = true;
         }
         else
         {

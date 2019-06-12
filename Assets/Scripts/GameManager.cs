@@ -11,13 +11,15 @@ public class GameManager : MonoBehaviour
 {
     public float levelStartDelay = 2f;                      //Time to wait before starting level, in seconds.
     public float turnDelay = 0.1f;                          //Delay between each Player turn.
-    public int playerFoodPoints = 10000;                      //Starting value for Player food points.
     public static GameManager instance = null;              //Static instance of GameManager which allows it to be accessed by any other script.
 
     //User variables
     [HideInInspector] public PlayerStats playerStats;
     [HideInInspector] public List<Object> inventory = new List<Object>();
-    [HideInInspector] public List<Map> maps = new List<Map>();
+    [HideInInspector] public Map map;
+
+    [HideInInspector] public int damageToPlayer = 20;
+    [HideInInspector] public int damageToEnemy = 10;
 
     //Counter variables
     float secondsCount;
@@ -28,7 +30,7 @@ public class GameManager : MonoBehaviour
     APIAndroid APIAndroid = new APIAndroid();
 
     [HideInInspector] public bool playersTurn = true;       //Boolean to check if it's players turn, hidden in inspector but public.
-   
+
     //UI image
     private GameObject LevelImage;
     private GameObject Life;
@@ -46,8 +48,6 @@ public class GameManager : MonoBehaviour
     private List<Enemy> enemies;                          //List of all Enemy units, used to issue them move commands.
     private bool enemiesMoving;                             //Boolean to check if enemies are moving.
     private bool playerMoving;
-
-    private WelcomeDialogue dialogueTrigger;
 
     //Awake is always called before any Start functions
     void Awake()
@@ -74,15 +74,8 @@ public class GameManager : MonoBehaviour
         boardScript = GetComponent<BoardManager>();
 
         //Pedimos los mapas, las estadísticas iniciales y el inventario del usuario
-        this.maps = APIAndroid.getMaps();
-        this.inventory = APIAndroid.getInventory();
         this.playerStats = APIAndroid.getPlayerStats();
-
-        Debug.Log("Maps: " + maps.Count);
-        Debug.Log("Inventory: " + inventory.Count);
-        Debug.Log("PlayerStats--> Level:" + this.playerStats.getLevel() + "/Life:" + this.playerStats.getLife() +
-            "/Cash:" + this.playerStats.getLevel() + "/EnemiesSlained:" + this.playerStats.getEnemiesSlained()
-            + "/Time:" + this.playerStats.getTime());
+        this.inventory = APIAndroid.getInventory();
 
         string[] timeValues = this.playerStats.getTime().Split(':');
 
@@ -112,6 +105,8 @@ public class GameManager : MonoBehaviour
     {
         doingSetup = true;
 
+        this.map = APIAndroid.getMap(this.playerStats.getLevel());
+
         TimeObject = GameObject.Find("Time");
         SlainedEnemies = GameObject.Find("SlainedEnemies");
         Cash = GameObject.Find("Cash");
@@ -125,13 +120,6 @@ public class GameManager : MonoBehaviour
         LevelImage = GameObject.Find("LevelImage");
         LevelText = GameObject.Find("LevelText").GetComponent<Text>();
 
-        Debug.Log("NextLevel");
-        Debug.Log("Maps: " + maps.Count);
-        Debug.Log("Inventory: " + inventory.Count);
-        Debug.Log("PlayerStats--> Level:" + this.playerStats.getLevel() + "/Life:" + this.playerStats.getLife() +
-            "/Cash:" + this.playerStats.getLevel() + "/EnemiesSlained:" + this.playerStats.getEnemiesSlained()
-            + "/Time:" + this.playerStats.getTime());
-
         LevelText.text = "Floor " + this.playerStats.getLevel();
         LevelImage.SetActive(true);
 
@@ -141,7 +129,7 @@ public class GameManager : MonoBehaviour
         enemies.Clear();
 
         //Call the SetupScene function of the BoardManager script, pass it current level number.
-        boardScript.SetupScene(this.maps[this.playerStats.getLevel() - 1].getLevelString(), this.maps[this.playerStats.getLevel() - 1].getDimension());
+        boardScript.SetupScene(this.map.getLevelString(), this.map.getDimension());
     }
 
     private void HideLevelImage()
@@ -203,8 +191,9 @@ public class GameManager : MonoBehaviour
     //GameOver is called when the player reaches 0 food points
     public void GameOver()
     {
-        LevelText.text = "After " + this.playerStats.getLevel() + " days, you starved.";
+        LevelText.text = "Game Over";
         LevelImage.SetActive(true);
+        //Inicializamos el inventario en la base de datos
         //Disable this GameManager.
         enabled = false;
     }
@@ -254,12 +243,18 @@ public class GameManager : MonoBehaviour
         enemiesMoving = false;
     }
 
-    public bool FindKey(string color)
+    public bool FindKey(string llave)
     {
         foreach(Object o in this.inventory)
         {
-            if (o.getType().Equals("llave")&&o.getAttribute().Equals(color))
+            if (o.getType().Equals("llave")&&o.getName().Equals(llave))
             {
+                int count = Int32.Parse(o.getAttribute()) - 1;
+                o.setAttribute(count.ToString());
+                if(count == 0)
+                {
+                    this.inventory.Remove(o);
+                }
                 return true;
             }
         }
@@ -287,53 +282,66 @@ public class GameManager : MonoBehaviour
 
     public Box getBox(Vector2 position)
     {
-        if (this.playerStats.getLevel() == 2)
-        {
-            Debug.Log(this.maps[this.playerStats.getLevel() - 1].getBoxes().Count);
-        }
-
         Box box = null;
 
-        foreach(Box b in this.maps[this.playerStats.getLevel()-1].getBoxes())
+        foreach(Box b in this.map.getBoxes())
         {
             if (b.getPosition() == position)
             {
                 box = new Box((int) b.getPosition().x, (int) b.getPosition().y, b.getAttribute());
             }
         }
-
         return box;
     }
 
     public string getWeapon()
     {
-        string weapon = null;
-        foreach (Object o in this.inventory)
-        {
-            if (o.getType().Equals("weapon"))
-            {
-                weapon = o.getAttribute();
-            }
-        }
-        return weapon;
+        return this.playerStats.getWeapon();
     }
 
     public string getShield()
     {
-        string shield = null;
-        foreach (Object o in this.inventory)
-        {
-            if (o.getType().Equals("shield"))
-            {
-                shield = o.getAttribute();
-            }
-        }
-        return shield;
+        return this.playerStats.getShield();
     }
 
     public void SetTime()
     {
         this.playerStats.setTime(hourCount + ":" + minuteCount.ToString("00") + ":" + ((int)secondsCount).ToString("00"));
 
+    }
+
+    public bool FindClue(string name)
+    {
+        foreach (Object o in this.inventory)
+        {
+            if (o.getType().Equals("pista") && o.getName().Equals(name))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void DeleteClue(string name)
+    {
+        Object objeto = null;
+        bool empty = false;
+        foreach (Object o in this.inventory)
+        {
+            if (o.getType().Equals("pista") && o.getName().Equals(name))
+            {
+                int count = Int32.Parse(o.getAttribute())-1;
+                o.setAttribute(count.ToString());
+                if (count == 0)
+                {
+                    objeto = o;
+                    empty = true;
+                }
+            }
+        }
+        if (empty)
+        {
+            this.inventory.Remove(objeto);
+        }
     }
 }

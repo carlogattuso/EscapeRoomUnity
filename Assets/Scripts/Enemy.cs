@@ -7,7 +7,7 @@ public class Enemy : MovingObject
     int MinDist = 4;
 
     //Health system of the enemy
-    public int playerDamage;                            
+    private int damageToPlayer;                            
     public int enemyLife;
 
     private Text enemiesSlainedText;
@@ -132,14 +132,14 @@ public class Enemy : MovingObject
         //Set the attack trigger of animator to trigger Enemy attack animation.
         animator.SetBool("Attack", true);
 
-        hitPlayer.LoseLife(playerDamage);
+        this.damageToPlayer = GameManager.instance.damageToPlayer;
+        hitPlayer.LoseLife(damageToPlayer);
     }
 
     public void DamageEnemy(int damage)
     {
         this.enemyLife -= damage;
         ChechIfDisable();
-        Debug.Log("enemyLife: " + enemyLife);
     }
 
     public void ChechIfDisable()

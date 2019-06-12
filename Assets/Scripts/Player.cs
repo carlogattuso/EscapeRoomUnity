@@ -10,7 +10,7 @@ public class Player : MovingObject
     public int pointsPerPurplePotion = 10;              //Number of points to add to player food points when picking up a food object.
     public int pointsPerRedPotion = 20;              //Number of points to add to player food points when picking up a soda object.
 
-    public int enemyDamage = 10;
+    private int damageToEnemy;
     public Text lifeText;
 
     private Animator animator;                  //Used to store a reference to the Player's animator component.
@@ -216,7 +216,8 @@ public class Player : MovingObject
         //Set the attack trigger of the player's animation controller in order to play the player's attack animation.
         animator.SetBool("Attack", true);
 
-        hitEnemy.DamageEnemy(enemyDamage);
+        this.damageToEnemy = GameManager.instance.damageToEnemy;
+        hitEnemy.DamageEnemy(damageToEnemy);
     }
 
 
@@ -322,5 +323,22 @@ public class Player : MovingObject
                 break;
         }
         
+    }
+
+    public void ShowDoorClue()
+    {
+        switch (currentDoor)
+        {
+            //Blocking walls
+            case "red":
+                this.redDoor.ShowClueDialog();
+                break;
+            case "blue":
+                this.blueDoor.ShowClueDialog();
+                break;
+            case "yellow":
+                this.yellowDoor.ShowClueDialog();
+                break;
+        }
     }
 }

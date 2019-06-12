@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class DoorDialogueTrigger : MonoBehaviour
 {
-    public Dialogue dialogue;
-
-    public void TriggerDialogue()
+    public void TriggerDialogue(Dialogue dialogue)
     {
         FindObjectOfType<DoorDialogueManager>().StartDialogue(dialogue);
     }
