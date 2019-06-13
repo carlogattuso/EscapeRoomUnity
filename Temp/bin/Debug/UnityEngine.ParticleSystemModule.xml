@@ -4,6 +4,127 @@
     <assembly>
       <name>UnityEngine.ParticleSystemModule</name>
     </assembly>
+    <member name="?:UnityEngine.Experimental.ParticleSystemJobs.IParticleSystemJob">
+      <summary>
+        <para>Inherit from this interface when implementing a Particle System job.</para>
+      </summary>
+    </member>
+    <member name="M:UnityEngine.Experimental.ParticleSystemJobs.IParticleSystemJob.ProcessParticleSystem(UnityEngine.Experimental.ParticleSystemJobs.ParticleSystemJobData)">
+      <summary>
+        <para>Implement this method to access and modify particle properties.</para>
+      </summary>
+      <param name="jobData">Contains the particle properties.</param>
+    </member>
+    <member name="T:UnityEngine.Experimental.ParticleSystemJobs.ParticleSystemJobData">
+      <summary>
+        <para>The struct containing all the per-particle data.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEngine.Experimental.ParticleSystemJobs.ParticleSystemJobData.aliveTimePercent">
+      <summary>
+        <para>How long each particle has been alive.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEngine.Experimental.ParticleSystemJobs.ParticleSystemJobData.count">
+      <summary>
+        <para>The number of particles alive in the system.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEngine.Experimental.ParticleSystemJobs.ParticleSystemJobData.customData1">
+      <summary>
+        <para>When using the Custom Data module, or when calling SetCustomParticleData, this array contains the custom data values.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEngine.Experimental.ParticleSystemJobs.ParticleSystemJobData.customData2">
+      <summary>
+        <para>When using the Custom Data module, or when calling SetCustomParticleData, this array contains the custom data values.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEngine.Experimental.ParticleSystemJobs.ParticleSystemJobData.inverseStartLifetimes">
+      <summary>
+        <para>The lifetime of each particle, stored as 1.0f / lifetime.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEngine.Experimental.ParticleSystemJobs.ParticleSystemJobData.positions">
+      <summary>
+        <para>The position of each particle.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEngine.Experimental.ParticleSystemJobs.ParticleSystemJobData.randomSeeds">
+      <summary>
+        <para>The random seed assigned to each particle.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEngine.Experimental.ParticleSystemJobs.ParticleSystemJobData.rotationalSpeeds">
+      <summary>
+        <para>The angular velocity of each particle.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEngine.Experimental.ParticleSystemJobs.ParticleSystemJobData.rotations">
+      <summary>
+        <para>The rotation of each particle.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEngine.Experimental.ParticleSystemJobs.ParticleSystemJobData.sizes">
+      <summary>
+        <para>The size of each particle.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEngine.Experimental.ParticleSystemJobs.ParticleSystemJobData.startColors">
+      <summary>
+        <para>The initial color of each particle.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEngine.Experimental.ParticleSystemJobs.ParticleSystemJobData.velocities">
+      <summary>
+        <para>The velocity of each particle.</para>
+      </summary>
+    </member>
+    <member name="T:UnityEngine.Experimental.ParticleSystemJobs.ParticleSystemNativeArray3">
+      <summary>
+        <para>A container to hold X, Y and Z axis data for particles.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEngine.Experimental.ParticleSystemJobs.ParticleSystemNativeArray3.x">
+      <summary>
+        <para>The X axis value for each particle.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEngine.Experimental.ParticleSystemJobs.ParticleSystemNativeArray3.y">
+      <summary>
+        <para>The Y axis value for each particle.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEngine.Experimental.ParticleSystemJobs.ParticleSystemNativeArray3.z">
+      <summary>
+        <para>The Z axis value for each particle.</para>
+      </summary>
+    </member>
+    <member name="T:UnityEngine.Experimental.ParticleSystemJobs.ParticleSystemNativeArray4">
+      <summary>
+        <para>A container to hold 4 arrays of data for particles.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEngine.Experimental.ParticleSystemJobs.ParticleSystemNativeArray4.w">
+      <summary>
+        <para>The W axis value for each particle.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEngine.Experimental.ParticleSystemJobs.ParticleSystemNativeArray4.x">
+      <summary>
+        <para>The X axis value for each particle.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEngine.Experimental.ParticleSystemJobs.ParticleSystemNativeArray4.y">
+      <summary>
+        <para>The Y axis value for each particle.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEngine.Experimental.ParticleSystemJobs.ParticleSystemNativeArray4.z">
+      <summary>
+        <para>The Z axis value for each particle.</para>
+      </summary>
+    </member>
     <member name="T:UnityEngine.ParticleCollisionEvent">
       <summary>
         <para>Information about a particle collision.</para>
@@ -841,6 +962,11 @@
         <para>Override the axis of rotation of emitted particles.</para>
       </summary>
     </member>
+    <member name="P:UnityEngine.ParticleSystem.EmitParams.meshIndex">
+      <summary>
+        <para>Set the mesh index used for choosing which mesh to emit.</para>
+      </summary>
+    </member>
     <member name="P:UnityEngine.ParticleSystem.EmitParams.position">
       <summary>
         <para>Override the position of emitted particles.</para>
@@ -896,6 +1022,11 @@
         <para>Revert the axis of rotation back to the value specified in the inspector.</para>
       </summary>
     </member>
+    <member name="M:UnityEngine.ParticleSystem.EmitParams.ResetMeshIndex">
+      <summary>
+        <para>Revert the mesh selection back to the default randomized behavior.</para>
+      </summary>
+    </member>
     <member name="M:UnityEngine.ParticleSystem.EmitParams.ResetPosition">
       <summary>
         <para>Revert the position back to the value specified in the inspector.</para>
@@ -938,7 +1069,7 @@
     </member>
     <member name="P:UnityEngine.ParticleSystem.ExternalForcesModule.enabled">
       <summary>
-        <para>Enable/disable the External Forces module.</para>
+        <para>Enable or disable the External Forces module.</para>
       </summary>
     </member>
     <member name="P:UnityEngine.ParticleSystem.ExternalForcesModule.influenceCount">
@@ -951,7 +1082,17 @@
         <para>Apply all Force Fields belonging to a matching layer to this Particle System.</para>
       </summary>
     </member>
+    <member name="P:UnityEngine.ParticleSystem.ExternalForcesModule.influenceMask">
+      <summary>
+        <para>Particle System Force Field Components with a matching layer affect this Particle System.</para>
+      </summary>
+    </member>
     <member name="P:UnityEngine.ParticleSystem.ExternalForcesModule.multiplier">
+      <summary>
+        <para>Multiplies the magnitude of applied external forces.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEngine.ParticleSystem.ExternalForcesModule.multiplierCurve">
       <summary>
         <para>Multiplies the magnitude of applied external forces.</para>
       </summary>
@@ -979,6 +1120,11 @@
       <returns>
         <para>Whether the Force Field affects the Particle System.</para>
       </returns>
+    </member>
+    <member name="M:UnityEngine.ParticleSystem.ExternalForcesModule.RemoveAllInfluences">
+      <summary>
+        <para>Removes all Force Fields from the influencers list.</para>
+      </summary>
     </member>
     <member name="M:UnityEngine.ParticleSystem.ExternalForcesModule.RemoveInfluence(System.Int32)">
       <summary>
@@ -1149,7 +1295,7 @@
     </member>
     <member name="P:UnityEngine.ParticleSystem.LightsModule.enabled">
       <summary>
-        <para>Enable/disable the Lights module.</para>
+        <para>Enable or disable the Lights module.</para>
       </summary>
     </member>
     <member name="P:UnityEngine.ParticleSystem.LightsModule.intensity">
@@ -1968,6 +2114,21 @@ The Noise Module allows you to apply turbulence to the movement of your particle
         <para>Current size.</para>
       </returns>
     </member>
+    <member name="M:UnityEngine.ParticleSystem.Particle.GetMeshIndex(UnityEngine.ParticleSystem)">
+      <summary>
+        <para>Calculate the mesh index of the particle, used for choosing which mesh a particle is rendered with.</para>
+      </summary>
+      <param name="system">The Particle System from which this particle was emitted.</param>
+      <returns>
+        <para>The index of the mesh used for rendering the particle.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.ParticleSystem.Particle.SetMeshIndex(System.Int32)">
+      <summary>
+        <para>Set the mesh index of the particle, used for choosing which mesh a particle is rendered with.</para>
+      </summary>
+      <param name="index">The mesh index.</param>
+    </member>
     <member name="M:UnityEngine.ParticleSystem.Pause">
       <summary>
         <para>Pauses the system so no new particles are emitted and the existing particles are not updated.</para>
@@ -2577,7 +2738,7 @@ The Noise Module allows you to apply turbulence to the movement of your particle
     </member>
     <member name="P:UnityEngine.ParticleSystem.SubEmittersModule.enabled">
       <summary>
-        <para>Enable/disable the Sub Emitters module.</para>
+        <para>Enable or disable the Sub Emitters module.</para>
       </summary>
     </member>
     <member name="P:UnityEngine.ParticleSystem.SubEmittersModule.subEmittersCount">
@@ -2735,7 +2896,12 @@ The Noise Module allows you to apply turbulence to the movement of your particle
     </member>
     <member name="P:UnityEngine.ParticleSystem.TextureSheetAnimationModule.rowIndex">
       <summary>
-        <para>Explicitly select which row of the texture sheet is used, when ParticleSystem.TextureSheetAnimationModule.useRandomRow is set to false.</para>
+        <para>Explicitly select which row of the texture sheet is used, when ParticleSystem.TextureSheetAnimationModule.rowMode is set to Custom.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEngine.ParticleSystem.TextureSheetAnimationModule.rowMode">
+      <summary>
+        <para>Select how particles choose which row of a Texture Sheet Animation to use.</para>
       </summary>
     </member>
     <member name="P:UnityEngine.ParticleSystem.TextureSheetAnimationModule.speedRange">
@@ -3129,6 +3295,26 @@ The Noise Module allows you to apply turbulence to the movement of your particle
         <para>Use a list of sprites to construct a sequence of animation frames.</para>
       </summary>
     </member>
+    <member name="T:UnityEngine.ParticleSystemAnimationRowMode">
+      <summary>
+        <para>The mode used for selecting rows of an animation in the Texture Sheet Animation Module.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.ParticleSystemAnimationRowMode.Custom">
+      <summary>
+        <para>Use a specific row for all particles.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.ParticleSystemAnimationRowMode.MeshIndex">
+      <summary>
+        <para>Use the mesh index as the row, so that meshes can be mapped to specific animation frames.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.ParticleSystemAnimationRowMode.Random">
+      <summary>
+        <para>Use a random row for each particle.</para>
+      </summary>
+    </member>
     <member name="T:UnityEngine.ParticleSystemAnimationTimeMode">
       <summary>
         <para>Control how animation frames are selected.</para>
@@ -3321,7 +3507,7 @@ The Noise Module allows you to apply turbulence to the movement of your particle
     </member>
     <member name="F:UnityEngine.ParticleSystemEmitterVelocityMode.Rigidbody">
       <summary>
-        <para>Calculate the Particle System velocity by using a Rigidbody or Rigidbody2D component, if one exists on the Game Object.</para>
+        <para>Calculate the Particle System velocity by using a Rigidbody or Rigidbody2D component, if one exists on the GameObject.</para>
       </summary>
     </member>
     <member name="F:UnityEngine.ParticleSystemEmitterVelocityMode.Transform">
@@ -4369,6 +4555,11 @@ The position stream is always enabled, and any attempts to remove it will be ign
     <member name="F:UnityEngine.ParticleSystemVertexStream.InvStartLifetime">
       <summary>
         <para>The reciprocal of the starting lifetime, in seconds (1.0f / startLifetime).</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.ParticleSystemVertexStream.MeshIndex">
+      <summary>
+        <para>The index of the mesh used by the current particle.</para>
       </summary>
     </member>
     <member name="F:UnityEngine.ParticleSystemVertexStream.NoiseImpulseX">

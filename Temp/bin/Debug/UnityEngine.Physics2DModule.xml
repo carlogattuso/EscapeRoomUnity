@@ -241,27 +241,49 @@
     </member>
     <member name="M:UnityEngine.Collider2D.Cast(UnityEngine.Vector2,UnityEngine.RaycastHit2D[],System.Single,System.Boolean)">
       <summary>
-        <para>Casts the collider shape into the Scene starting at the collider position ignoring the collider itself.</para>
+        <para>Casts the Collider shape into the Scene starting at the Collider position ignoring the Collider itself.</para>
       </summary>
       <param name="direction">Vector representing the direction to cast the shape.</param>
       <param name="results">Array to receive results.</param>
       <param name="distance">Maximum distance over which to cast the shape.</param>
-      <param name="ignoreSiblingColliders">Should colliders attached to the same Rigidbody2D (known as sibling colliders) be ignored?</param>
+      <param name="ignoreSiblingColliders">Determines whether the cast should ignore Colliders attached to the same Rigidbody2D (known as sibling Colliders).</param>
       <returns>
         <para>The number of results returned.</para>
       </returns>
     </member>
     <member name="M:UnityEngine.Collider2D.Cast(UnityEngine.Vector2,UnityEngine.ContactFilter2D,UnityEngine.RaycastHit2D[],System.Single,System.Boolean)">
       <summary>
-        <para>Casts the collider shape into the Scene starting at the collider position ignoring the collider itself.</para>
+        <para>Casts the Collider shape into the Scene starting at the Collider position ignoring the Collider itself.</para>
       </summary>
       <param name="direction">Vector representing the direction to cast the shape.</param>
       <param name="contactFilter">Filter results defined by the contact filter.</param>
       <param name="results">Array to receive results.</param>
       <param name="distance">Maximum distance over which to cast the shape.</param>
-      <param name="ignoreSiblingColliders">Should colliders attached to the same Rigidbody2D (known as sibling colliders) be ignored?</param>
+      <param name="ignoreSiblingColliders">Determines whether the cast should ignore Colliders attached to the same Rigidbody2D (known as sibling Colliders).</param>
       <returns>
         <para>The number of results returned.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.Collider2D.Cast(UnityEngine.Vector2,UnityEngine.ContactFilter2D,System.Collections.Generic.List`1&lt;UnityEngine.RaycastHit2D&gt;,System.Single,System.Boolean)">
+      <summary>
+        <para>Casts the Collider shape into the Scene starting at the Collider position ignoring the Collider itself.</para>
+      </summary>
+      <param name="direction">Vector representing the direction to cast the shape.</param>
+      <param name="contactFilter">Filter results defined by the contact filter.</param>
+      <param name="results">List to receive results.</param>
+      <param name="distance">Maximum distance over which to cast the shape.</param>
+      <param name="ignoreSiblingColliders">Determines whether the cast should ignore Colliders attached to the same Rigidbody2D (known as sibling Colliders).</param>
+      <returns>
+        <para>The number of results returned.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.Collider2D.ClosestPoint(UnityEngine.Vector2)">
+      <summary>
+        <para>Returns a point on the perimeter of this Collider that is closest to the specified position.</para>
+      </summary>
+      <param name="position">The position from which to find the closest point on this Collider.</param>
+      <returns>
+        <para>A point on the perimeter of this Collider that is closest to the specified position.</para>
       </returns>
     </member>
     <member name="M:UnityEngine.Collider2D.Distance(UnityEngine.Collider2D)">
@@ -275,7 +297,7 @@
     </member>
     <member name="M:UnityEngine.Collider2D.GetContacts(UnityEngine.ContactPoint2D[])">
       <summary>
-        <para>Retrieves all contact points for this collider.</para>
+        <para>Retrieves all contact points for this Collider.</para>
       </summary>
       <param name="contacts">An array of ContactPoint2D used to receive the results.</param>
       <returns>
@@ -284,7 +306,7 @@
     </member>
     <member name="M:UnityEngine.Collider2D.GetContacts(UnityEngine.Collider2D[])">
       <summary>
-        <para>Retrieves all colliders in contact with this collider.</para>
+        <para>Retrieves all colliders in contact with this Collider.</para>
       </summary>
       <param name="colliders">An array of Collider2D used to receive the results.</param>
       <returns>
@@ -293,7 +315,7 @@
     </member>
     <member name="M:UnityEngine.Collider2D.GetContacts(UnityEngine.ContactFilter2D,UnityEngine.ContactPoint2D[])">
       <summary>
-        <para>Retrieves all contact points for this collider, with the results filtered by the ContactFilter2D.</para>
+        <para>Retrieves all contact points for this Collider, with the results filtered by the contactFilter.</para>
       </summary>
       <param name="contactFilter">The contact filter used to filter the results differently, such as by layer mask, Z depth, or normal angle.</param>
       <param name="contacts">An array of ContactPoint2D used to receive the results.</param>
@@ -303,12 +325,50 @@
     </member>
     <member name="M:UnityEngine.Collider2D.GetContacts(UnityEngine.ContactFilter2D,UnityEngine.Collider2D[])">
       <summary>
-        <para>Retrieves all colliders in contact with this collider, with the results filtered by the ContactFilter2D.</para>
+        <para>Retrieves all colliders in contact with this Collider, with the results filtered by the contactFilter.</para>
       </summary>
       <param name="contactFilter">The contact filter used to filter the results differently, such as by layer mask, Z depth, or normal angle.</param>
       <param name="colliders">An array of Collider2D used to receive the results.</param>
       <returns>
-        <para>Returns the number of collidersplaced in the colliders array.</para>
+        <para>Returns the number of colliders placed in the colliders array.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.Collider2D.GetContacts(System.Collections.Generic.List`1&lt;UnityEngine.ContactPoint2D&gt;)">
+      <summary>
+        <para>Retrieves all contact points for this Collider.</para>
+      </summary>
+      <param name="contacts">A list of ContactPoint2D used to receive the results.</param>
+      <returns>
+        <para>Returns the number of contacts placed in the contacts list.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.Collider2D.GetContacts(System.Collections.Generic.List`1&lt;UnityEngine.Collider2D&gt;)">
+      <summary>
+        <para>Retrieves all colliders in contact with this Collider.</para>
+      </summary>
+      <param name="colliders">A list of Collider2D used to receive the results.</param>
+      <returns>
+        <para>Returns the number of contacts placed in the colliders list.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.Collider2D.GetContacts(UnityEngine.ContactFilter2D,System.Collections.Generic.List`1&lt;UnityEngine.ContactPoint2D&gt;)">
+      <summary>
+        <para>Retrieves all contact points for this Collider, with the results filtered by the contactFilter.</para>
+      </summary>
+      <param name="contactFilter">The contact filter used to filter the results differently, such as by layer mask, Z depth, or normal angle.</param>
+      <param name="contacts">A list of ContactPoint2D used to receive the results.</param>
+      <returns>
+        <para>Returns the number of contacts placed in the contacts list.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.Collider2D.GetContacts(UnityEngine.ContactFilter2D,System.Collections.Generic.List`1&lt;UnityEngine.Collider2D&gt;)">
+      <summary>
+        <para>Retrieves all colliders in contact with this Collider, with the results filtered by the contactFilter.</para>
+      </summary>
+      <param name="contactFilter">The contact filter used to filter the results differently, such as by layer mask, Z depth, or normal angle.</param>
+      <param name="colliders">A list of Collider2D used to receive the results.</param>
+      <returns>
+        <para>Returns the number of contacts placed in the colliders list.</para>
       </returns>
     </member>
     <member name="M:UnityEngine.Collider2D.IsTouching(UnityEngine.Collider2D)">
@@ -322,7 +382,7 @@
     </member>
     <member name="M:UnityEngine.Collider2D.IsTouching(UnityEngine.Collider2D,UnityEngine.ContactFilter2D)">
       <summary>
-        <para>Check whether this collider is touching the collider or not with the results filtered by the ContactFilter2D.</para>
+        <para>Check whether this collider is touching the collider or not with the results filtered by the contactFilter.</para>
       </summary>
       <param name="collider">The collider to check if it is touching this collider.</param>
       <param name="contactFilter">The contact filter used to filter the results differently, such as by layer mask, Z depth, or normal angle.</param>
@@ -332,7 +392,7 @@
     </member>
     <member name="M:UnityEngine.Collider2D.IsTouching(UnityEngine.ContactFilter2D)">
       <summary>
-        <para>Check whether this collider is touching other colliders or not with the results filtered by the ContactFilter2D.</para>
+        <para>Check whether this collider is touching other colliders or not with the results filtered by the contactFilter.</para>
       </summary>
       <param name="contactFilter">The contact filter used to filter the results differently, such as by layer mask, Z depth, or normal angle.</param>
       <returns>
@@ -358,6 +418,16 @@
         <para>Returns the number of results placed in the results array.</para>
       </returns>
     </member>
+    <member name="M:UnityEngine.Collider2D.OverlapCollider(UnityEngine.ContactFilter2D,System.Collections.Generic.List`1&lt;UnityEngine.Collider2D&gt;)">
+      <summary>
+        <para>Get a list of all Colliders that overlap this Collider.</para>
+      </summary>
+      <param name="contactFilter">The contact filter used to filter the results differently, such as by layer mask, Z depth.  Note that normal angle is not used for overlap testing.</param>
+      <param name="results">The list to receive results.</param>
+      <returns>
+        <para>Returns the number of results placed in the results list.</para>
+      </returns>
+    </member>
     <member name="M:UnityEngine.Collider2D.OverlapPoint(UnityEngine.Vector2)">
       <summary>
         <para>Check if a collider overlaps a point in space.</para>
@@ -369,7 +439,7 @@
     </member>
     <member name="M:UnityEngine.Collider2D.Raycast(UnityEngine.Vector2,UnityEngine.RaycastHit2D[],System.Single,System.Int32,System.Single,System.Single)">
       <summary>
-        <para>Casts a ray into the Scene starting at the collider position ignoring the collider itself.</para>
+        <para>Casts a ray into the Scene that starts at the Collider position and ignores the Collider itself.</para>
       </summary>
       <param name="direction">Vector representing the direction of the ray.</param>
       <param name="results">Array to receive results.</param>
@@ -384,7 +454,7 @@
     </member>
     <member name="M:UnityEngine.Collider2D.Raycast(UnityEngine.Vector2,UnityEngine.ContactFilter2D,UnityEngine.RaycastHit2D[],System.Single)">
       <summary>
-        <para>Casts a ray into the Scene starting at the collider position ignoring the collider itself.</para>
+        <para>Casts a ray into the Scene that starts at the Collider position and ignores the Collider itself.</para>
       </summary>
       <param name="direction">Vector representing the direction of the ray.</param>
       <param name="results">Array to receive results.</param>
@@ -393,6 +463,18 @@
       <param name="minDepth">Only include objects with a Z coordinate (depth) greater than this value.</param>
       <param name="maxDepth">Only include objects with a Z coordinate (depth) less than this value.</param>
       <param name="contactFilter">Filter results defined by the contact filter.</param>
+      <returns>
+        <para>The number of results returned.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.Collider2D.Raycast(UnityEngine.Vector2,UnityEngine.ContactFilter2D,System.Collections.Generic.List`1&lt;UnityEngine.RaycastHit2D&gt;,System.Single)">
+      <summary>
+        <para>Casts a ray into the Scene that starts at the Collider position and ignores the Collider itself.</para>
+      </summary>
+      <param name="direction">Vector representing the direction of the ray.</param>
+      <param name="contactFilter">Filter results defined by the contact filter.</param>
+      <param name="results">List to receive results.</param>
+      <param name="distance">Maximum distance over which to cast the ray.</param>
       <returns>
         <para>The number of results returned.</para>
       </returns>
@@ -505,6 +587,15 @@
         <para>Returns the number of contacts placed in the contacts array.</para>
       </returns>
     </member>
+    <member name="M:UnityEngine.Collision2D.GetContacts(System.Collections.Generic.List`1&lt;UnityEngine.ContactPoint2D&gt;)">
+      <summary>
+        <para>Retrieves all contact points for contacts between collider and otherCollider.</para>
+      </summary>
+      <param name="contacts">A list of ContactPoint2D used to receive the results.</param>
+      <returns>
+        <para>Returns the number of contacts placed in the contacts list.</para>
+      </returns>
+    </member>
     <member name="T:UnityEngine.CollisionDetectionMode2D">
       <summary>
         <para>Controls how collisions are detected when a Rigidbody2D moves.</para>
@@ -599,17 +690,27 @@
       <summary>
         <para>Gets a path from the Collider by its index.</para>
       </summary>
-      <param name="index">The index of the path from 0 to pathCount.</param>
-      <param name="points">An ordered array of the vertices or points in the selected path.</param>
+      <param name="index">The index of the path from 0 to pathCount minus 1.</param>
+      <param name="points">An ordered array of the vertices (points) in the selected path.</param>
       <returns>
         <para>Returns the number of points placed in the points array.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.CompositeCollider2D.GetPath(System.Int32,System.Collections.Generic.List`1&lt;UnityEngine.Vector2&gt;)">
+      <summary>
+        <para>Gets a path from the Collider by its index.</para>
+      </summary>
+      <param name="index">The index of the path from 0 to pathCount minus 1.</param>
+      <param name="points">An ordered list of the vertices (points) in the selected path.</param>
+      <returns>
+        <para>Returns the number of points placed in the points list.</para>
       </returns>
     </member>
     <member name="M:UnityEngine.CompositeCollider2D.GetPathPointCount(System.Int32)">
       <summary>
         <para>Gets the number of points in the specified path from the Collider by its index.</para>
       </summary>
-      <param name="index">The index of the path from 0 to pathCount.</param>
+      <param name="index">The index of the path from 0 to pathCount minus 1.</param>
       <returns>
         <para>Returns the number of points in the path specified by index.</para>
       </returns>
@@ -1398,8 +1499,8 @@
       <param name="origin">The point in 2D space where the box originates.</param>
       <param name="size">The size of the box.</param>
       <param name="angle">The angle of the box (in degrees).</param>
-      <param name="direction">Vector representing the direction of the box.</param>
-      <param name="distance">Maximum distance over which to cast the box.</param>
+      <param name="direction">A vector representing the direction of the box.</param>
+      <param name="distance">The maximum distance over which to cast the box.</param>
       <param name="layerMask">Filter to detect Colliders only on certain layers.</param>
       <param name="minDepth">Only include objects with a Z coordinate (depth) greater than or equal to this value.</param>
       <param name="maxDepth">Only include objects with a Z coordinate (depth) less than or equal to this value.</param>
@@ -1409,17 +1510,32 @@
     </member>
     <member name="M:UnityEngine.Physics2D.BoxCast(UnityEngine.Vector2,UnityEngine.Vector2,System.Single,UnityEngine.Vector2,UnityEngine.ContactFilter2D,UnityEngine.RaycastHit2D[],System.Single)">
       <summary>
-        <para>Casts a box against the colliders in the Scene and returns all colliders that are in contact with it.</para>
+        <para>Casts a box against the Colliders in the Scene and returns all Colliders that are in contact with it.</para>
       </summary>
       <param name="origin">The point in 2D space where the box originates.</param>
       <param name="size">The size of the box.</param>
       <param name="angle">The angle of the box (in degrees).</param>
-      <param name="direction">Vector representing the direction of the box.</param>
-      <param name="distance">Maximum distance over which to cast the box.</param>
+      <param name="direction">A vector representing the direction of the box.</param>
+      <param name="distance">The maximum distance over which to cast the box.</param>
       <param name="results">The array to receive results.  The size of the array determines the maximum number of results that can be returned.</param>
       <param name="contactFilter">The contact filter used to filter the results differently, such as by layer mask, Z depth, or normal angle.</param>
       <returns>
         <para>Returns the number of results placed in the results array.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.Physics2D.BoxCast(UnityEngine.Vector2,UnityEngine.Vector2,System.Single,UnityEngine.Vector2,UnityEngine.ContactFilter2D,System.Collections.Generic.List`1&lt;UnityEngine.RaycastHit2D&gt;,System.Single)">
+      <summary>
+        <para>Casts a box against the Colliders in the Scene and returns all Colliders that are in contact with it.</para>
+      </summary>
+      <param name="origin">The point in 2D space where the box originates.</param>
+      <param name="size">The size of the box.</param>
+      <param name="angle">The angle of the box (in degrees).</param>
+      <param name="direction">A vector representing the direction of the box.</param>
+      <param name="contactFilter">The contact filter used to filter the results differently, such as by layer mask, Z depth, or normal angle.</param>
+      <param name="results">The list to receive results.</param>
+      <param name="distance">The maximum distance over which to cast the box.</param>
+      <returns>
+        <para>Returns the number of results placed in the results list.</para>
       </returns>
     </member>
     <member name="M:UnityEngine.Physics2D.BoxCastAll(UnityEngine.Vector2,UnityEngine.Vector2,System.Single,UnityEngine.Vector2,System.Single,System.Int32,System.Single,System.Single)">
@@ -1429,8 +1545,8 @@
       <param name="origin">The point in 2D space where the box originates.</param>
       <param name="size">The size of the box.</param>
       <param name="angle">The angle of the box (in degrees).</param>
-      <param name="direction">Vector representing the direction of the box.</param>
-      <param name="distance">Maximum distance over which to cast the box.</param>
+      <param name="direction">A vector representing the direction of the box.</param>
+      <param name="distance">The maximum distance over which to cast the box.</param>
       <param name="layerMask">Filter to detect Colliders only on certain layers.</param>
       <param name="minDepth">Only include objects with a Z coordinate (depth) greater than or equal to this value.</param>
       <param name="maxDepth">Only include objects with a Z coordinate (depth) less than or equal to this value.</param>
@@ -1445,9 +1561,9 @@
       <param name="origin">The point in 2D space where the box originates.</param>
       <param name="size">The size of the box.</param>
       <param name="angle">The angle of the box (in degrees).</param>
-      <param name="direction">Vector representing the direction of the box.</param>
+      <param name="direction">A vector representing the direction of the box.</param>
       <param name="results">Array to receive results.</param>
-      <param name="distance">Maximum distance over which to cast the box.</param>
+      <param name="distance">The maximum distance over which to cast the box.</param>
       <param name="layerMask">Filter to detect Colliders only on certain layers.</param>
       <param name="minDepth">Only include objects with a Z coordinate (depth) greater than or equal to this value.</param>
       <param name="maxDepth">Only include objects with a Z coordinate (depth) less than or equal to this value.</param>
@@ -1464,7 +1580,7 @@
       <param name="capsuleDirection">The direction of the capsule.</param>
       <param name="angle">The angle of the capsule (in degrees).</param>
       <param name="direction">Vector representing the direction to cast the capsule.</param>
-      <param name="distance">Maximum distance over which to cast the capsule.</param>
+      <param name="distance">The maximum distance over which to cast the capsule.</param>
       <param name="layerMask">Filter to detect Colliders only on certain layers.</param>
       <param name="minDepth">Only include objects with a Z coordinate (depth) greater than this value.</param>
       <param name="maxDepth">Only include objects with a Z coordinate (depth) less than this value.</param>
@@ -1483,9 +1599,25 @@
       <param name="direction">Vector representing the direction to cast the capsule.</param>
       <param name="contactFilter">The contact filter used to filter the results differently, such as by layer mask, Z depth, or normal angle.</param>
       <param name="results">The array to receive results.  The size of the array determines the maximum number of results that can be returned.</param>
-      <param name="distance">Maximum distance over which to cast the capsule.</param>
+      <param name="distance">The maximum distance over which to cast the capsule.</param>
       <returns>
         <para>Returns the number of results placed in the results array.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.Physics2D.CapsuleCast(UnityEngine.Vector2,UnityEngine.Vector2,UnityEngine.CapsuleDirection2D,System.Single,UnityEngine.Vector2,UnityEngine.ContactFilter2D,System.Collections.Generic.List`1&lt;UnityEngine.RaycastHit2D&gt;,System.Single)">
+      <summary>
+        <para>Casts a capsule against the Colliders in the Scene and returns all Colliders that are in contact with it.</para>
+      </summary>
+      <param name="origin">The point in 2D space where the capsule originates.</param>
+      <param name="size">The size of the capsule.</param>
+      <param name="capsuleDirection">The direction of the capsule.</param>
+      <param name="angle">The angle of the capsule (in degrees).</param>
+      <param name="direction">A vector representing the direction to cast the capsule.</param>
+      <param name="contactFilter">The contact filter used to filter the results differently, such as by layer mask, Z depth, or normal angle.</param>
+      <param name="results">The list to receive results.</param>
+      <param name="distance">The maximum distance over which to cast the capsule.</param>
+      <returns>
+        <para>Returns the number of results placed in the results list.</para>
       </returns>
     </member>
     <member name="M:UnityEngine.Physics2D.CapsuleCastAll(UnityEngine.Vector2,UnityEngine.Vector2,UnityEngine.CapsuleDirection2D,System.Single,UnityEngine.Vector2,System.Single,System.Int32,System.Single,System.Single)">
@@ -1497,7 +1629,7 @@
       <param name="capsuleDirection">The direction of the capsule.</param>
       <param name="angle">The angle of the capsule (in degrees).</param>
       <param name="direction">Vector representing the direction to cast the capsule.</param>
-      <param name="distance">Maximum distance over which to cast the capsule.</param>
+      <param name="distance">The maximum distance over which to cast the capsule.</param>
       <param name="layerMask">Filter to detect Colliders only on certain layers.</param>
       <param name="minDepth">Only include objects with a Z coordinate (depth) greater than this value.</param>
       <param name="maxDepth">Only include objects with a Z coordinate (depth) less than this value.</param>
@@ -1515,7 +1647,7 @@
       <param name="angle">The angle of the capsule (in degrees).</param>
       <param name="direction">Vector representing the direction to cast the capsule.</param>
       <param name="results">Array to receive results.</param>
-      <param name="distance">Maximum distance over which to cast the capsule.</param>
+      <param name="distance">The maximum distance over which to cast the capsule.</param>
       <param name="layerMask">Filter to detect Colliders only on certain layers.</param>
       <param name="minDepth">Only include objects with a Z coordinate (depth) greater than this value.</param>
       <param name="maxDepth">Only include objects with a Z coordinate (depth) less than this value.</param>
@@ -1529,8 +1661,8 @@
       </summary>
       <param name="origin">The point in 2D space where the circle originates.</param>
       <param name="radius">The radius of the circle.</param>
-      <param name="direction">Vector representing the direction of the circle.</param>
-      <param name="distance">Maximum distance over which to cast the circle.</param>
+      <param name="direction">A vector representing the direction of the circle.</param>
+      <param name="distance">The maximum distance over which to cast the circle.</param>
       <param name="layerMask">Filter to detect Colliders only on certain layers.</param>
       <param name="minDepth">Only include objects with a Z coordinate (depth) greater than or equal to this value.</param>
       <param name="maxDepth">Only include objects with a Z coordinate (depth) less than or equal to this value.</param>
@@ -1544,12 +1676,26 @@
       </summary>
       <param name="origin">The point in 2D space where the circle originates.</param>
       <param name="radius">The radius of the circle.</param>
-      <param name="direction">Vector representing the direction of the circle.</param>
+      <param name="direction">A vector representing the direction of the circle.</param>
       <param name="contactFilter">The contact filter used to filter the results differently, such as by layer mask, Z depth, or normal angle.</param>
       <param name="results">The array to receive results.  The size of the array determines the maximum number of results that can be returned.</param>
-      <param name="distance">Maximum distance over which to cast the circle.</param>
+      <param name="distance">The maximum distance over which to cast the circle.</param>
       <returns>
         <para>Returns the number of results placed in the results array.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.Physics2D.CircleCast(UnityEngine.Vector2,System.Single,UnityEngine.Vector2,UnityEngine.ContactFilter2D,System.Collections.Generic.List`1&lt;UnityEngine.RaycastHit2D&gt;,System.Single)">
+      <summary>
+        <para>Casts a circle against Colliders in the Scene, returning all Colliders that contact with it.</para>
+      </summary>
+      <param name="origin">The point in 2D space where the circle originates.</param>
+      <param name="radius">The radius of the circle.</param>
+      <param name="direction">A vector representing the direction of the circle.</param>
+      <param name="contactFilter">The contact filter used to filter the results differently, such as by layer mask, Z depth, or normal angle.</param>
+      <param name="results">The list to receive results.</param>
+      <param name="distance">The maximum distance over which to cast the circle.</param>
+      <returns>
+        <para>Returns the number of results placed in the results list.</para>
       </returns>
     </member>
     <member name="M:UnityEngine.Physics2D.CircleCastAll(UnityEngine.Vector2,System.Single,UnityEngine.Vector2,System.Single,System.Int32,System.Single,System.Single)">
@@ -1558,8 +1704,8 @@
       </summary>
       <param name="origin">The point in 2D space where the circle originates.</param>
       <param name="radius">The radius of the circle.</param>
-      <param name="direction">Vector representing the direction of the circle.</param>
-      <param name="distance">Maximum distance over which to cast the circle.</param>
+      <param name="direction">A vector representing the direction of the circle.</param>
+      <param name="distance">The maximum distance over which to cast the circle.</param>
       <param name="layerMask">Filter to detect Colliders only on certain layers.</param>
       <param name="minDepth">Only include objects with a Z coordinate (depth) greater than or equal to this value.</param>
       <param name="maxDepth">Only include objects with a Z coordinate (depth) less than or equal to this value.</param>
@@ -1573,14 +1719,34 @@
       </summary>
       <param name="origin">The point in 2D space where the circle originates.</param>
       <param name="radius">The radius of the circle.</param>
-      <param name="direction">Vector representing the direction of the circle.</param>
+      <param name="direction">A vector representing the direction of the circle.</param>
       <param name="results">Array to receive results.</param>
-      <param name="distance">Maximum distance over which to cast the circle.</param>
+      <param name="distance">The maximum distance over which to cast the circle.</param>
       <param name="layerMask">Filter to detect Colliders only on certain layers.</param>
       <param name="minDepth">Only include objects with a Z coordinate (depth) greater than or equal to this value.</param>
       <param name="maxDepth">Only include objects with a Z coordinate (depth) less than or equal to this value.</param>
       <returns>
         <para>Returns the number of results placed in the results array.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.Physics2D.ClosestPoint(UnityEngine.Vector2,UnityEngine.Collider2D)">
+      <summary>
+        <para>Returns a point on the perimeter of the collider that is closest to the specified position.</para>
+      </summary>
+      <param name="position">The position from which to find the closest point on the specified collider.</param>
+      <param name="collider">The Collider on which to find the closest specified position.</param>
+      <returns>
+        <para>A point on the perimeter of the collider that is closest to the specified position.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.Physics2D.ClosestPoint(UnityEngine.Vector2,UnityEngine.Rigidbody2D)">
+      <summary>
+        <para>Returns a point on the perimeter of all enabled colliders attached to the rigidbody that is closest to the specified position.</para>
+      </summary>
+      <param name="position">The position from which to find the closest point on the specified rigidbody.</param>
+      <param name="rigidbody">The Rigidbody on which to find the closest specified position.</param>
+      <returns>
+        <para>A point on the perimeter of a Collider attached to the rigidbody that is closest to the specified position.</para>
       </returns>
     </member>
     <member name="F:UnityEngine.Physics2D.DefaultRaycastLayers">
@@ -1694,6 +1860,102 @@
         <para>Returns the number of colliders placed in the colliders array.</para>
       </returns>
     </member>
+    <member name="M:UnityEngine.Physics2D.GetContacts(UnityEngine.Collider2D,System.Collections.Generic.List`1&lt;UnityEngine.Collider2D&gt;)">
+      <summary>
+        <para>Retrieves all Colliders in contact with the collider.</para>
+      </summary>
+      <param name="collider">The Collider to retrieve contacts for.</param>
+      <param name="colliders">A list of Collider2D used to receive the results.</param>
+      <returns>
+        <para>Returns the number of Colliders placed in the colliders list.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.Physics2D.GetContacts(UnityEngine.Collider2D,UnityEngine.ContactFilter2D,System.Collections.Generic.List`1&lt;UnityEngine.Collider2D&gt;)">
+      <summary>
+        <para>Retrieves all Colliders in contact with the collider, with the results filtered by the contactFilter2D.</para>
+      </summary>
+      <param name="collider">The Collider to retrieve contacts for.</param>
+      <param name="contactFilter">The contact filter used to filter the results differently, such as by layer mask, Z depth, or normal angle.</param>
+      <param name="colliders">A list of Collider2D used to receive the results.</param>
+      <returns>
+        <para>Returns the number of Colliders placed in the colliders list.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.Physics2D.GetContacts(UnityEngine.Collider2D,System.Collections.Generic.List`1&lt;UnityEngine.ContactPoint2D&gt;)">
+      <summary>
+        <para>Retrieves all contact points in contact with the collider.</para>
+      </summary>
+      <param name="collider">The Collider to retrieve contacts for.</param>
+      <param name="contacts">A list of ContactPoint2D used to receive the results.</param>
+      <returns>
+        <para>Returns the number of contacts placed in the contacts list.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.Physics2D.GetContacts(UnityEngine.Collider2D,UnityEngine.ContactFilter2D,System.Collections.Generic.List`1&lt;UnityEngine.ContactPoint2D&gt;)">
+      <summary>
+        <para>Retrieves all contact points in contact with the collider, with the results filtered by the contactFilter2D.</para>
+      </summary>
+      <param name="collider">The Collider to retrieve contacts for.</param>
+      <param name="contactFilter">The contact filter used to filter the results differently, such as by layer mask, Z depth, or normal angle.</param>
+      <param name="contacts">A list of ContactPoint2D used to receive the results.</param>
+      <returns>
+        <para>Returns the number of contacts placed in the contacts list.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.Physics2D.GetContacts(UnityEngine.Collider2D,UnityEngine.Collider2D,UnityEngine.ContactFilter2D,System.Collections.Generic.List`1&lt;UnityEngine.ContactPoint2D&gt;)">
+      <summary>
+        <para>Retrieves all contact points in for contacts between with the collider1 and collider2, with the results filtered by the contactFilter2D.</para>
+      </summary>
+      <param name="collider1">The Collider to check if it has contacts against collider2.</param>
+      <param name="collider2">The Collider to check if it has contacts against collider1.</param>
+      <param name="contactFilter">The contact filter used to filter the results differently, such as by layer mask, Z depth, or normal angle.</param>
+      <param name="contacts">A list of ContactPoint2D used to receive the results.</param>
+      <returns>
+        <para>Returns the number of contacts placed in the contacts list.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.Physics2D.GetContacts(UnityEngine.Rigidbody2D,System.Collections.Generic.List`1&lt;UnityEngine.Collider2D&gt;)">
+      <summary>
+        <para>Retrieves all Colliders in contact with any of the Collider(s) attached to this Rigidbody.</para>
+      </summary>
+      <param name="rigidbody">The Rigidbody to retrieve contacts for.  All Colliders attached to this Rigidbody will be checked.</param>
+      <param name="colliders">A list of Collider2D used to receive the results.</param>
+      <returns>
+        <para>Returns the number of Colliders placed in the colliders list.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.Physics2D.GetContacts(UnityEngine.Rigidbody2D,UnityEngine.ContactFilter2D,System.Collections.Generic.List`1&lt;UnityEngine.Collider2D&gt;)">
+      <summary>
+        <para>Retrieves all Colliders in contact with any of the collider(s) attached to this Rigidbody, with the results filtered by the contactFilter2D.</para>
+      </summary>
+      <param name="rigidbody">The Rigidbody to retrieve contacts for.  All Colliders attached to this Rigidbody will be checked.</param>
+      <param name="contactFilter">The contact filter used to filter the results differently, such as by layer mask, Z depth, or normal angle.</param>
+      <param name="colliders">A list of Collider2D used to receive the results.</param>
+      <returns>
+        <para>Returns the number of Colliders placed in the colliders list.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.Physics2D.GetContacts(UnityEngine.Rigidbody2D,System.Collections.Generic.List`1&lt;UnityEngine.ContactPoint2D&gt;)">
+      <summary>
+        <para>Retrieves all contact points in contact with any of the Collider(s) attached to this Rigidbody.</para>
+      </summary>
+      <param name="rigidbody">The Rigidbody to retrieve contacts for.  All Colliders attached to this Rigidbody will be checked.</param>
+      <param name="contacts">A list of ContactPoint2D used to receive the results.</param>
+      <returns>
+        <para>Returns the number of contacts placed in the contacts list.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.Physics2D.GetContacts(UnityEngine.Rigidbody2D,UnityEngine.ContactFilter2D,System.Collections.Generic.List`1&lt;UnityEngine.ContactPoint2D&gt;)">
+      <summary>
+        <para>Retrieves all Colliders in contact with any of the Collider(s) attached to this Rigidbody, with the results filtered by the contactFilter2D.</para>
+      </summary>
+      <param name="rigidbody">The Rigidbody to retrieve contacts for.  All Colliders attached to this Rigidbody will be checked.</param>
+      <param name="contactFilter">Returns the number of contacts placed in the contacts list.</param>
+      <param name="contacts">A list of ContactPoint2D used to receive the results.</param>
+      <returns>
+        <para>Returns the number of contacts placed in the contacts list.</para>
+      </returns>
+    </member>
     <member name="M:UnityEngine.Physics2D.GetIgnoreCollision(UnityEngine.Collider2D,UnityEngine.Collider2D)">
       <summary>
         <para>Checks whether the collision detection system will ignore all collisionstriggers between collider1 and collider2/ or not.</para>
@@ -1728,7 +1990,7 @@
         <para>Cast a 3D ray against the colliders in the Scene returning the first collider along the ray.</para>
       </summary>
       <param name="ray">The 3D ray defining origin and direction to test.</param>
-      <param name="distance">Maximum distance over which to cast the ray.</param>
+      <param name="distance">The maximum distance over which to cast the ray.</param>
       <param name="layerMask">Filter to detect colliders only on certain layers.</param>
       <returns>
         <para>The cast results returned.</para>
@@ -1739,7 +2001,7 @@
         <para>Cast a 3D ray against the colliders in the Scene returning all the colliders along the ray.</para>
       </summary>
       <param name="ray">The 3D ray defining origin and direction to test.</param>
-      <param name="distance">Maximum distance over which to cast the ray.</param>
+      <param name="distance">The maximum distance over which to cast the ray.</param>
       <param name="layerMask">Filter to detect colliders only on certain layers.</param>
       <returns>
         <para>The cast results returned.</para>
@@ -1750,7 +2012,7 @@
         <para>Cast a 3D ray against the colliders in the Scene returning the colliders along the ray.</para>
       </summary>
       <param name="ray">The 3D ray defining origin and direction to test.</param>
-      <param name="distance">Maximum distance over which to cast the ray.</param>
+      <param name="distance">The maximum distance over which to cast the ray.</param>
       <param name="layerMask">Filter to detect colliders only on certain layers.</param>
       <param name="results">Array to receive results.</param>
       <returns>
@@ -1838,10 +2100,22 @@
       </summary>
       <param name="start">The start point of the line in world space.</param>
       <param name="end">The end point of the line in world space.</param>
-      <param name="results">The array to receive results.  The size of the array determines the maximum number of results that can be returned.</param>
       <param name="contactFilter">The contact filter used to filter the results differently, such as by layer mask, Z depth, or normal angle.</param>
+      <param name="results">The array to receive results.  The size of the array determines the maximum number of results that can be returned.</param>
       <returns>
         <para>Returns the number of results placed in the results array.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.Physics2D.Linecast(UnityEngine.Vector2,UnityEngine.Vector2,UnityEngine.ContactFilter2D,System.Collections.Generic.List`1&lt;UnityEngine.RaycastHit2D&gt;)">
+      <summary>
+        <para>Casts a line segment against Colliders in the Scene with results filtered by ContactFilter2D.</para>
+      </summary>
+      <param name="start">The start point of the line in world space.</param>
+      <param name="end">The end point of the line in world space.</param>
+      <param name="contactFilter">The contact filter used to filter the results differently, such as by layer mask, Z depth, or normal angle.</param>
+      <param name="results">The list to receive results.</param>
+      <returns>
+        <para>Returns the number of results placed in the results list.</para>
       </returns>
     </member>
     <member name="M:UnityEngine.Physics2D.LinecastAll(UnityEngine.Vector2,UnityEngine.Vector2,System.Int32,System.Single,System.Single)">
@@ -1890,10 +2164,22 @@
       </summary>
       <param name="pointA">One corner of the rectangle.</param>
       <param name="pointB">Diagonally opposite the point A corner of the rectangle.</param>
-      <param name="results">The array to receive results.  The size of the array determines the maximum number of results that can be returned.</param>
       <param name="contactFilter">The contact filter used to filter the results differently, such as by layer mask, Z depth.  Note that normal angle is not used for overlap testing.</param>
+      <param name="results">The array to receive results.  The size of the array determines the maximum number of results that can be returned.</param>
       <returns>
         <para>Returns the number of results placed in the results array.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.Physics2D.OverlapArea(UnityEngine.Vector2,UnityEngine.Vector2,UnityEngine.ContactFilter2D,System.Collections.Generic.List`1&lt;UnityEngine.Collider2D&gt;)">
+      <summary>
+        <para>Checks if a Collider falls within a rectangular area.</para>
+      </summary>
+      <param name="pointA">One corner of the rectangle.</param>
+      <param name="pointB">Diagonally opposite the point A corner of the rectangle.</param>
+      <param name="contactFilter">The contact filter used to filter the results differently, such as by layer mask, Z depth.  Note that normal angle is not used for overlap testing.</param>
+      <param name="results">The list to receive results.</param>
+      <returns>
+        <para>Returns the number of results placed in the results list.</para>
       </returns>
     </member>
     <member name="M:UnityEngine.Physics2D.OverlapAreaAll(UnityEngine.Vector2,UnityEngine.Vector2,System.Int32,System.Single,System.Single)">
@@ -1927,9 +2213,9 @@
       <summary>
         <para>Checks if a collider falls within a box area.</para>
       </summary>
-      <param name="point">Center of the box.</param>
-      <param name="size">Size of the box.</param>
-      <param name="angle">Angle of the box.</param>
+      <param name="point">The center of the box.</param>
+      <param name="size">The size of the box.</param>
+      <param name="angle">The angle of the box.</param>
       <param name="layerMask">Filter to check objects only on specific layers.</param>
       <param name="minDepth">Only include objects with a Z coordinate (depth) greater than this value.</param>
       <param name="maxDepth">Only include objects with a Z coordinate (depth) less than this value.</param>
@@ -1941,22 +2227,35 @@
       <summary>
         <para>Checks if a collider falls within a box area.</para>
       </summary>
-      <param name="point">Center of the box.</param>
-      <param name="size">Size of the box.</param>
-      <param name="angle">Angle of the box.</param>
+      <param name="point">The center of the box.</param>
+      <param name="size">The size of the box.</param>
+      <param name="angle">The angle of the box.</param>
       <param name="contactFilter">The contact filter used to filter the results differently, such as by layer mask, Z depth.  Note that normal angle is not used for overlap testing.</param>
       <param name="results">The array to receive results.  The size of the array determines the maximum number of results that can be returned.</param>
       <returns>
         <para>Returns the number of results placed in the results array.</para>
       </returns>
     </member>
+    <member name="M:UnityEngine.Physics2D.OverlapBox(UnityEngine.Vector2,UnityEngine.Vector2,System.Single,UnityEngine.ContactFilter2D,System.Collections.Generic.List`1&lt;UnityEngine.Collider2D&gt;)">
+      <summary>
+        <para>Checks if a Collider falls within a box area.</para>
+      </summary>
+      <param name="point">The center of the box.</param>
+      <param name="size">The size of the box.</param>
+      <param name="angle">The angle of the box.</param>
+      <param name="contactFilter">The contact filter used to filter the results differently, such as by layer mask, Z depth.  Note that normal angle is not used for overlap testing.</param>
+      <param name="results">The list to receive results.</param>
+      <returns>
+        <para>Returns the number of results placed in the results list.</para>
+      </returns>
+    </member>
     <member name="M:UnityEngine.Physics2D.OverlapBoxAll(UnityEngine.Vector2,UnityEngine.Vector2,System.Single,System.Int32,System.Single,System.Single)">
       <summary>
         <para>Get a list of all colliders that fall within a box area.</para>
       </summary>
-      <param name="point">Center of the box.</param>
-      <param name="size">Size of the box.</param>
-      <param name="angle">Angle of the box.</param>
+      <param name="point">The center of the box.</param>
+      <param name="size">The size of the box.</param>
+      <param name="angle">The angle of the box.</param>
       <param name="layerMask">Filter to check objects only on specific layers.</param>
       <param name="minDepth">Only include objects with a Z coordinate (depth) greater than this value.</param>
       <param name="maxDepth">Only include objects with a Z coordinate (depth) less than this value.</param>
@@ -1968,9 +2267,9 @@
       <summary>
         <para>Get a list of all colliders that fall within a box area.</para>
       </summary>
-      <param name="point">Center of the box.</param>
-      <param name="size">Size of the box.</param>
-      <param name="angle">Angle of the box.</param>
+      <param name="point">The center of the box.</param>
+      <param name="size">The size of the box.</param>
+      <param name="angle">The angle of the box.</param>
       <param name="results">Array to receive results.</param>
       <param name="layerMask">Filter to check objects only on specific layers.</param>
       <param name="minDepth">Only include objects with a Z coordinate (depth) greater than this value.</param>
@@ -1983,10 +2282,10 @@
       <summary>
         <para>Checks if a collider falls within a capsule area.</para>
       </summary>
-      <param name="point">Center of the capsule.</param>
-      <param name="size">Size of the capsule.</param>
+      <param name="point">The center of the capsule.</param>
+      <param name="size">The size of the capsule.</param>
       <param name="direction">The direction of the capsule.</param>
-      <param name="angle">Angle of the capsule.</param>
+      <param name="angle">The angle of the capsule.</param>
       <param name="layerMask">Filter to check objects only on specific layers.</param>
       <param name="minDepth">Only include objects with a Z coordinate (depth) greater than this value.</param>
       <param name="maxDepth">Only include objects with a Z coordinate (depth) less than this value.</param>
@@ -1998,24 +2297,38 @@
       <summary>
         <para>Checks if a collider falls within a capsule area.</para>
       </summary>
-      <param name="point">Center of the capsule.</param>
-      <param name="size">Size of the capsule.</param>
+      <param name="point">The center of the capsule.</param>
+      <param name="size">The size of the capsule.</param>
       <param name="direction">The direction of the capsule.</param>
-      <param name="angle">Angle of the capsule.</param>
+      <param name="angle">The angle of the capsule.</param>
       <param name="contactFilter">The contact filter used to filter the results differently, such as by layer mask, Z depth.  Note that normal angle is not used for overlap testing.</param>
       <param name="results">The array to receive results.  The size of the array determines the maximum number of results that can be returned.</param>
       <returns>
         <para>Returns the number of results placed in the results array.</para>
       </returns>
     </member>
+    <member name="M:UnityEngine.Physics2D.OverlapCapsule(UnityEngine.Vector2,UnityEngine.Vector2,UnityEngine.CapsuleDirection2D,System.Single,UnityEngine.ContactFilter2D,System.Collections.Generic.List`1&lt;UnityEngine.Collider2D&gt;)">
+      <summary>
+        <para>Checks if a Collider falls within a capsule area.</para>
+      </summary>
+      <param name="point">The center of the capsule.</param>
+      <param name="size">The size of the capsule.</param>
+      <param name="direction">The direction of the capsule.</param>
+      <param name="angle">The angle of the capsule.</param>
+      <param name="contactFilter">The contact filter used to filter the results differently, such as by layer mask, Z depth.  Note that normal angle is not used for overlap testing.</param>
+      <param name="results">The list to receive results.</param>
+      <returns>
+        <para>Returns the number of results placed in the results list.</para>
+      </returns>
+    </member>
     <member name="M:UnityEngine.Physics2D.OverlapCapsuleAll(UnityEngine.Vector2,UnityEngine.Vector2,UnityEngine.CapsuleDirection2D,System.Single,System.Int32,System.Single,System.Single)">
       <summary>
         <para>Get a list of all colliders that fall within a capsule area.</para>
       </summary>
-      <param name="point">Center of the capsule.</param>
-      <param name="size">Size of the capsule.</param>
+      <param name="point">The center of the capsule.</param>
+      <param name="size">The size of the capsule.</param>
       <param name="direction">The direction of the capsule.</param>
-      <param name="angle">Angle of the capsule.</param>
+      <param name="angle">The angle of the capsule.</param>
       <param name="layerMask">Filter to check objects only on specific layers.</param>
       <param name="minDepth">Only include objects with a Z coordinate (depth) greater than this value.</param>
       <param name="maxDepth">Only include objects with a Z coordinate (depth) less than this value.</param>
@@ -2027,10 +2340,10 @@
       <summary>
         <para>Get a list of all colliders that fall within a capsule area.</para>
       </summary>
-      <param name="point">Center of the capsule.</param>
-      <param name="size">Size of the capsule.</param>
+      <param name="point">The center of the capsule.</param>
+      <param name="size">The size of the capsule.</param>
       <param name="direction">The direction of the capsule.</param>
-      <param name="angle">Angle of the capsule.</param>
+      <param name="angle">The angle of the capsule.</param>
       <param name="results">Array to receive results.</param>
       <param name="layerMask">Filter to check objects only on specific layers.</param>
       <param name="minDepth">Only include objects with a Z coordinate (depth) greater than this value.</param>
@@ -2044,7 +2357,7 @@
         <para>Checks if a collider falls within a circular area.</para>
       </summary>
       <param name="point">Centre of the circle.</param>
-      <param name="radius">Radius of the circle.</param>
+      <param name="radius">The radius of the circle.</param>
       <param name="layerMask">Filter to check objects only on specific layers.</param>
       <param name="minDepth">Only include objects with a Z coordinate (depth) greater than or equal to this value.</param>
       <param name="maxDepth">Only include objects with a Z coordinate (depth) less than or equal to this value.</param>
@@ -2057,19 +2370,31 @@
         <para>Checks if a collider is within a circular area.</para>
       </summary>
       <param name="point">Centre of the circle.</param>
-      <param name="radius">Radius of the circle.</param>
+      <param name="radius">The radius of the circle.</param>
       <param name="contactFilter">The contact filter used to filter the results differently, such as by layer mask, Z depth.  Note that normal angle is not used for overlap testing.</param>
       <param name="results">The array to receive results.  The size of the array determines the maximum number of results that can be returned.</param>
       <returns>
         <para>Returns the number of results placed in the results array.</para>
       </returns>
     </member>
+    <member name="M:UnityEngine.Physics2D.OverlapCircle(UnityEngine.Vector2,System.Single,UnityEngine.ContactFilter2D,System.Collections.Generic.List`1&lt;UnityEngine.Collider2D&gt;)">
+      <summary>
+        <para>Checks if a Collider is within a circular area.</para>
+      </summary>
+      <param name="point">Centre of the circle.</param>
+      <param name="radius">The radius of the circle.</param>
+      <param name="contactFilter">The contact filter used to filter the results differently, such as by layer mask, Z depth.  Note that normal angle is not used for overlap testing.</param>
+      <param name="results">The list to receive results.</param>
+      <returns>
+        <para>Returns the number of results placed in the results list.</para>
+      </returns>
+    </member>
     <member name="M:UnityEngine.Physics2D.OverlapCircleAll(UnityEngine.Vector2,System.Single,System.Int32,System.Single,System.Single)">
       <summary>
         <para>Get a list of all colliders that fall within a circular area.</para>
       </summary>
-      <param name="point">Center of the circle.</param>
-      <param name="radius">Radius of the circle.</param>
+      <param name="point">The center of the circle.</param>
+      <param name="radius">The radius of the circle.</param>
       <param name="layerMask">Filter to check objects only on specified layers.</param>
       <param name="minDepth">Only include objects with a Z coordinate (depth) greater than or equal to this value.</param>
       <param name="maxDepth">Only include objects with a Z coordinate (depth) less than or equal to this value.</param>
@@ -2081,8 +2406,8 @@
       <summary>
         <para>Get a list of all colliders that fall within a circular area.</para>
       </summary>
-      <param name="point">Center of the circle.</param>
-      <param name="radius">Radius of the circle.</param>
+      <param name="point">The center of the circle.</param>
+      <param name="radius">The radius of the circle.</param>
       <param name="results">Array to receive results.</param>
       <param name="layerMask">Filter to check objects only on specific layers.</param>
       <param name="minDepth">Only include objects with a Z coordinate (depth) greater than or equal to this value.</param>
@@ -2093,13 +2418,24 @@
     </member>
     <member name="M:UnityEngine.Physics2D.OverlapCollider(UnityEngine.Collider2D,UnityEngine.ContactFilter2D,UnityEngine.Collider2D[])">
       <summary>
-        <para>Get a list of all colliders that overlap collider.</para>
+        <para>Gets a list of all Colliders that overlap the given collider.</para>
       </summary>
       <param name="collider">The collider that defines the area used to query for other collider overlaps.</param>
       <param name="contactFilter">The contact filter used to filter the results differently, such as by layer mask, Z depth.  Note that normal angle is not used for overlap testing.</param>
       <param name="results">The array to receive results.  The size of the array determines the maximum number of results that can be returned.</param>
       <returns>
         <para>Returns the number of results placed in the results array.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.Physics2D.OverlapCollider(UnityEngine.Collider2D,UnityEngine.ContactFilter2D,System.Collections.Generic.List`1&lt;UnityEngine.Collider2D&gt;)">
+      <summary>
+        <para>Gets a list of all Colliders that overlap the given collider.</para>
+      </summary>
+      <param name="collider">The Collider that defines the area used to query for other Collider overlaps.</param>
+      <param name="contactFilter">The contact filter used to filter the results differently, such as by layer mask, Z depth.  Note that normal angle is not used for overlap testing.</param>
+      <param name="results">The list to receive results.</param>
+      <returns>
+        <para>Returns the number of results placed in the results list.</para>
       </returns>
     </member>
     <member name="M:UnityEngine.Physics2D.OverlapPoint(UnityEngine.Vector2,System.Int32,System.Single,System.Single)">
@@ -2123,6 +2459,17 @@
       <param name="results">The array to receive results.  The size of the array determines the maximum number of results that can be returned.</param>
       <returns>
         <para>Returns the number of results placed in the results array.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.Physics2D.OverlapPoint(UnityEngine.Vector2,UnityEngine.ContactFilter2D,System.Collections.Generic.List`1&lt;UnityEngine.Collider2D&gt;)">
+      <summary>
+        <para>Checks if a Collider overlaps a point in world space.</para>
+      </summary>
+      <param name="point">A point in world space.</param>
+      <param name="contactFilter">The contact filter used to filter the results differently, such as by layer mask, Z depth.  Note that normal angle is not used for overlap testing.</param>
+      <param name="results">The list to receive results.</param>
+      <returns>
+        <para>Returns the number of results placed in the results list.</para>
       </returns>
     </member>
     <member name="M:UnityEngine.Physics2D.OverlapPointAll(UnityEngine.Vector2,System.Int32,System.Single,System.Single)">
@@ -2155,8 +2502,8 @@
         <para>Casts a ray against colliders in the Scene.</para>
       </summary>
       <param name="origin">The point in 2D space where the ray originates.</param>
-      <param name="direction">The vector representing the direction of the ray.</param>
-      <param name="distance">Maximum distance over which to cast the ray.</param>
+      <param name="direction">A vector representing the direction of the ray.</param>
+      <param name="distance">The maximum distance over which to cast the ray.</param>
       <param name="layerMask">Filter to detect Colliders only on certain layers.</param>
       <param name="minDepth">Only include objects with a Z coordinate (depth) greater than or equal to this value.</param>
       <param name="maxDepth">Only include objects with a Z coordinate (depth) less than or equal to this value.</param>
@@ -2169,12 +2516,25 @@
         <para>Casts a ray against colliders in the Scene.</para>
       </summary>
       <param name="origin">The point in 2D space where the ray originates.</param>
-      <param name="direction">The vector representing the direction of the ray.</param>
+      <param name="direction">A vector representing the direction of the ray.</param>
       <param name="contactFilter">The contact filter used to filter the results differently, such as by layer mask, Z depth, or normal angle.</param>
       <param name="results">The array to receive results.  The size of the array determines the maximum number of results that can be returned.</param>
-      <param name="distance">Maximum distance over which to cast the ray.</param>
+      <param name="distance">The maximum distance over which to cast the ray.</param>
       <returns>
         <para>Returns the number of results placed in the results array.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.Physics2D.Raycast(UnityEngine.Vector2,UnityEngine.Vector2,UnityEngine.ContactFilter2D,System.Collections.Generic.List`1&lt;UnityEngine.RaycastHit2D&gt;,System.Single)">
+      <summary>
+        <para>Casts a ray against Colliders in the Scene.</para>
+      </summary>
+      <param name="origin">The point in 2D space where the ray originates.</param>
+      <param name="direction">A vector representing the direction of the ray.</param>
+      <param name="contactFilter">The contact filter used to filter the results differently, such as by layer mask, Z depth, or normal angle.</param>
+      <param name="results">The list to receive results.</param>
+      <param name="distance">The maximum distance over which to cast the ray.</param>
+      <returns>
+        <para>Returns the number of results placed in the results list.</para>
       </returns>
     </member>
     <member name="M:UnityEngine.Physics2D.RaycastAll(UnityEngine.Vector2,UnityEngine.Vector2,System.Single,System.Int32,System.Single,System.Single)">
@@ -2182,8 +2542,8 @@
         <para>Casts a ray against colliders in the Scene, returning all colliders that contact with it.</para>
       </summary>
       <param name="origin">The point in 2D space where the ray originates.</param>
-      <param name="direction">The vector representing the direction of the ray.</param>
-      <param name="distance">Maximum distance over which to cast the ray.</param>
+      <param name="direction">A vector representing the direction of the ray.</param>
+      <param name="distance">The maximum distance over which to cast the ray.</param>
       <param name="layerMask">Filter to detect Colliders only on certain layers.</param>
       <param name="minDepth">Only include objects with a Z coordinate (depth) greater than or equal to this value.</param>
       <param name="maxDepth">Only include objects with a Z coordinate (depth) less than or equal to this value.</param>
@@ -2198,9 +2558,9 @@
       <param name="minDepth">Only include objects with a Z coordinate (depth) greater than or equal to this value.</param>
       <param name="maxDepth">Only include objects with a Z coordinate (depth) less than or equal to this value.</param>
       <param name="origin">The point in 2D space where the ray originates.</param>
-      <param name="direction">The vector representing the direction of the ray.</param>
+      <param name="direction">A vector representing the direction of the ray.</param>
       <param name="results">Array to receive results.</param>
-      <param name="distance">Maximum distance over which to cast the ray.</param>
+      <param name="distance">The maximum distance over which to cast the ray.</param>
       <param name="layerMask">Filter to check objects only on specific layers.</param>
       <returns>
         <para>Returns the number of results placed in the results array.</para>
@@ -2399,6 +2759,21 @@
         <para>Returns the number of results placed in the results array.</para>
       </returns>
     </member>
+    <member name="M:UnityEngine.PhysicsScene2D.BoxCast(UnityEngine.Vector2,UnityEngine.Vector2,System.Single,UnityEngine.Vector2,System.Single,UnityEngine.ContactFilter2D,System.Collections.Generic.List`1&lt;UnityEngine.RaycastHit2D&gt;)">
+      <summary>
+        <para>Casts a box against the Colliders in the PhysicsScene2D, returning all intersections.</para>
+      </summary>
+      <param name="origin">The point in 2D space where the box originates.</param>
+      <param name="size">The size of the box.</param>
+      <param name="angle">The angle of the box (in degrees).</param>
+      <param name="direction">Vector representing the direction to cast the box.</param>
+      <param name="distance">Maximum distance over which to cast the box.</param>
+      <param name="contactFilter">The contact filter used to filter the results differently, such as by layer mask, Z depth, or normal angle.</param>
+      <param name="results">The list to receive results.</param>
+      <returns>
+        <para>Returns the number of results placed in the results list.</para>
+      </returns>
+    </member>
     <member name="M:UnityEngine.PhysicsScene2D.CapsuleCast(UnityEngine.Vector2,UnityEngine.Vector2,UnityEngine.CapsuleDirection2D,System.Single,UnityEngine.Vector2,System.Single,System.Int32)">
       <summary>
         <para>Casts a capsule against colliders in the PhysicsScene2D, returning the first intersection only.</para>
@@ -2409,7 +2784,7 @@
       <param name="angle">The angle of the capsule (in degrees).</param>
       <param name="direction">Vector representing the direction to cast the capsule.</param>
       <param name="distance">Maximum distance over which to cast the capsule.</param>
-      <param name="layerMask">Filter to detect collider only on certain layers.</param>
+      <param name="layerMask">The filter used to detect Colliders only on certain layers.</param>
       <param name="contactFilter">The contact filter used to filter the results differently, such as by layer mask, Z depth, or normal angle.</param>
       <returns>
         <para>The cast results returned.</para>
@@ -2425,7 +2800,7 @@
       <param name="angle">The angle of the capsule (in degrees).</param>
       <param name="direction">Vector representing the direction to cast the capsule.</param>
       <param name="distance">Maximum distance over which to cast the capsule.</param>
-      <param name="layerMask">Filter to detect collider only on certain layers.</param>
+      <param name="layerMask">The filter used to detect Colliders only on certain layers.</param>
       <param name="contactFilter">The contact filter used to filter the results differently, such as by layer mask, Z depth, or normal angle.</param>
       <returns>
         <para>The cast results returned.</para>
@@ -2433,7 +2808,7 @@
     </member>
     <member name="M:UnityEngine.PhysicsScene2D.CapsuleCast(UnityEngine.Vector2,UnityEngine.Vector2,UnityEngine.CapsuleDirection2D,System.Single,UnityEngine.Vector2,System.Single,UnityEngine.RaycastHit2D[],System.Int32)">
       <summary>
-        <para>Casts a capsule against the colliders in the PhysicsScene2D, returning all intersections.</para>
+        <para>Casts a capsule against the Colliders in the PhysicsScene2D, returning all intersections.</para>
       </summary>
       <param name="origin">The point in 2D space where the capsule originates.</param>
       <param name="size">The size of the capsule.</param>
@@ -2442,7 +2817,7 @@
       <param name="direction">Vector representing the direction to cast the capsule.</param>
       <param name="distance">Maximum distance over which to cast the capsule.</param>
       <param name="results">The array to receive results.  The size of the array determines the maximum number of results that can be returned.</param>
-      <param name="layerMask">Filter to detect collider only on certain layers.</param>
+      <param name="layerMask">The filter used to detect Colliders only on certain layers.</param>
       <param name="contactFilter">The contact filter used to filter the results differently, such as by layer mask, Z depth, or normal angle.</param>
       <returns>
         <para>Returns the number of results placed in the results array.</para>
@@ -2450,7 +2825,7 @@
     </member>
     <member name="M:UnityEngine.PhysicsScene2D.CapsuleCast(UnityEngine.Vector2,UnityEngine.Vector2,UnityEngine.CapsuleDirection2D,System.Single,UnityEngine.Vector2,System.Single,UnityEngine.ContactFilter2D,UnityEngine.RaycastHit2D[])">
       <summary>
-        <para>Casts a capsule against the colliders in the PhysicsScene2D, returning all intersections.</para>
+        <para>Casts a capsule against the Colliders in the PhysicsScene2D, returning all intersections.</para>
       </summary>
       <param name="origin">The point in 2D space where the capsule originates.</param>
       <param name="size">The size of the capsule.</param>
@@ -2459,10 +2834,26 @@
       <param name="direction">Vector representing the direction to cast the capsule.</param>
       <param name="distance">Maximum distance over which to cast the capsule.</param>
       <param name="results">The array to receive results.  The size of the array determines the maximum number of results that can be returned.</param>
-      <param name="layerMask">Filter to detect collider only on certain layers.</param>
+      <param name="layerMask">The filter used to detect Colliders only on certain layers.</param>
       <param name="contactFilter">The contact filter used to filter the results differently, such as by layer mask, Z depth, or normal angle.</param>
       <returns>
         <para>Returns the number of results placed in the results array.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.PhysicsScene2D.CapsuleCast(UnityEngine.Vector2,UnityEngine.Vector2,UnityEngine.CapsuleDirection2D,System.Single,UnityEngine.Vector2,System.Single,UnityEngine.ContactFilter2D,System.Collections.Generic.List`1&lt;UnityEngine.RaycastHit2D&gt;)">
+      <summary>
+        <para>Casts a capsule against the Colliders in the PhysicsScene2D, returning all intersections.</para>
+      </summary>
+      <param name="origin">The point in 2D space where the capsule originates.</param>
+      <param name="size">The size of the capsule.</param>
+      <param name="capsuleDirection">The direction of the capsule.</param>
+      <param name="angle">The angle of the capsule (in degrees).</param>
+      <param name="direction">Vector representing the direction to cast the capsule.</param>
+      <param name="distance">Maximum distance over which to cast the capsule.</param>
+      <param name="contactFilter">The contact filter used to filter the results differently, such as by layer mask, Z depth, or normal angle.</param>
+      <param name="results">The list to receive results.</param>
+      <returns>
+        <para>Returns the number of results placed in the results list.</para>
       </returns>
     </member>
     <member name="M:UnityEngine.PhysicsScene2D.CircleCast(UnityEngine.Vector2,System.Single,UnityEngine.Vector2,System.Single,System.Int32)">
@@ -2473,7 +2864,7 @@
       <param name="radius">The radius of the circle.</param>
       <param name="direction">Vector representing the direction to cast the circle.</param>
       <param name="distance">Maximum distance over which to cast the circle.</param>
-      <param name="layerMask">Filter to detect collider only on certain layers.</param>
+      <param name="layerMask">The filter used to detect Colliders only on certain layers.</param>
       <param name="contactFilter">The contact filter used to filter the results differently, such as by layer mask, Z depth, or normal angle.</param>
       <returns>
         <para>The cast results returned.</para>
@@ -2487,7 +2878,7 @@
       <param name="radius">The radius of the circle.</param>
       <param name="direction">Vector representing the direction to cast the circle.</param>
       <param name="distance">Maximum distance over which to cast the circle.</param>
-      <param name="layerMask">Filter to detect collider only on certain layers.</param>
+      <param name="layerMask">The filter used to detect Colliders only on certain layers.</param>
       <param name="contactFilter">The contact filter used to filter the results differently, such as by layer mask, Z depth, or normal angle.</param>
       <returns>
         <para>The cast results returned.</para>
@@ -2502,7 +2893,7 @@
       <param name="direction">Vector representing the direction to cast the circle.</param>
       <param name="distance">Maximum distance over which to cast the circle.</param>
       <param name="results">The array to receive results.  The size of the array determines the maximum number of results that can be returned.</param>
-      <param name="layerMask">Filter to detect collider only on certain layers.</param>
+      <param name="layerMask">The filter used to detect Colliders only on certain layers.</param>
       <param name="contactFilter">The contact filter used to filter the results differently, such as by layer mask, Z depth, or normal angle.</param>
       <returns>
         <para>Returns the number of results placed in the results array.</para>
@@ -2517,10 +2908,24 @@
       <param name="direction">Vector representing the direction to cast the circle.</param>
       <param name="distance">Maximum distance over which to cast the circle.</param>
       <param name="results">The array to receive results.  The size of the array determines the maximum number of results that can be returned.</param>
-      <param name="layerMask">Filter to detect collider only on certain layers.</param>
+      <param name="layerMask">The filter used to detect Colliders only on certain layers.</param>
       <param name="contactFilter">The contact filter used to filter the results differently, such as by layer mask, Z depth, or normal angle.</param>
       <returns>
         <para>Returns the number of results placed in the results array.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.PhysicsScene2D.CircleCast(UnityEngine.Vector2,System.Single,UnityEngine.Vector2,System.Single,UnityEngine.ContactFilter2D,System.Collections.Generic.List`1&lt;UnityEngine.RaycastHit2D&gt;)">
+      <summary>
+        <para>Casts a circle against the Colliders in the PhysicsScene2D, returning all intersections.</para>
+      </summary>
+      <param name="origin">The point in 2D space where the circle originates.</param>
+      <param name="radius">The radius of the circle.</param>
+      <param name="direction">Vector representing the direction to cast the circle.</param>
+      <param name="distance">Maximum distance over which to cast the circle.</param>
+      <param name="contactFilter">The contact filter used to filter the results differently, such as by layer mask, Z depth, or normal angle.</param>
+      <param name="results">The list to receive results.</param>
+      <returns>
+        <para>Returns the number of results placed in the results list.</para>
       </returns>
     </member>
     <member name="M:UnityEngine.PhysicsScene2D.GetRayIntersection(UnityEngine.Ray,System.Single,System.Int32)">
@@ -2568,7 +2973,7 @@
       </summary>
       <param name="start">The start point of the line in world space.</param>
       <param name="end">The end point of the line in world space.</param>
-      <param name="layerMask">Filter to detect collider only on certain layers.</param>
+      <param name="layerMask">The filter used to detect Colliders only on certain layers.</param>
       <param name="contactFilter">The contact filter used to filter the results differently, such as by layer mask, Z depth, or normal angle.</param>
       <returns>
         <para>The cast results returned.</para>
@@ -2580,7 +2985,7 @@
       </summary>
       <param name="start">The start point of the line in world space.</param>
       <param name="end">The end point of the line in world space.</param>
-      <param name="layerMask">Filter to detect collider only on certain layers.</param>
+      <param name="layerMask">The filter used to detect Colliders only on certain layers.</param>
       <param name="contactFilter">The contact filter used to filter the results differently, such as by layer mask, Z depth, or normal angle.</param>
       <returns>
         <para>The cast results returned.</para>
@@ -2593,7 +2998,7 @@
       <param name="start">The start point of the line in world space.</param>
       <param name="end">The end point of the line in world space.</param>
       <param name="results">The array to receive results.  The size of the array determines the maximum number of results that can be returned.</param>
-      <param name="layerMask">Filter to detect collider only on certain layers.</param>
+      <param name="layerMask">The filter used to detect Colliders only on certain layers.</param>
       <param name="contactFilter">The contact filter used to filter the results differently, such as by layer mask, Z depth, or normal angle.</param>
       <returns>
         <para>Returns the number of results placed in the results array.</para>
@@ -2606,15 +3011,27 @@
       <param name="start">The start point of the line in world space.</param>
       <param name="end">The end point of the line in world space.</param>
       <param name="results">The array to receive results.  The size of the array determines the maximum number of results that can be returned.</param>
-      <param name="layerMask">Filter to detect collider only on certain layers.</param>
+      <param name="layerMask">The filter used to detect Colliders only on certain layers.</param>
       <param name="contactFilter">The contact filter used to filter the results differently, such as by layer mask, Z depth, or normal angle.</param>
       <returns>
         <para>Returns the number of results placed in the results array.</para>
       </returns>
     </member>
+    <member name="M:UnityEngine.PhysicsScene2D.Linecast(UnityEngine.Vector2,UnityEngine.Vector2,UnityEngine.ContactFilter2D,System.Collections.Generic.List`1&lt;UnityEngine.RaycastHit2D&gt;)">
+      <summary>
+        <para>Casts a line segment against Colliders in the PhysicsScene2D.</para>
+      </summary>
+      <param name="start">The start point of the line in world space.</param>
+      <param name="end">The end point of the line in world space.</param>
+      <param name="contactFilter">The contact filter used to filter the results differently, such as by layer mask, Z depth, or normal angle.</param>
+      <param name="results">The listto receive results.</param>
+      <returns>
+        <para>Returns the number of results placed in the results list.</para>
+      </returns>
+    </member>
     <member name="M:UnityEngine.PhysicsScene2D.OverlapArea(UnityEngine.Vector2,UnityEngine.Vector2,System.Int32)">
       <summary>
-        <para>Checks an area (non-rotated box) against colliders in the PhysicsScene2D, returning the first intersection only.</para>
+        <para>Checks an area (non-rotated box) against Colliders in the PhysicsScene2D, returning the first intersection only.</para>
       </summary>
       <param name="pointA">One corner of the rectangle.</param>
       <param name="pointB">The corner of the rectangle diagonally opposite the pointA corner.</param>
@@ -2626,7 +3043,7 @@
     </member>
     <member name="M:UnityEngine.PhysicsScene2D.OverlapArea(UnityEngine.Vector2,UnityEngine.Vector2,UnityEngine.ContactFilter2D)">
       <summary>
-        <para>Checks an area (non-rotated box) against colliders in the PhysicsScene2D, returning the first intersection only.</para>
+        <para>Checks an area (non-rotated box) against Colliders in the PhysicsScene2D, returning the first intersection only.</para>
       </summary>
       <param name="pointA">One corner of the rectangle.</param>
       <param name="pointB">The corner of the rectangle diagonally opposite the pointA corner.</param>
@@ -2638,7 +3055,7 @@
     </member>
     <member name="M:UnityEngine.PhysicsScene2D.OverlapArea(UnityEngine.Vector2,UnityEngine.Vector2,UnityEngine.Collider2D[],System.Int32)">
       <summary>
-        <para>Checks an area (non-rotated box) against colliders in the PhysicsScene2D, returning all intersections.</para>
+        <para>Checks an area (non-rotated box) against Colliders in the PhysicsScene2D, returning all intersections.</para>
       </summary>
       <param name="pointA">One corner of the rectangle.</param>
       <param name="pointB">The corner of the rectangle diagonally opposite the pointA corner.</param>
@@ -2651,7 +3068,7 @@
     </member>
     <member name="M:UnityEngine.PhysicsScene2D.OverlapArea(UnityEngine.Vector2,UnityEngine.Vector2,UnityEngine.ContactFilter2D,UnityEngine.Collider2D[])">
       <summary>
-        <para>Checks an area (non-rotated box) against colliders in the PhysicsScene2D, returning all intersections.</para>
+        <para>Checks an area (non-rotated box) against Colliders in the PhysicsScene2D, returning all intersections.</para>
       </summary>
       <param name="pointA">One corner of the rectangle.</param>
       <param name="pointB">The corner of the rectangle diagonally opposite the pointA corner.</param>
@@ -2662,13 +3079,25 @@
         <para>Returns the number of results placed in the results array.</para>
       </returns>
     </member>
+    <member name="M:UnityEngine.PhysicsScene2D.OverlapArea(UnityEngine.Vector2,UnityEngine.Vector2,UnityEngine.ContactFilter2D,System.Collections.Generic.List`1&lt;UnityEngine.Collider2D&gt;)">
+      <summary>
+        <para>Checks an area (non-rotated box) against Colliders in the PhysicsScene2D, returning all intersections.</para>
+      </summary>
+      <param name="pointA">One corner of the rectangle.</param>
+      <param name="pointB">The corner of the rectangle diagonally opposite the pointA corner.</param>
+      <param name="contactFilter">The contact filter used to filter the results differently, such as by layer mask and Z depth. Note that the normal angle is not used for overlap testing.</param>
+      <param name="results">The list to receive results.</param>
+      <returns>
+        <para>Returns the number of results placed in the results list.</para>
+      </returns>
+    </member>
     <member name="M:UnityEngine.PhysicsScene2D.OverlapBox(UnityEngine.Vector2,UnityEngine.Vector2,System.Single,System.Int32)">
       <summary>
-        <para>Checks a box against colliders in the PhysicsScene2D, returning the first intersection only.</para>
+        <para>Checks a box against Colliders in the PhysicsScene2D, returning the first intersection only.</para>
       </summary>
-      <param name="point">Center of the box.</param>
-      <param name="size">Size of the box.</param>
-      <param name="angle">Angle of the box.</param>
+      <param name="point">The center of the box.</param>
+      <param name="size">The size of the box.</param>
+      <param name="angle">The angle of the box.</param>
       <param name="layerMask">Filter to check objects only on specific layers.</param>
       <param name="contactFilter">The contact filter used to filter the results differently, such as by layer mask and Z depth. Note that the normal angle is not used for overlap testing.</param>
       <returns>
@@ -2677,11 +3106,11 @@
     </member>
     <member name="M:UnityEngine.PhysicsScene2D.OverlapBox(UnityEngine.Vector2,UnityEngine.Vector2,System.Single,UnityEngine.ContactFilter2D)">
       <summary>
-        <para>Checks a box against colliders in the PhysicsScene2D, returning the first intersection only.</para>
+        <para>Checks a box against Colliders in the PhysicsScene2D, returning the first intersection only.</para>
       </summary>
-      <param name="point">Center of the box.</param>
-      <param name="size">Size of the box.</param>
-      <param name="angle">Angle of the box.</param>
+      <param name="point">The center of the box.</param>
+      <param name="size">The size of the box.</param>
+      <param name="angle">The angle of the box.</param>
       <param name="layerMask">Filter to check objects only on specific layers.</param>
       <param name="contactFilter">The contact filter used to filter the results differently, such as by layer mask and Z depth. Note that the normal angle is not used for overlap testing.</param>
       <returns>
@@ -2690,11 +3119,11 @@
     </member>
     <member name="M:UnityEngine.PhysicsScene2D.OverlapBox(UnityEngine.Vector2,UnityEngine.Vector2,System.Single,UnityEngine.Collider2D[],System.Int32)">
       <summary>
-        <para>Checks a box against colliders in the PhysicsScene2D, returning all intersections.</para>
+        <para>Checks a box against Colliders in the PhysicsScene2D, returning all intersections.</para>
       </summary>
-      <param name="point">Center of the box.</param>
-      <param name="size">Size of the box.</param>
-      <param name="angle">Angle of the box.</param>
+      <param name="point">The center of the box.</param>
+      <param name="size">The size of the box.</param>
+      <param name="angle">The angle of the box.</param>
       <param name="results">The array to receive results.  The size of the array determines the maximum number of results that can be returned.</param>
       <param name="layerMask">Filter to check objects only on specific layers.</param>
       <param name="contactFilter">The contact filter used to filter the results differently, such as by layer mask and Z depth. Note that the normal angle is not used for overlap testing.</param>
@@ -2704,11 +3133,11 @@
     </member>
     <member name="M:UnityEngine.PhysicsScene2D.OverlapBox(UnityEngine.Vector2,UnityEngine.Vector2,System.Single,UnityEngine.ContactFilter2D,UnityEngine.Collider2D[])">
       <summary>
-        <para>Checks a box against colliders in the PhysicsScene2D, returning all intersections.</para>
+        <para>Checks a box against Colliders in the PhysicsScene2D, returning all intersections.</para>
       </summary>
-      <param name="point">Center of the box.</param>
-      <param name="size">Size of the box.</param>
-      <param name="angle">Angle of the box.</param>
+      <param name="point">The center of the box.</param>
+      <param name="size">The size of the box.</param>
+      <param name="angle">The angle of the box.</param>
       <param name="results">The array to receive results.  The size of the array determines the maximum number of results that can be returned.</param>
       <param name="layerMask">Filter to check objects only on specific layers.</param>
       <param name="contactFilter">The contact filter used to filter the results differently, such as by layer mask and Z depth. Note that the normal angle is not used for overlap testing.</param>
@@ -2716,14 +3145,27 @@
         <para>Returns the number of results placed in the results array.</para>
       </returns>
     </member>
+    <member name="M:UnityEngine.PhysicsScene2D.OverlapBox(UnityEngine.Vector2,UnityEngine.Vector2,System.Single,UnityEngine.ContactFilter2D,System.Collections.Generic.List`1&lt;UnityEngine.Collider2D&gt;)">
+      <summary>
+        <para>Checks a box against Colliders in the PhysicsScene2D, returning all intersections.</para>
+      </summary>
+      <param name="point">The center of the box.</param>
+      <param name="size">The size of the box.</param>
+      <param name="angle">The angle of the box.</param>
+      <param name="contactFilter">The contact filter used to filter the results differently, such as by layer mask and Z depth. Note that the normal angle is not used for overlap testing.</param>
+      <param name="results">The list to receive results.</param>
+      <returns>
+        <para>Returns the number of results placed in the results list.</para>
+      </returns>
+    </member>
     <member name="M:UnityEngine.PhysicsScene2D.OverlapCapsule(UnityEngine.Vector2,UnityEngine.Vector2,UnityEngine.CapsuleDirection2D,System.Single,System.Int32)">
       <summary>
-        <para>Checks a capsule against colliders in the PhysicsScene2D, returning the first intersection only.</para>
+        <para>Checks a capsule against Colliders in the PhysicsScene2D, returning the first intersection only.</para>
       </summary>
-      <param name="point">Center of the capsule.</param>
-      <param name="size">Size of the capsule.</param>
+      <param name="point">The center of the capsule.</param>
+      <param name="size">The size of the capsule.</param>
       <param name="direction">The direction of the capsule.</param>
-      <param name="angle">Angle of the capsule.</param>
+      <param name="angle">The angle of the capsule.</param>
       <param name="layerMask">Filter to check objects only on specific layers.</param>
       <param name="contactFilter">The contact filter used to filter the results differently, such as by layer mask and Z depth. Note that the normal angle is not used for overlap testing.</param>
       <returns>
@@ -2732,12 +3174,12 @@
     </member>
     <member name="M:UnityEngine.PhysicsScene2D.OverlapCapsule(UnityEngine.Vector2,UnityEngine.Vector2,UnityEngine.CapsuleDirection2D,System.Single,UnityEngine.ContactFilter2D)">
       <summary>
-        <para>Checks a capsule against colliders in the PhysicsScene2D, returning the first intersection only.</para>
+        <para>Checks a capsule against Colliders in the PhysicsScene2D, returning the first intersection only.</para>
       </summary>
-      <param name="point">Center of the capsule.</param>
-      <param name="size">Size of the capsule.</param>
+      <param name="point">The center of the capsule.</param>
+      <param name="size">The size of the capsule.</param>
       <param name="direction">The direction of the capsule.</param>
-      <param name="angle">Angle of the capsule.</param>
+      <param name="angle">The angle of the capsule.</param>
       <param name="layerMask">Filter to check objects only on specific layers.</param>
       <param name="contactFilter">The contact filter used to filter the results differently, such as by layer mask and Z depth. Note that the normal angle is not used for overlap testing.</param>
       <returns>
@@ -2746,12 +3188,12 @@
     </member>
     <member name="M:UnityEngine.PhysicsScene2D.OverlapCapsule(UnityEngine.Vector2,UnityEngine.Vector2,UnityEngine.CapsuleDirection2D,System.Single,UnityEngine.Collider2D[],System.Int32)">
       <summary>
-        <para>Checks a capsule against colliders in the PhysicsScene2D, returning all intersections.</para>
+        <para>Checks a capsule against Colliders in the PhysicsScene2D, returning all intersections.</para>
       </summary>
-      <param name="point">Center of the capsule.</param>
-      <param name="size">Size of the capsule.</param>
+      <param name="point">The center of the capsule.</param>
+      <param name="size">The size of the capsule.</param>
       <param name="direction">The direction of the capsule.</param>
-      <param name="angle">Angle of the capsule.</param>
+      <param name="angle">The angle of the capsule.</param>
       <param name="results">The array to receive results.  The size of the array determines the maximum number of results that can be returned.</param>
       <param name="layerMask">Filter to check objects only on specific layers.</param>
       <param name="contactFilter">The contact filter used to filter the results differently, such as by layer mask and Z depth. Note that the normal angle is not used for overlap testing.</param>
@@ -2761,12 +3203,12 @@
     </member>
     <member name="M:UnityEngine.PhysicsScene2D.OverlapCapsule(UnityEngine.Vector2,UnityEngine.Vector2,UnityEngine.CapsuleDirection2D,System.Single,UnityEngine.ContactFilter2D,UnityEngine.Collider2D[])">
       <summary>
-        <para>Checks a capsule against colliders in the PhysicsScene2D, returning all intersections.</para>
+        <para>Checks a capsule against Colliders in the PhysicsScene2D, returning all intersections.</para>
       </summary>
-      <param name="point">Center of the capsule.</param>
-      <param name="size">Size of the capsule.</param>
+      <param name="point">The center of the capsule.</param>
+      <param name="size">The size of the capsule.</param>
       <param name="direction">The direction of the capsule.</param>
-      <param name="angle">Angle of the capsule.</param>
+      <param name="angle">The angle of the capsule.</param>
       <param name="results">The array to receive results.  The size of the array determines the maximum number of results that can be returned.</param>
       <param name="layerMask">Filter to check objects only on specific layers.</param>
       <param name="contactFilter">The contact filter used to filter the results differently, such as by layer mask and Z depth. Note that the normal angle is not used for overlap testing.</param>
@@ -2774,12 +3216,26 @@
         <para>Returns the number of results placed in the results array.</para>
       </returns>
     </member>
+    <member name="M:UnityEngine.PhysicsScene2D.OverlapCapsule(UnityEngine.Vector2,UnityEngine.Vector2,UnityEngine.CapsuleDirection2D,System.Single,UnityEngine.ContactFilter2D,System.Collections.Generic.List`1&lt;UnityEngine.Collider2D&gt;)">
+      <summary>
+        <para>Checks a capsule against Colliders in the PhysicsScene2D, returning all intersections.</para>
+      </summary>
+      <param name="point">The center of the capsule.</param>
+      <param name="size">The size of the capsule.</param>
+      <param name="direction">The direction of the capsule.</param>
+      <param name="angle">The angle of the capsule.</param>
+      <param name="contactFilter">The contact filter used to filter the results differently, such as by layer mask and Z depth. Note that the normal angle is not used for overlap testing.</param>
+      <param name="results">The list to receive results.</param>
+      <returns>
+        <para>Returns the number of results placed in the results list.</para>
+      </returns>
+    </member>
     <member name="M:UnityEngine.PhysicsScene2D.OverlapCircle(UnityEngine.Vector2,System.Single,System.Int32)">
       <summary>
-        <para>Checks a circle against colliders in the PhysicsScene2D, returning the first intersection only.</para>
+        <para>Checks a circle against Colliders in the PhysicsScene2D, returning the first intersection only.</para>
       </summary>
-      <param name="point">Centre of the circle.</param>
-      <param name="radius">Radius of the circle.</param>
+      <param name="point">The centre of the circle.</param>
+      <param name="radius">The radius of the circle.</param>
       <param name="layerMask">Filter to check objects only on specific layers.</param>
       <param name="contactFilter">The contact filter used to filter the results differently, such as by layer mask and Z depth. Note that the normal angle is not used for overlap testing.</param>
       <returns>
@@ -2788,10 +3244,10 @@
     </member>
     <member name="M:UnityEngine.PhysicsScene2D.OverlapCircle(UnityEngine.Vector2,System.Single,UnityEngine.ContactFilter2D)">
       <summary>
-        <para>Checks a circle against colliders in the PhysicsScene2D, returning the first intersection only.</para>
+        <para>Checks a circle against Colliders in the PhysicsScene2D, returning the first intersection only.</para>
       </summary>
-      <param name="point">Centre of the circle.</param>
-      <param name="radius">Radius of the circle.</param>
+      <param name="point">The centre of the circle.</param>
+      <param name="radius">The radius of the circle.</param>
       <param name="layerMask">Filter to check objects only on specific layers.</param>
       <param name="contactFilter">The contact filter used to filter the results differently, such as by layer mask and Z depth. Note that the normal angle is not used for overlap testing.</param>
       <returns>
@@ -2800,10 +3256,10 @@
     </member>
     <member name="M:UnityEngine.PhysicsScene2D.OverlapCircle(UnityEngine.Vector2,System.Single,UnityEngine.Collider2D[],System.Int32)">
       <summary>
-        <para>Checks a circle against colliders in the PhysicsScene2D, returning all intersections.</para>
+        <para>Checks a circle against Colliders in the PhysicsScene2D, returning all intersections.</para>
       </summary>
-      <param name="point">Centre of the circle.</param>
-      <param name="radius">Radius of the circle.</param>
+      <param name="point">The centre of the circle.</param>
+      <param name="radius">The radius of the circle.</param>
       <param name="results">The array to receive results.  The size of the array determines the maximum number of results that can be returned.</param>
       <param name="layerMask">Filter to check objects only on specific layers.</param>
       <param name="contactFilter">The contact filter used to filter the results differently, such as by layer mask and Z depth. Note that the normal angle is not used for overlap testing.</param>
@@ -2813,10 +3269,10 @@
     </member>
     <member name="M:UnityEngine.PhysicsScene2D.OverlapCircle(UnityEngine.Vector2,System.Single,UnityEngine.ContactFilter2D,UnityEngine.Collider2D[])">
       <summary>
-        <para>Checks a circle against colliders in the PhysicsScene2D, returning all intersections.</para>
+        <para>Checks a circle against Colliders in the PhysicsScene2D, returning all intersections.</para>
       </summary>
-      <param name="point">Centre of the circle.</param>
-      <param name="radius">Radius of the circle.</param>
+      <param name="point">The centre of the circle.</param>
+      <param name="radius">The radius of the circle.</param>
       <param name="results">The array to receive results.  The size of the array determines the maximum number of results that can be returned.</param>
       <param name="layerMask">Filter to check objects only on specific layers.</param>
       <param name="contactFilter">The contact filter used to filter the results differently, such as by layer mask and Z depth. Note that the normal angle is not used for overlap testing.</param>
@@ -2824,33 +3280,56 @@
         <para>Returns the number of results placed in the results array.</para>
       </returns>
     </member>
+    <member name="M:UnityEngine.PhysicsScene2D.OverlapCircle(UnityEngine.Vector2,System.Single,UnityEngine.ContactFilter2D,System.Collections.Generic.List`1&lt;UnityEngine.Collider2D&gt;)">
+      <summary>
+        <para>Checks a circle against Colliders in the PhysicsScene2D, returning all intersections.</para>
+      </summary>
+      <param name="point">The centre of the circle.</param>
+      <param name="radius">The radius of the circle.</param>
+      <param name="contactFilter">The contact filter used to filter the results differently, such as by layer mask and Z depth. Note that the normal angle is not used for overlap testing.</param>
+      <param name="results">The list to receive results.</param>
+      <returns>
+        <para>Returns the number of results placed in the results list.</para>
+      </returns>
+    </member>
     <member name="M:UnityEngine.PhysicsScene2D.OverlapCollider(UnityEngine.Collider2D,UnityEngine.Collider2D[],System.Int32)">
       <summary>
-        <para>Checks a collider against colliders in the PhysicsScene2D, returning all intersections.</para>
+        <para>Checks a Collider against Colliders in the PhysicsScene2D, returning all intersections.</para>
       </summary>
-      <param name="collider">The collider that defines the area used to query for other collider overlaps.</param>
+      <param name="collider">The Collider that defines the area used to query for other Collider overlaps.</param>
       <param name="results">The array to receive results.  The size of the array determines the maximum number of results that can be returned.</param>
       <param name="layerMask">Filter to check objects only on specific layers.</param>
       <param name="contactFilter">The contact filter used to filter the results differently, such as by layer mask and Z depth. Note that the normal angle is not used for overlap testing.</param>
       <returns>
-        <para>The collider overlapping the collider.</para>
+        <para>Returns the number of results placed in the results array.</para>
       </returns>
     </member>
     <member name="M:UnityEngine.PhysicsScene2D.OverlapCollider(UnityEngine.Collider2D,UnityEngine.ContactFilter2D,UnityEngine.Collider2D[])">
       <summary>
-        <para>Checks a collider against colliders in the PhysicsScene2D, returning all intersections.</para>
+        <para>Checks a Collider against Colliders in the PhysicsScene2D, returning all intersections.</para>
       </summary>
-      <param name="collider">The collider that defines the area used to query for other collider overlaps.</param>
+      <param name="collider">The Collider that defines the area used to query for other Collider overlaps.</param>
       <param name="results">The array to receive results.  The size of the array determines the maximum number of results that can be returned.</param>
       <param name="layerMask">Filter to check objects only on specific layers.</param>
       <param name="contactFilter">The contact filter used to filter the results differently, such as by layer mask and Z depth. Note that the normal angle is not used for overlap testing.</param>
       <returns>
-        <para>The collider overlapping the collider.</para>
+        <para>Returns the number of results placed in the results array.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.PhysicsScene2D.OverlapCollider(UnityEngine.Collider2D,UnityEngine.ContactFilter2D,System.Collections.Generic.List`1&lt;UnityEngine.Collider2D&gt;)">
+      <summary>
+        <para>Checks a Collider against Colliders in the PhysicsScene2D, returning all intersections.</para>
+      </summary>
+      <param name="collider">The Collider that defines the area used to query for other Collider overlaps.</param>
+      <param name="contactFilter">The contact filter used to filter the results differently, such as by layer mask and Z depth. Note that the normal angle is not used for overlap testing.</param>
+      <param name="results">The list to receive results.</param>
+      <returns>
+        <para>Returns the number of results placed in the results list.</para>
       </returns>
     </member>
     <member name="M:UnityEngine.PhysicsScene2D.OverlapPoint(UnityEngine.Vector2,System.Int32)">
       <summary>
-        <para>Checks a point against colliders in the PhysicsScene2D, returning the first intersection only.</para>
+        <para>Checks a point against Colliders in the PhysicsScene2D, returning the first intersection only.</para>
       </summary>
       <param name="point">A point in world space.</param>
       <param name="layerMask">Filter to check objects only on specific layers.</param>
@@ -2861,7 +3340,7 @@
     </member>
     <member name="M:UnityEngine.PhysicsScene2D.OverlapPoint(UnityEngine.Vector2,UnityEngine.ContactFilter2D)">
       <summary>
-        <para>Checks a point against colliders in the PhysicsScene2D, returning the first intersection only.</para>
+        <para>Checks a point against Colliders in the PhysicsScene2D, returning the first intersection only.</para>
       </summary>
       <param name="point">A point in world space.</param>
       <param name="layerMask">Filter to check objects only on specific layers.</param>
@@ -2872,7 +3351,7 @@
     </member>
     <member name="M:UnityEngine.PhysicsScene2D.OverlapPoint(UnityEngine.Vector2,UnityEngine.Collider2D[],System.Int32)">
       <summary>
-        <para>Checks a point against colliders in the PhysicsScene2D, returning all intersections.</para>
+        <para>Checks a point against Colliders in the PhysicsScene2D, returning all intersections.</para>
       </summary>
       <param name="point">A point in world space.</param>
       <param name="results">The array to receive results.  The size of the array determines the maximum number of results that can be returned.</param>
@@ -2884,7 +3363,7 @@
     </member>
     <member name="M:UnityEngine.PhysicsScene2D.OverlapPoint(UnityEngine.Vector2,UnityEngine.ContactFilter2D,UnityEngine.Collider2D[])">
       <summary>
-        <para>Checks a point against colliders in the PhysicsScene2D, returning all intersections.</para>
+        <para>Checks a point against Colliders in the PhysicsScene2D, returning all intersections.</para>
       </summary>
       <param name="point">A point in world space.</param>
       <param name="results">The array to receive results.  The size of the array determines the maximum number of results that can be returned.</param>
@@ -2894,6 +3373,17 @@
         <para>Returns the number of results placed in the results array.</para>
       </returns>
     </member>
+    <member name="M:UnityEngine.PhysicsScene2D.OverlapPoint(UnityEngine.Vector2,UnityEngine.ContactFilter2D,System.Collections.Generic.List`1&lt;UnityEngine.Collider2D&gt;)">
+      <summary>
+        <para>Checks a point against Colliders in the PhysicsScene2D, returning all intersections.</para>
+      </summary>
+      <param name="point">A point in world space.</param>
+      <param name="contactFilter">The contact filter used to filter the results differently, such as by layer mask and Z depth. Note that the normal angle is not used for overlap testing.</param>
+      <param name="results">The list to receive results.</param>
+      <returns>
+        <para>Returns the number of results placed in the results list.</para>
+      </returns>
+    </member>
     <member name="M:UnityEngine.PhysicsScene2D.Raycast(UnityEngine.Vector2,UnityEngine.Vector2,System.Single,System.Int32)">
       <summary>
         <para>Casts a ray against colliders in the PhysicsScene2D, returning the first intersection only.</para>
@@ -2901,7 +3391,7 @@
       <param name="origin">The point in 2D space where the ray originates.</param>
       <param name="direction">The vector representing the direction of the ray.</param>
       <param name="distance">Maximum distance over which to cast the ray.</param>
-      <param name="layerMask">Filter to detect collider only on certain layers.</param>
+      <param name="layerMask">The filter used to detect Colliders only on certain layers.</param>
       <param name="contactFilter">The contact filter used to filter the results differently, such as by layer mask and Z depth, or normal angle.</param>
       <returns>
         <para>The cast results returned.</para>
@@ -2914,7 +3404,7 @@
       <param name="origin">The point in 2D space where the ray originates.</param>
       <param name="direction">The vector representing the direction of the ray.</param>
       <param name="distance">Maximum distance over which to cast the ray.</param>
-      <param name="layerMask">Filter to detect collider only on certain layers.</param>
+      <param name="layerMask">The filter used to detect Colliders only on certain layers.</param>
       <param name="contactFilter">The contact filter used to filter the results differently, such as by layer mask and Z depth, or normal angle.</param>
       <returns>
         <para>The cast results returned.</para>
@@ -2927,7 +3417,7 @@
       <param name="origin">The point in 2D space where the ray originates.</param>
       <param name="direction">The vector representing the direction of the ray.</param>
       <param name="distance">Maximum distance over which to cast the ray.</param>
-      <param name="layerMask">Filter to detect collider only on certain layers.</param>
+      <param name="layerMask">The filter used to detect Colliders only on certain layers.</param>
       <param name="contactFilter">The contact filter used to filter the results differently, such as by layer mask and Z depth, or normal angle.</param>
       <param name="results">The array to receive results.  The size of the array determines the maximum number of results that can be returned.</param>
       <returns>
@@ -2941,11 +3431,24 @@
       <param name="origin">The point in 2D space where the ray originates.</param>
       <param name="direction">The vector representing the direction of the ray.</param>
       <param name="distance">Maximum distance over which to cast the ray.</param>
-      <param name="layerMask">Filter to detect collider only on certain layers.</param>
+      <param name="layerMask">The filter used to detect Colliders only on certain layers.</param>
       <param name="contactFilter">The contact filter used to filter the results differently, such as by layer mask and Z depth, or normal angle.</param>
       <param name="results">The array to receive results.  The size of the array determines the maximum number of results that can be returned.</param>
       <returns>
         <para>Returns the number of results placed in the results array.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.PhysicsScene2D.Raycast(UnityEngine.Vector2,UnityEngine.Vector2,System.Single,UnityEngine.ContactFilter2D,System.Collections.Generic.List`1&lt;UnityEngine.RaycastHit2D&gt;)">
+      <summary>
+        <para>Casts a ray against Colliders the PhysicsScene2D, returning all intersections.</para>
+      </summary>
+      <param name="origin">The point in 2D space where the ray originates.</param>
+      <param name="direction">The vector representing the direction of the ray.</param>
+      <param name="distance">Maximum distance over which to cast the ray.</param>
+      <param name="contactFilter">The contact filter used to filter the results differently, such as by layer mask and Z depth, or normal angle.</param>
+      <param name="results">The list to receive results.</param>
+      <returns>
+        <para>Returns the number of results placed in the results list.</para>
       </returns>
     </member>
     <member name="M:UnityEngine.PhysicsScene2D.Simulate(System.Single)">
@@ -3115,7 +3618,17 @@
       </summary>
       <param name="index">The index of the path to retrieve.</param>
       <returns>
-        <para>An ordered array of the vertices or points in the selected path.</para>
+        <para>An ordered array of the vertices (points) in the selected path.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.PolygonCollider2D.GetPath(System.Int32,System.Collections.Generic.List`1&lt;UnityEngine.Vector2&gt;)">
+      <summary>
+        <para>Gets a path from the Collider by its index.</para>
+      </summary>
+      <param name="index">The index of the path to retrieve.</param>
+      <param name="points">An ordered list of the vertices (points) in the selected path.</param>
+      <returns>
+        <para>Returns the number of results placed in the points list.</para>
       </returns>
     </member>
     <member name="M:UnityEngine.PolygonCollider2D.GetTotalPointCount">
@@ -3128,7 +3641,14 @@
         <para>Define a path by its constituent points.</para>
       </summary>
       <param name="index">Index of the path to set.</param>
-      <param name="points">Points that define the path.</param>
+      <param name="points">An ordered array of the vertices (points) that define the path.</param>
+    </member>
+    <member name="M:UnityEngine.PolygonCollider2D.SetPath(System.Int32,System.Collections.Generic.List`1&lt;UnityEngine.Vector2&gt;)">
+      <summary>
+        <para>Define a path by its constituent points.</para>
+      </summary>
+      <param name="index">Index of the path to set.</param>
+      <param name="points">An ordered list of the vertices (points) that define the path.</param>
     </member>
     <member name="T:UnityEngine.RaycastHit2D">
       <summary>
@@ -3371,25 +3891,57 @@
     </member>
     <member name="M:UnityEngine.Rigidbody2D.Cast(UnityEngine.Vector2,UnityEngine.RaycastHit2D[],System.Single)">
       <summary>
-        <para>All the Collider2D shapes attached to the Rigidbody2D are cast into the Scene starting at each collider position ignoring the colliders attached to the same Rigidbody2D.</para>
+        <para>All the Collider2D shapes attached to the Rigidbody2D are cast into the Scene starting at each Collider position ignoring the Colliders attached to the same Rigidbody2D.</para>
       </summary>
       <param name="direction">Vector representing the direction to cast each Collider2D shape.</param>
       <param name="results">Array to receive results.</param>
-      <param name="distance">Maximum distance over which to cast the shape(s).</param>
+      <param name="distance">Maximum distance over which to cast the Collider(s).</param>
       <returns>
-        <para>The number of results returned.</para>
+        <para>Returns the number of results placed in the results array.</para>
       </returns>
     </member>
     <member name="M:UnityEngine.Rigidbody2D.Cast(UnityEngine.Vector2,UnityEngine.ContactFilter2D,UnityEngine.RaycastHit2D[],System.Single)">
       <summary>
-        <para>All the Collider2D shapes attached to the Rigidbody2D are cast into the Scene starting at each collider position ignoring the colliders attached to the same Rigidbody2D.</para>
+        <para>All the Collider2D shapes attached to the Rigidbody2D are cast into the Scene starting at each Collider position ignoring the Colliders attached to the same Rigidbody2D.</para>
       </summary>
       <param name="direction">Vector representing the direction to cast each Collider2D shape.</param>
       <param name="contactFilter">Filter results defined by the contact filter.</param>
       <param name="results">Array to receive results.</param>
-      <param name="distance">Maximum distance over which to cast the shape(s).</param>
+      <param name="distance">Maximum distance over which to cast the Collider(s).</param>
       <returns>
-        <para>The number of results returned.</para>
+        <para>Returns the number of results placed in the results array.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.Rigidbody2D.Cast(UnityEngine.Vector2,System.Collections.Generic.List`1&lt;UnityEngine.RaycastHit2D&gt;,System.Single)">
+      <summary>
+        <para>All the Collider2D shapes attached to the Rigidbody2D are cast into the Scene starting at each Collider position ignoring the Colliders attached to the same Rigidbody2D.</para>
+      </summary>
+      <param name="direction">Vector representing the direction to cast each Collider2D shape.</param>
+      <param name="results">List to receive results.</param>
+      <param name="distance">Maximum distance over which to cast the Collider(s).</param>
+      <returns>
+        <para>Returns the number of results placed in the results list.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.Rigidbody2D.Cast(UnityEngine.Vector2,UnityEngine.ContactFilter2D,System.Collections.Generic.List`1&lt;UnityEngine.RaycastHit2D&gt;,System.Single)">
+      <summary>
+        <para>All the Collider2D shapes attached to the Rigidbody2D are cast into the Scene starting at each Collider position ignoring the Colliders attached to the same Rigidbody2D.</para>
+      </summary>
+      <param name="direction">Vector representing the direction to cast each Collider2D shape.</param>
+      <param name="contactFilter">Filter results defined by the contact filter.</param>
+      <param name="results">List to receive results.</param>
+      <param name="distance">Maximum distance over which to cast the Collider(s).</param>
+      <returns>
+        <para>Returns the number of results placed in the results list.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.Rigidbody2D.ClosestPoint(UnityEngine.Vector2)">
+      <summary>
+        <para>Returns a point on the perimeter of all enabled Colliders attached to this Rigidbody that is closest to the specified position.</para>
+      </summary>
+      <param name="position">The position from which to find the closest point on this Rigidbody.</param>
+      <returns>
+        <para>A point on the perimeter of a Collider attached to this rigidbody that is closest to the specified position.</para>
       </returns>
     </member>
     <member name="M:UnityEngine.Rigidbody2D.Distance(UnityEngine.Collider2D)">
@@ -3410,9 +3962,18 @@
         <para>Returns the number of Collider2D placed in the results array.</para>
       </returns>
     </member>
+    <member name="M:UnityEngine.Rigidbody2D.GetAttachedColliders(System.Collections.Generic.List`1&lt;UnityEngine.Collider2D&gt;)">
+      <summary>
+        <para>Returns all Collider2D that are attached to this Rigidbody2D.</para>
+      </summary>
+      <param name="results">A list of Collider2D used to receive the results.</param>
+      <returns>
+        <para>Returns the number of Collider2D placed in the results list.</para>
+      </returns>
+    </member>
     <member name="M:UnityEngine.Rigidbody2D.GetContacts(UnityEngine.ContactPoint2D[])">
       <summary>
-        <para>Retrieves all contact points for all of the collider(s) attached to this rigidbody.</para>
+        <para>Retrieves all contact points for all of the Collider(s) attached to this Rigidbody.</para>
       </summary>
       <param name="contacts">An array of ContactPoint2D used to receive the results.</param>
       <returns>
@@ -3421,7 +3982,7 @@
     </member>
     <member name="M:UnityEngine.Rigidbody2D.GetContacts(UnityEngine.Collider2D[])">
       <summary>
-        <para>Retrieves all colliders in contact with any of the collider(s) attached to this rigidbody.</para>
+        <para>Retrieves all Colliders in contact with any of the Collider(s) attached to this Rigidbody.</para>
       </summary>
       <param name="colliders">An array of Collider2D used to receive the results.</param>
       <returns>
@@ -3430,7 +3991,7 @@
     </member>
     <member name="M:UnityEngine.Rigidbody2D.GetContacts(UnityEngine.ContactFilter2D,UnityEngine.ContactPoint2D[])">
       <summary>
-        <para>Retrieves all contact points for all of the collider(s) attached to this rigidbody, with the results filtered by the ContactFilter2D.</para>
+        <para>Retrieves all contact points for all of the Collider(s) attached to this Rigidbody, with the results filtered by the ContactFilter2D.</para>
       </summary>
       <param name="contactFilter">The contact filter used to filter the results differently, such as by layer mask, Z depth, or normal angle.</param>
       <param name="contacts">An array of ContactPoint2D used to receive the results.</param>
@@ -3440,12 +4001,50 @@
     </member>
     <member name="M:UnityEngine.Rigidbody2D.GetContacts(UnityEngine.ContactFilter2D,UnityEngine.Collider2D[])">
       <summary>
-        <para>Retrieves all colliders in contact with any of the collider(s) attached to this rigidbody, with the results filtered by the ContactFilter2D.</para>
+        <para>Retrieves all Colliders in contact with any of the Collider(s) attached to this rigidbody, with the results filtered by the ContactFilter2D.</para>
       </summary>
       <param name="contactFilter">The contact filter used to filter the results differently, such as by layer mask, Z depth, or normal angle.</param>
       <param name="colliders">An array of Collider2D used to receive the results.</param>
       <returns>
         <para>Returns the number of colliders placed in the colliders array.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.Rigidbody2D.GetContacts(System.Collections.Generic.List`1&lt;UnityEngine.ContactPoint2D&gt;)">
+      <summary>
+        <para>Retrieves all contact points for all of the Collider(s) attached to this Rigidbody.</para>
+      </summary>
+      <param name="contacts">A list of ContactPoint2D used to receive the results.</param>
+      <returns>
+        <para>Returns the number of contacts placed in the contacts list.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.Rigidbody2D.GetContacts(UnityEngine.ContactFilter2D,System.Collections.Generic.List`1&lt;UnityEngine.ContactPoint2D&gt;)">
+      <summary>
+        <para>Retrieves all contact points for all of the Collider(s) attached to this Rigidbody.</para>
+      </summary>
+      <param name="contactFilter">The contact filter used to filter the results differently, such as by layer mask, Z depth, or normal angle.</param>
+      <param name="contacts">A list of ContactPoint2D used to receive the results.</param>
+      <returns>
+        <para>Returns the number of contacts placed in the contacts list.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.Rigidbody2D.GetContacts(System.Collections.Generic.List`1&lt;UnityEngine.Collider2D&gt;)">
+      <summary>
+        <para>Retrieves all Colliders in contact with any of the Collider(s) attached to this Rigidbody.</para>
+      </summary>
+      <param name="colliders">A list of Collider2D used to receive the results.</param>
+      <returns>
+        <para>Returns the number of Colliders placed in the colliders list.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.Rigidbody2D.GetContacts(UnityEngine.ContactFilter2D,System.Collections.Generic.List`1&lt;UnityEngine.Collider2D&gt;)">
+      <summary>
+        <para>Retrieves all Colliders in contact with any of the Collider(s) attached to this Rigidbody.</para>
+      </summary>
+      <param name="contactFilter">The contact filter used to filter the results differently, such as by layer mask, Z depth, or normal angle.</param>
+      <param name="colliders">A list of Collider2D used to receive the results.</param>
+      <returns>
+        <para>Returns the number of Colliders placed in the colliders list.</para>
       </returns>
     </member>
     <member name="M:UnityEngine.Rigidbody2D.GetPoint(UnityEngine.Vector2)">
@@ -3539,18 +4138,34 @@
     </member>
     <member name="M:UnityEngine.Rigidbody2D.MoveRotation(System.Single)">
       <summary>
-        <para>Rotates the rigidbody to angle (given in degrees).</para>
+        <para>Rotates the Rigidbody to angle (given in degrees).</para>
       </summary>
       <param name="angle">The new rotation angle for the Rigidbody object.</param>
     </member>
+    <member name="M:UnityEngine.Rigidbody2D.MoveRotation(UnityEngine.Quaternion)">
+      <summary>
+        <para>An overload of MoveRotation that allows a full 3D rotation as an argument.</para>
+      </summary>
+      <param name="rotation">Full 3D rotation used to extract only the z-axis rotation.</param>
+    </member>
     <member name="M:UnityEngine.Rigidbody2D.OverlapCollider(UnityEngine.ContactFilter2D,UnityEngine.Collider2D[])">
       <summary>
-        <para>Get a list of all colliders that overlap all colliders attached to this Rigidbody2D.</para>
+        <para>Get a list of all Colliders that overlap all Colliders attached to this Rigidbody2D.</para>
       </summary>
       <param name="contactFilter">The contact filter used to filter the results differently, such as by layer mask, Z depth.  Note that normal angle is not used for overlap testing.</param>
       <param name="results">The array to receive results.  The size of the array determines the maximum number of results that can be returned.</param>
       <returns>
         <para>Returns the number of results placed in the results array.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.Rigidbody2D.OverlapCollider(UnityEngine.ContactFilter2D,System.Collections.Generic.List`1&lt;UnityEngine.Collider2D&gt;)">
+      <summary>
+        <para>Get a list of all Colliders that overlap all Colliders attached to this Rigidbody2D.</para>
+      </summary>
+      <param name="contactFilter">The contact filter used to filter the results differently, such as by layer mask, Z depth.  Note that normal angle is not used for overlap testing.</param>
+      <param name="results">The list to receive results.</param>
+      <returns>
+        <para>Returns the number of results placed in the results list.</para>
       </returns>
     </member>
     <member name="M:UnityEngine.Rigidbody2D.OverlapPoint(UnityEngine.Vector2)">
@@ -3561,6 +4176,18 @@
       <returns>
         <para>Whether the point overlapped any of the Rigidbody2D colliders.</para>
       </returns>
+    </member>
+    <member name="M:UnityEngine.Rigidbody2D.SetRotation(System.Single)">
+      <summary>
+        <para>Sets the rotation of the Rigidbody2D to angle (given in degrees).</para>
+      </summary>
+      <param name="angle">The rotation of the Rigidbody (in degrees).</param>
+    </member>
+    <member name="M:UnityEngine.Rigidbody2D.SetRotation(UnityEngine.Quaternion)">
+      <summary>
+        <para>Sets the rotation of the Rigidbody2D to the z-axis rotation extracted from the full 3D rotation.</para>
+      </summary>
+      <param name="rotation">Full 3D rotation used to extract only the z-axis rotation.</param>
     </member>
     <member name="M:UnityEngine.Rigidbody2D.Sleep">
       <summary>

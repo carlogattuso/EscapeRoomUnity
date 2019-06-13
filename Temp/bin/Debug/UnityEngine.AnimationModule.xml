@@ -2788,6 +2788,11 @@
         <para>Avatar definition.</para>
       </summary>
     </member>
+    <member name="P:UnityEngine.Avatar.humanDescription">
+      <summary>
+        <para>Returns the HumanDescription used to create this Avatar.</para>
+      </summary>
+    </member>
     <member name="P:UnityEngine.Avatar.isHuman">
       <summary>
         <para>Return true if this avatar is a valid human avatar.</para>
@@ -3380,6 +3385,27 @@
         <para>Execute the IK solver.</para>
       </summary>
     </member>
+    <member name="T:UnityEngine.Experimental.Animations.AnimationPlayableOutputExtensions">
+      <summary>
+        <para>Static class providing experimental extension methods for AnimationPlayableOutput .</para>
+      </summary>
+    </member>
+    <member name="M:UnityEngine.Experimental.Animations.AnimationPlayableOutputExtensions.GetAnimationStreamSource(UnityEngine.Animations.AnimationPlayableOutput)">
+      <summary>
+        <para>Gets the stream source of the specified AnimationPlayableOutput.</para>
+      </summary>
+      <param name="output">The AnimationPlayableOutput instance that calls this method.</param>
+      <returns>
+        <para>Returns the AnimationStreamSource of the output.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.Experimental.Animations.AnimationPlayableOutputExtensions.SetAnimationStreamSource(UnityEngine.Animations.AnimationPlayableOutput,UnityEngine.Experimental.Animations.AnimationStreamSource)">
+      <summary>
+        <para>Sets the stream source for the specified AnimationPlayableOutput.</para>
+      </summary>
+      <param name="output">The AnimationPlayableOutput instance that calls this method.</param>
+      <param name="streamSource">The AnimationStreamSource to apply on this output.</param>
+    </member>
     <member name="T:UnityEngine.Experimental.Animations.AnimationScriptPlayable">
       <summary>
         <para>A Playable that can run a custom, multi-threaded animation job.</para>
@@ -3487,111 +3513,167 @@
         <para>Returns the AnimationStream of the playable input at index. Returns an invalid stream if the input is not an animation Playable.</para>
       </returns>
     </member>
+    <member name="M:UnityEngine.Experimental.Animations.AnimationStream.GetInputWeight(System.Int32)">
+      <summary>
+        <para>Gets the weight of the Playable connected at a specific input index.</para>
+      </summary>
+      <param name="index">The input index.</param>
+      <returns>
+        <para>Returns the weight of the Playable input as a float.</para>
+      </returns>
+    </member>
+    <member name="T:UnityEngine.Experimental.Animations.AnimationStreamSource">
+      <summary>
+        <para>Describes how an AnimationStream is initialized</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.Experimental.Animations.AnimationStreamSource.DefaultValues">
+      <summary>
+        <para>AnimationStream will be initialized with the default values from the Animator.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.Experimental.Animations.AnimationStreamSource.PreviousInputs">
+      <summary>
+        <para>AnimationStream will be initialized with the values from the previous AnimationPlayableOutput connected to the same Animator.</para>
+      </summary>
+    </member>
     <member name="T:UnityEngine.Experimental.Animations.AnimatorJobExtensions">
       <summary>
         <para>Static class providing extension methods for Animator and the animation C# jobs.</para>
       </summary>
     </member>
+    <member name="M:UnityEngine.Experimental.Animations.AnimatorJobExtensions.BindCustomStreamProperty(UnityEngine.Animator,System.String,UnityEngine.Experimental.Animations.CustomStreamPropertyType)">
+      <summary>
+        <para>Create a custom property in the AnimationStream to pass extra data to downstream animation jobs in your graph. Custom properties created in the AnimationStream do not exist in the scene.</para>
+      </summary>
+      <param name="animator">The Animator instance that calls this method.</param>
+      <param name="name">The name of the property.</param>
+      <param name="type">The type of property to create (float, integer or boolean).</param>
+      <param name="property"></param>
+      <returns>
+        <para>Returns the PropertyStreamHandle that represents the new binding.</para>
+      </returns>
+    </member>
     <member name="M:UnityEngine.Experimental.Animations.AnimatorJobExtensions.BindSceneProperty(UnityEngine.Animator,UnityEngine.Transform,System.Type,System.String)">
       <summary>
         <para>Create a PropertySceneHandle representing the new binding on the Component property of a Transform in the Scene.</para>
       </summary>
-      <param name="animator">The Animator instance the method is called on.</param>
+      <param name="animator">The Animator instance that calls this method.</param>
       <param name="transform">The Transform to target.</param>
       <param name="type">The Component type.</param>
       <param name="property">The property to bind.</param>
       <param name="isObjectReference">isObjectReference need to be set to true if the property to bind does access an Object like SpriteRenderer.sprite.</param>
       <returns>
-        <para>The PropertySceneHandle representing the new binding.</para>
+        <para>Returns the PropertySceneHandle that represents the new binding.</para>
       </returns>
     </member>
     <member name="M:UnityEngine.Experimental.Animations.AnimatorJobExtensions.BindSceneProperty(UnityEngine.Animator,UnityEngine.Transform,System.Type,System.String,System.Boolean)">
       <summary>
         <para>Create a PropertySceneHandle representing the new binding on the Component property of a Transform in the Scene.</para>
       </summary>
-      <param name="animator">The Animator instance the method is called on.</param>
+      <param name="animator">The Animator instance that calls this method.</param>
       <param name="transform">The Transform to target.</param>
       <param name="type">The Component type.</param>
       <param name="property">The property to bind.</param>
       <param name="isObjectReference">isObjectReference need to be set to true if the property to bind does access an Object like SpriteRenderer.sprite.</param>
       <returns>
-        <para>The PropertySceneHandle representing the new binding.</para>
+        <para>Returns the PropertySceneHandle that represents the new binding.</para>
       </returns>
     </member>
     <member name="M:UnityEngine.Experimental.Animations.AnimatorJobExtensions.BindSceneTransform(UnityEngine.Animator,UnityEngine.Transform)">
       <summary>
         <para>Create a TransformSceneHandle representing the new binding between the Animator and a Transform in the Scene.</para>
       </summary>
-      <param name="animator">The Animator instance the method is called on.</param>
+      <param name="animator">The Animator instance that calls this method.</param>
       <param name="transform">The Transform to bind.</param>
       <returns>
-        <para>The TransformSceneHandle representing the new binding.</para>
+        <para>Returns the TransformSceneHandle that represents the new binding.</para>
       </returns>
     </member>
     <member name="M:UnityEngine.Experimental.Animations.AnimatorJobExtensions.BindStreamProperty(UnityEngine.Animator,UnityEngine.Transform,System.Type,System.String)">
       <summary>
         <para>Create a PropertyStreamHandle representing the new binding on the Component property of a Transform already bound to the Animator.</para>
       </summary>
-      <param name="animator">The Animator instance the method is called on.</param>
+      <param name="animator">The Animator instance that calls this method.</param>
       <param name="transform">The Transform to target.</param>
       <param name="type">The Component type.</param>
       <param name="property">The property to bind.</param>
       <param name="isObjectReference">isObjectReference need to be set to true if the property to bind does animate an Object like SpriteRenderer.sprite.</param>
       <returns>
-        <para>The PropertyStreamHandle representing the new binding.</para>
+        <para>Returns the PropertyStreamHandle that represents the new binding.</para>
       </returns>
     </member>
     <member name="M:UnityEngine.Experimental.Animations.AnimatorJobExtensions.BindStreamProperty(UnityEngine.Animator,UnityEngine.Transform,System.Type,System.String,System.Boolean)">
       <summary>
         <para>Create a PropertyStreamHandle representing the new binding on the Component property of a Transform already bound to the Animator.</para>
       </summary>
-      <param name="animator">The Animator instance the method is called on.</param>
+      <param name="animator">The Animator instance that calls this method.</param>
       <param name="transform">The Transform to target.</param>
       <param name="type">The Component type.</param>
       <param name="property">The property to bind.</param>
       <param name="isObjectReference">isObjectReference need to be set to true if the property to bind does animate an Object like SpriteRenderer.sprite.</param>
       <returns>
-        <para>The PropertyStreamHandle representing the new binding.</para>
+        <para>Returns the PropertyStreamHandle that represents the new binding.</para>
       </returns>
     </member>
     <member name="M:UnityEngine.Experimental.Animations.AnimatorJobExtensions.BindStreamTransform(UnityEngine.Animator,UnityEngine.Transform)">
       <summary>
         <para>Create a TransformStreamHandle representing the new binding between the Animator and a Transform already bound to the Animator.</para>
       </summary>
-      <param name="animator">The Animator instance the method is called on.</param>
+      <param name="animator">The Animator instance that calls this method.</param>
       <param name="transform">The Transform to bind.</param>
       <returns>
-        <para>The TransformStreamHandle representing the new binding.</para>
+        <para>Returns the TransformStreamHandle that represents the new binding.</para>
       </returns>
     </member>
     <member name="M:UnityEngine.Experimental.Animations.AnimatorJobExtensions.CloseAnimationStream(UnityEngine.Animator,UnityEngine.Experimental.Animations.AnimationStream&amp;)">
       <summary>
         <para>Close a stream that has been opened using OpenAnimationStream.</para>
       </summary>
-      <param name="animator">The Animator instance the method is called on.</param>
+      <param name="animator">The Animator instance that calls this method.</param>
       <param name="stream">The stream to close.</param>
     </member>
     <member name="M:UnityEngine.Experimental.Animations.AnimatorJobExtensions.OpenAnimationStream(UnityEngine.Animator,UnityEngine.Experimental.Animations.AnimationStream&amp;)">
       <summary>
         <para>Open a new stream on the Animator.</para>
       </summary>
-      <param name="animator">The Animator instance the method is called on.</param>
+      <param name="animator">The Animator instance that calls this method.</param>
       <param name="stream">The new stream.</param>
       <returns>
-        <para>Whether or not the stream have been opened.</para>
+        <para>Returns whether or not the stream has been opened.</para>
       </returns>
     </member>
     <member name="M:UnityEngine.Experimental.Animations.AnimatorJobExtensions.ResolveAllSceneHandles(UnityEngine.Animator)">
       <summary>
         <para>Newly created handles are always resolved lazily on the next access when the jobs are run. To avoid a cpu spike while evaluating the jobs you can manually resolve all handles from the main thread.</para>
       </summary>
-      <param name="animator">The Animator instance the method is called on.</param>
+      <param name="animator">The Animator instance that calls this method.</param>
     </member>
     <member name="M:UnityEngine.Experimental.Animations.AnimatorJobExtensions.ResolveAllStreamHandles(UnityEngine.Animator)">
       <summary>
         <para>Newly created handles are always resolved lazily on the next access when the jobs are run. To avoid a cpu spike while evaluating the jobs you can manually resolve all handles from the main thread.</para>
       </summary>
-      <param name="animator">The Animator instance the method is called on.</param>
+      <param name="animator">The Animator instance that calls this method.</param>
+    </member>
+    <member name="T:UnityEngine.Experimental.Animations.CustomStreamPropertyType">
+      <summary>
+        <para>The type of custom stream property to create using BindCustomStreamProperty</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.Experimental.Animations.CustomStreamPropertyType.Bool">
+      <summary>
+        <para>A boolean value.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.Experimental.Animations.CustomStreamPropertyType.Float">
+      <summary>
+        <para>A float value.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.Experimental.Animations.CustomStreamPropertyType.Int">
+      <summary>
+        <para>An integer value.</para>
+      </summary>
     </member>
     <member name="?:UnityEngine.Experimental.Animations.IAnimationJob">
       <summary>
@@ -3628,6 +3710,21 @@
         <para>Sets a new job data in the playable.</para>
       </summary>
       <param name="jobData">The new IAnimationJob data to set in the playable.</param>
+    </member>
+    <member name="?:UnityEngine.Experimental.Animations.IAnimationWindowPostProcess">
+      <summary>
+        <para>Allows a class to modify how an AnimationClip is sampled in the Animation window by providing its own Playable nodes to the Animation window PlayableGraph. The class must also inherit from MonoBehaviour.</para>
+      </summary>
+    </member>
+    <member name="M:UnityEngine.Experimental.Animations.IAnimationWindowPostProcess.PostProcessPlayableGraph(UnityEngine.Playables.PlayableGraph,UnityEngine.Playables.Playable)">
+      <summary>
+        <para>Appends custom Playable nodes to the Animation window PlayableGraph.</para>
+      </summary>
+      <param name="graph">The Animation window PlayableGraph.</param>
+      <param name="inputPlayable">Current root of the PlayableGraph.</param>
+      <returns>
+        <para>Returns the new root of the PlayableGraph.</para>
+      </returns>
     </member>
     <member name="T:UnityEngine.Experimental.Animations.MuscleHandle">
       <summary>
@@ -3739,7 +3836,7 @@
     </member>
     <member name="T:UnityEngine.Experimental.Animations.PropertySceneHandle">
       <summary>
-        <para>Handle for a Component property on an object in the Scene.</para>
+        <para>Handle to read a Component property on an object in the Scene.</para>
       </summary>
     </member>
     <member name="M:UnityEngine.Experimental.Animations.PropertySceneHandle.GetBool(UnityEngine.Experimental.Animations.AnimationStream)">
@@ -3893,7 +3990,7 @@
     </member>
     <member name="T:UnityEngine.Experimental.Animations.TransformSceneHandle">
       <summary>
-        <para>Position, rotation and scale of an object in the Scene.</para>
+        <para>Handle to read position, rotation and scale of an object in the Scene.</para>
       </summary>
     </member>
     <member name="M:UnityEngine.Experimental.Animations.TransformSceneHandle.GetLocalPosition(UnityEngine.Experimental.Animations.AnimationStream)">

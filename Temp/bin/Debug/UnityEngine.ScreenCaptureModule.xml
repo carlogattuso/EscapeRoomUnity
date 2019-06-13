@@ -39,6 +39,12 @@
       <param name="superSize">Factor by which to increase resolution.</param>
       <param name="stereoCaptureMode">Specifies the eye texture to capture when stereo rendering is enabled.</param>
     </member>
+    <member name="M:UnityEngine.ScreenCapture.CaptureScreenshotIntoRenderTexture(UnityEngine.RenderTexture)">
+      <summary>
+        <para>Captures a screenshot of the game view into a RenderTexture object.</para>
+      </summary>
+      <param name="renderTexture">RenderTexture that will get filled with the screen content.</param>
+    </member>
     <member name="T:UnityEngine.ScreenCapture.StereoScreenCaptureMode">
       <summary>
         <para>Enumeration specifying the eye texture to capture when using ScreenCapture.CaptureScreenshot and when stereo rendering is enabled.</para>

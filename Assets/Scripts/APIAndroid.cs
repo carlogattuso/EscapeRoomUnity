@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System;
+using UnityEngine;
 
 public class APIAndroid
 {
@@ -13,10 +14,13 @@ public class APIAndroid
     public PlayerStats getPlayerStats()
     {
 #if UNITY_ANDROID
+
+        String stringAndroid = null;
+
         try
         {
             AndroidJavaClass javaClass = new AndroidJavaClass("edu.upc.dsa.escaperoomapp.ApiUnity");
-            String stringAndroid = javaClass.CallStatic<String>("getPlayerStats");
+            stringAndroid = javaClass.CallStatic<String>("getPlayerStats");
             Debug.Log("Stats: ");
             Debug.Log(stringAndroid);
         }
@@ -25,6 +29,10 @@ public class APIAndroid
             Debug.Log("Error Unity, method getPlayerStats");
             Debug.Log(ex);
         }
+
+        if (stringAndroid == null)
+            stringAndroid = "1,50,00:05:23,2,200,woodSword,ironShield";
+
 #else
         string stringAndroid = "1,50,00:05:23,2,200,woodSword,ironShield";
 #endif
@@ -48,10 +56,13 @@ public class APIAndroid
     public List<Object> getInventory()
     {
 #if UNITY_ANDROID
+
+        String stringAndroid = null;
+
         try
         {
             AndroidJavaClass javaClass = new AndroidJavaClass("edu.upc.dsa.escaperoomapp.ApiUnity");
-            String stringAndroid = javaClass.CallStatic<String>("getInventory");
+            stringAndroid = javaClass.CallStatic<String>("getInventory");
             Debug.Log("Inventory: ");
             Debug.Log(stringAndroid);
         }
@@ -60,6 +71,10 @@ public class APIAndroid
             Debug.Log("Error Unity, method getPlayerStats");
             Debug.Log(ex);
         }
+
+        if (stringAndroid == null)
+            stringAndroid = "llave,llaveR,1/llave,llaveA,2/pista,pistaAmarilla,1/pista,pistaAzul,1";
+
 #else
         string stringAndroid = "llave,llaveR,1/llave,llaveA,2/pista,pistaAmarilla,1/pista,pistaAzul,1";
 #endif
@@ -87,35 +102,63 @@ public class APIAndroid
     public Map getMap(int level)
     {
 #if UNITY_ANDROID
+
+        String stringAndroid = null;
+
         try
         {
             AndroidJavaClass javaClass = new AndroidJavaClass("edu.upc.dsa.escaperoomapp.ApiUnity");
-            String stringAndroid = javaClass.CallStatic<String>("getMap", level);
+            stringAndroid = javaClass.CallStatic<String>("getMap", level);
             Debug.Log("Map: ");
             Debug.Log(stringAndroid);
 
-            string[] mapa1Vector = stringAndroid.Split('*');
 
-                string[] boxes1Vector = mapa1Vector[2].Split('/');
-
-                List<Box> boxes = new List<Box>();
-
-                foreach(string s in boxes1Vector)
-                {
-                    string [] sVector = s.Split(',');
-                    boxes.Add(new Box(Int32.Parse(sVector[0]), Int32.Parse(sVector[1]), sVector[2]));
-                }
-
-                Map mapObject = new Map(mapa1Vector[0], Int32.Parse(mapa1Vector[1]),boxes);
-                this.map = mapObject;
-
-                return this.map;
         }
         catch (Exception ex)
         {
+
             Debug.Log("Error Unity, method getPlayerStats");
             Debug.Log(ex);
         }
+
+        if (stringAndroid == null)
+            stringAndroid = "bbbbbbbbbbbbbbbbbb" +
+                       "bbbbbbbbbbbbbbbbbb" +
+                       "bbbbbbbbbbbbbbbbbb" +
+                       "bbbbbbbbbbbbbbbbbb" +
+                       "bbbbbbbbbbbbbbbbbb" +
+                       "bbbbbbbbbbbbbbbbbb" +
+                       "bbbbbbbbbbbbbbbbbb" +
+                       "OOOOOOOOOOOOOOOOOO" +
+                       "LTTTTTTTTTTTTTTTTR" +
+                       "L                R" +
+                       "L                R" +
+                       "lwwBc CwBBwBwwBwBr" +
+                       "OOOOL3ROObbbbbbbbb" +
+                       "LTTTf fTRbbbbbbbbb" +
+                       "L       Rbbbbbbbbb" +
+                       "L       Rbbbbbbbbb" +
+                       "L       Rbbbbbbbbb" +
+                       "lwBBwBBBrbbbbbbbbb*18*" +
+                       "4,4,Quien es el más feo de la UPC?-Mario-Empieza por M";
+
+
+        string[] mapa1Vector = stringAndroid.Split('*');
+
+        string[] boxes1Vector = mapa1Vector[2].Split('/');
+
+        List<Box> boxes = new List<Box>();
+
+        foreach (string s in boxes1Vector)
+        {
+            string[] sVector = s.Split(',');
+            boxes.Add(new Box(Int32.Parse(sVector[0]), Int32.Parse(sVector[1]), sVector[2]));
+        }
+
+        Map mapObject = new Map(mapa1Vector[0], Int32.Parse(mapa1Vector[1]), boxes);
+        this.map = mapObject;
+        return this.map;
+
 #else
         string mapa1 =   "bbbbbbbOOOOOOOOOOOOOObbbbbbb" +
                          "bbbbbbbLTTTTTTTTTTTTRbbbbbbb" +

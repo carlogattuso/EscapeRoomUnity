@@ -16,7 +16,7 @@ public class Player : MovingObject
     public Text lifeText;
 
     private Animator animator;                  //Used to store a reference to the Player's animator component.
-    private Vector2 touchOrigin = -Vector2.one; //Used to store location of screen touch origin for mobile controls.
+    //private Vector2 touchOrigin = -Vector2.one; //Used to store location of screen touch origin for mobile controls.
 
     private RedDoor redDoor;
     private BlueDoor blueDoor;
@@ -49,8 +49,8 @@ public class Player : MovingObject
         //If it's not the player's turn, exit the function.
         if (!GameManager.instance.playersTurn) return;
 
-        float horizontalFloat;
-        float verticalFloat;
+        float horizontalFloat = 0f;
+        float verticalFloat = 0f;
         int horizontal = 0;     //Used to store the horizontal move direction.
         int vertical = 0;       //Used to store the vertical move direction.
 
@@ -101,14 +101,20 @@ public class Player : MovingObject
                     
                     //Set touchOrigin.x to -1 so that our else if statement will evaluate false and not repeat immediately.
                     touchOrigin.x = -1;
-                    
+
                     //Check if the difference along the x axis is greater than the difference along the y axis.
                     if (Mathf.Abs(x) > Mathf.Abs(y))
+                    {
                         //If x is greater than zero, set horizontal to 1, otherwise set it to -1
                         horizontal = x > 0 ? 1 : -1;
+                        horizontalFloat = horizontal;
+                    }
                     else
+                    {
                         //If y is greater than zero, set horizontal to 1, otherwise set it to -1
                         vertical = y > 0 ? 1 : -1;
+                        verticalFloat = vertical;
+                    }
                 }
             }
             

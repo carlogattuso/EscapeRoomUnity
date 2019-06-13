@@ -32,6 +32,11 @@
         <para>Information about a subsystem that can be queried before creating a subsystem instance.</para>
       </summary>
     </member>
+    <member name="P:UnityEngine.Experimental.IntegratedSubsystemDescriptor.disablesLegacyVr">
+      <summary>
+        <para>Indicates whether legacy VR settings must be disabled for the subsystem. Set to true if the Editor must disable the legacy VR settings  disabled; otherwise false.</para>
+      </summary>
+    </member>
     <member name="P:UnityEngine.Experimental.IntegratedSubsystemDescriptor.id">
       <summary>
         <para>A unique string that identifies the subsystem that this Descriptor can create.</para>
@@ -64,6 +69,24 @@
             </para>
       </summary>
     </member>
+    <member name="P:UnityEngine.Experimental.ISubsystemDescriptor.disablesLegacyVr">
+      <summary>
+        <para>Indicates whether legacy VR settings must be disabled for the subsystem. Set to true if the Editor must disable the legacy VR settings  disabled; otherwise false.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEngine.Experimental.ISubsystemDescriptor.id">
+      <summary>
+        <para>A unique string that identifies the subsystem that this Descriptor can create.</para>
+      </summary>
+    </member>
+    <member name="M:UnityEngine.Experimental.ISubsystemDescriptor.Create">
+      <summary>
+        <para>Creates an ISubsystem from this descriptor.</para>
+      </summary>
+      <returns>
+        <para>An instance of ISubsystem.</para>
+      </returns>
+    </member>
     <member name="T:UnityEngine.Experimental.Subsystem">
       <summary>
         <para>A Subsystem is initialized from a SubsystemDescriptor for a given Subsystem (Example, Input, Environment, Display, etc.) and provides an interface to interact with that given Subsystem until it is Destroyed. After a Subsystem is created it can be Started or Stopped to turn on and off functionality (and preserve performance). The base type for Subsystem only exposes this functionality; this class is designed to be a base class for derived classes that expose more functionality specific to a given Subsystem.
@@ -92,6 +115,11 @@
         <para>Information about a subsystem that can be queried before creating a subsystem instance.</para>
       </summary>
     </member>
+    <member name="P:UnityEngine.Experimental.SubsystemDescriptor.disablesLegacyVr">
+      <summary>
+        <para>Indicates whether legacy VR settings must be disabled for the subsystem. Set to true if the Editor must disable the legacy VR settings; otherwise false.</para>
+      </summary>
+    </member>
     <member name="P:UnityEngine.Experimental.SubsystemDescriptor.id">
       <summary>
         <para>A unique string that identifies the subsystem that this Descriptor can create.</para>
@@ -106,6 +134,24 @@
       <summary>
         <para>Gives access to subsystems which provide additional functionality through plugins.</para>
       </summary>
+    </member>
+    <member name="?:UnityEngine.Experimental.SubsystemManager.reloadSubsytemsCompleted(System.Action)">
+      <summary>
+        <para>Called from SubsystemManager when it has completed reloading all XR SDK Provider packaged subsystems.</para>
+      </summary>
+      <param name="value"></param>
+    </member>
+    <member name="?:UnityEngine.Experimental.SubsystemManager.reloadSubsytemsStarted(System.Action)">
+      <summary>
+        <para>Called from SubsystemManager before reloading all XR SDK Provider packaged subsystems.</para>
+      </summary>
+      <param name="value"></param>
+    </member>
+    <member name="M:UnityEngine.Experimental.SubsystemManager.GetAllSubsystemDescriptors(System.Collections.Generic.List`1&lt;UnityEngine.Experimental.ISubsystemDescriptor&gt;)">
+      <summary>
+        <para>Gets all of the currently known subsystem descriptors regardless of specific subsystem type.</para>
+      </summary>
+      <param name="descriptors">Subsystem descriptors.</param>
     </member>
     <member name="M:UnityEngine.Experimental.SubsystemManager.GetInstances(System.Collections.Generic.List`1&lt;T&gt;)">
       <summary>
@@ -702,6 +748,17 @@
         <para>An XRDisplaySubsystem controls rendering to a head tracked display.</para>
       </summary>
     </member>
+    <member name="?:UnityEngine.Experimental.XR.XRDisplaySubsystem.displayFocusChanged(System.Action`1&lt;System.Boolean&gt;)">
+      <summary>
+        <para>Event sent when XR display focus changes.</para>
+      </summary>
+      <param name="value">Delegate method to call when the event is sent.</param>
+    </member>
+    <member name="P:UnityEngine.Experimental.XR.XRDisplaySubsystem.singlePassRenderingDisabled">
+      <summary>
+        <para>Returns true when single pass stereo rendering is disabled and returns false if otherwise.</para>
+      </summary>
+    </member>
     <member name="T:UnityEngine.Experimental.XR.XRDisplaySubsystemDescriptor">
       <summary>
         <para>Class providing information about XRDisplaySubsystem registration.</para>
@@ -963,6 +1020,460 @@ Instance is used to enable and disable the inputs coming from a specific plugin.
         <para>The XR module contains the VR and AR related platform support functionality.</para>
       </summary>
     </member>
+    <member name="T:UnityEngine.XR.Bone">
+      <summary>
+        <para>A tracked bone on the device at an XR.XRNode in the XR input subsystem.</para>
+      </summary>
+    </member>
+    <member name="M:UnityEngine.XR.Bone.TryGetChildBones(System.Collections.Generic.List`1&lt;UnityEngine.XR.Bone&gt;)">
+      <summary>
+        <para>Get the child bones of this bone.</para>
+      </summary>
+      <param name="childBones">A list of bones that will be filled out with the children bones of this bone.</param>
+      <returns>
+        <para>true if bone can be queried for child bones; otherwise false.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.XR.Bone.TryGetParentBone(UnityEngine.XR.Bone&amp;)">
+      <summary>
+        <para>Gets the parent of this bone.</para>
+      </summary>
+      <param name="parentBone">Bone struct that receives the parent bone of this bone.</param>
+      <returns>
+        <para>true if the rotation was retrieved, false otherwise.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.XR.Bone.TryGetPosition(UnityEngine.Vector3&amp;)">
+      <summary>
+        <para>Gets the world position of the bone</para>
+      </summary>
+      <param name="position">Vector3 to receive the position of the bone in Unity world space.</param>
+      <returns>
+        <para>true if the rotation was retrieved, false otherwise.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.XR.Bone.TryGetRotation(UnityEngine.Quaternion&amp;)">
+      <summary>
+        <para>Gets the world rotation of the bone.</para>
+      </summary>
+      <param name="rotation">Quaternion to receive the rotation of the bone in Unity world space.</param>
+      <returns>
+        <para>true if the rotation was retrieved, false otherwise.</para>
+      </returns>
+    </member>
+    <member name="T:UnityEngine.XR.CommonUsages">
+      <summary>
+        <para>Defines static variables that are used to retrieve input features from XR.InputDevice.TryGetFeatureValue.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.XR.CommonUsages.batteryLevel">
+      <summary>
+        <para>Value representing the current battery life of this device.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.XR.CommonUsages.centerEyeAcceleration">
+      <summary>
+        <para>The acceleration of the center eye on this device.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.XR.CommonUsages.centerEyeAngularAcceleration">
+      <summary>
+        <para>The angular acceleration of the center eye on this device, formatted as euler angles.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.XR.CommonUsages.centerEyeAngularVelocity">
+      <summary>
+        <para>The angular velocity of the center eye on this device, formatted as euler angles.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.XR.CommonUsages.centerEyePosition">
+      <summary>
+        <para>The position of the center eye on this device.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.XR.CommonUsages.centerEyeRotation">
+      <summary>
+        <para>The rotation of the center eye on this device.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.XR.CommonUsages.centerEyeVelocity">
+      <summary>
+        <para>The velocity of the center eye on this device.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.XR.CommonUsages.colorCameraAcceleration">
+      <summary>
+        <para>The acceleration of the color camera on this device.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.XR.CommonUsages.colorCameraAngularAcceleration">
+      <summary>
+        <para>The angular acceleration of the color camera on this device, formatted as euler angles.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.XR.CommonUsages.colorCameraAngularVelocity">
+      <summary>
+        <para>The angular velocity of the color camera on this device, formatted as euler angles.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.XR.CommonUsages.colorCameraPosition">
+      <summary>
+        <para>The position of the color camera on this device.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.XR.CommonUsages.colorCameraRotation">
+      <summary>
+        <para>The rotation of the color camera on this device.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.XR.CommonUsages.colorCameraVelocity">
+      <summary>
+        <para>The velocity of the color camera on this device.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.XR.CommonUsages.deviceAcceleration">
+      <summary>
+        <para>The acceleration of the device.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.XR.CommonUsages.deviceAngularAcceleration">
+      <summary>
+        <para>The angular acceleration of this device, formatted as euler angles.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.XR.CommonUsages.deviceAngularVelocity">
+      <summary>
+        <para>The angular velocity of this device, formatted as euler angles.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.XR.CommonUsages.devicePosition">
+      <summary>
+        <para>The position of the device.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.XR.CommonUsages.deviceRotation">
+      <summary>
+        <para>The rotation of this device.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.XR.CommonUsages.deviceVelocity">
+      <summary>
+        <para>The velocity of the device.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.XR.CommonUsages.dPad">
+      <summary>
+        <para>A non-handed 2D axis.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.XR.CommonUsages.eyesData">
+      <summary>
+        <para>An Eyes struct containing eye tracking data collected from the device.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.XR.CommonUsages.grip">
+      <summary>
+        <para>Represents the users grip on the controller.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.XR.CommonUsages.gripButton">
+      <summary>
+        <para>A binary measure of whether the device is being gripped.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.XR.CommonUsages.handData">
+      <summary>
+        <para>Value representing the hand data for this device.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.XR.CommonUsages.indexFinger">
+      <summary>
+        <para>Represents the grip pressure or angle of the index finger.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.XR.CommonUsages.indexTouch">
+      <summary>
+        <para>Represents a touch of the trigger or index finger.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.XR.CommonUsages.isTracked">
+      <summary>
+        <para>Informs to the developer whether the device is currently being tracked.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.XR.CommonUsages.leftEyeAcceleration">
+      <summary>
+        <para>The acceleration of the left eye on this device.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.XR.CommonUsages.leftEyeAngularAcceleration">
+      <summary>
+        <para>The angular acceleration of the left eye on this device, formatted as euler angles.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.XR.CommonUsages.leftEyeAngularVelocity">
+      <summary>
+        <para>The angular velocity of the left eye on this device, formatted as euler angles.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.XR.CommonUsages.leftEyePosition">
+      <summary>
+        <para>The position of the left eye on this device.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.XR.CommonUsages.leftEyeRotation">
+      <summary>
+        <para>The rotation of the left eye on this device.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.XR.CommonUsages.leftEyeVelocity">
+      <summary>
+        <para>The velocity of the left eye on this device.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.XR.CommonUsages.menuButton">
+      <summary>
+        <para>Represents a menu button, used to pause, go back, or otherwise exit gameplay.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.XR.CommonUsages.middleFinger">
+      <summary>
+        <para>Represents the grip pressure or angle of the middle finger.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.XR.CommonUsages.pinkyFinger">
+      <summary>
+        <para>Represents the grip pressure or angle of the pinky finger.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.XR.CommonUsages.primary2DAxis">
+      <summary>
+        <para>The primary touchpad or joystick on a device.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.XR.CommonUsages.primary2DAxisClick">
+      <summary>
+        <para>Represents the Primary 2D axis being clicked or otherwise depressed.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.XR.CommonUsages.primary2DAxisTouch">
+      <summary>
+        <para>Represents the Primary 2D axis being touched.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.XR.CommonUsages.primaryButton">
+      <summary>
+        <para>The primary face button being pressed on a device, or sole button if only one is available.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.XR.CommonUsages.primaryTouch">
+      <summary>
+        <para>The primary face button being touched on a device.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.XR.CommonUsages.rightEyeAcceleration">
+      <summary>
+        <para>The acceleration of the right eye on this device.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.XR.CommonUsages.rightEyeAngularAcceleration">
+      <summary>
+        <para>The angular acceleration of the right eye on this device, formatted as euler angles.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.XR.CommonUsages.rightEyeAngularVelocity">
+      <summary>
+        <para>The angular velocity of the right eye on this device, formatted as euler angles.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.XR.CommonUsages.rightEyePosition">
+      <summary>
+        <para>The position of the right eye on this device.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.XR.CommonUsages.rightEyeRotation">
+      <summary>
+        <para>The rotation of the right eye on this device.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.XR.CommonUsages.rightEyeVelocity">
+      <summary>
+        <para>The velocity of the right eye on this device.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.XR.CommonUsages.ringFinger">
+      <summary>
+        <para>Represents the grip pressure or angle of the ring finger.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.XR.CommonUsages.secondary2DAxis">
+      <summary>
+        <para>A secondary touchpad or joystick on a device.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.XR.CommonUsages.secondaryButton">
+      <summary>
+        <para>The secondary face button being pressed on a device.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.XR.CommonUsages.secondaryTouch">
+      <summary>
+        <para>The secondary face button being touched on a device.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.XR.CommonUsages.thumbrest">
+      <summary>
+        <para>Represents a thumbrest or light thumb touch.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.XR.CommonUsages.thumbTouch">
+      <summary>
+        <para>Represents the thumb pressing any input or feature.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.XR.CommonUsages.trackingState">
+      <summary>
+        <para>Represents the values being tracked for this device.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.XR.CommonUsages.trigger">
+      <summary>
+        <para>A trigger-like control, pressed with the index finger.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.XR.CommonUsages.triggerButton">
+      <summary>
+        <para>A binary measure of whether the index finger is activating the trigger.</para>
+      </summary>
+    </member>
+    <member name="T:UnityEngine.XR.Eyes">
+      <summary>
+        <para>Contains eye tracking data from the device at an XR.XRNode in the XR input subsystem.</para>
+      </summary>
+    </member>
+    <member name="M:UnityEngine.XR.Eyes.TryGetFixationPoint(UnityEngine.Vector3&amp;)">
+      <summary>
+        <para>Gets the point represents the convergence of the line of site for both eyes.</para>
+      </summary>
+      <param name="fixationPoint">A Vector3 struct that is filled in with the fixation position.</param>
+      <returns>
+        <para>true if eyes can be queried for the fixation point; otherwise false.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.XR.Eyes.TryGetLeftEyeOpenAmount(System.Single&amp;)">
+      <summary>
+        <para>Gets a value that represents the how far the left eye is open.</para>
+      </summary>
+      <param name="OpenAmount">A float value, with a range of 0.0 to 1.0, that indicates how open the left eye is. A value of 0.0 indicates that the eye is fully closed, while a value of 1.0 indicates that the eye is fully open.</param>
+      <param name="openAmount"></param>
+      <returns>
+        <para>true if eyes can be queried for the amount that the left eye is open; otherwise false.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.XR.Eyes.TryGetLeftEyePosition(UnityEngine.Vector3&amp;)">
+      <summary>
+        <para>Gets the Vector3 that describes the position of the left eye.</para>
+      </summary>
+      <param name="positionOut">A Vector3 struct to receive the left eye position.</param>
+      <param name="position"></param>
+      <returns>
+        <para>true if eyes can be queried for the left eye position; otherwise false.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.XR.Eyes.TryGetLeftEyeRotation(UnityEngine.Quaternion&amp;)">
+      <summary>
+        <para>Gets the Quaternion that describes the rotation of the left eye.</para>
+      </summary>
+      <param name="rotationOut">A Quaternion struct to receive the left eye rotation.</param>
+      <param name="rotation"></param>
+      <returns>
+        <para>true if eyes can be queried for the left eye rotation; otherwise false.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.XR.Eyes.TryGetRightEyeOpenAmount(System.Single&amp;)">
+      <summary>
+        <para>Gets a value that represents the how far the right eye is open.</para>
+      </summary>
+      <param name="OpenAmount">A float value, with a range of 0.0 to 1.0, that indicates how open the right eye is. A value of 0.0 indicates that the eye is fully closed, while a value of 1.0 indicates that the eye is fully open.</param>
+      <param name="openAmount"></param>
+      <returns>
+        <para>true if eyes can be queried for the amount that the right eye is open; otherwise false.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.XR.Eyes.TryGetRightEyePosition(UnityEngine.Vector3&amp;)">
+      <summary>
+        <para>Gets the Vector3 that describes the position of the right eye.</para>
+      </summary>
+      <param name="positionOut">A Vector3 struct to receive the right eye position.</param>
+      <param name="position"></param>
+      <returns>
+        <para>true if eyes can be queried for the right eye position; otherwise false.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.XR.Eyes.TryGetRightEyeRotation(UnityEngine.Quaternion&amp;)">
+      <summary>
+        <para>Gets the Quaternion that describes the rotation of the right eye.</para>
+      </summary>
+      <param name="rotationOut">A Quaternion struct to receive the right eye rotation.</param>
+      <param name="rotation"></param>
+      <returns>
+        <para>true if eyes can be queried for the right eye rotation; otherwise false.</para>
+      </returns>
+    </member>
+    <member name="T:UnityEngine.XR.Hand">
+      <summary>
+        <para>A tracked hand on the device at an XR.XRNode in the XR input subsystem.</para>
+      </summary>
+    </member>
+    <member name="M:UnityEngine.XR.Hand.TryGetFingerBones(UnityEngine.XR.HandFinger,System.Collections.Generic.List`1&lt;UnityEngine.XR.Bone&gt;)">
+      <summary>
+        <para>Gets a list of the finger bones for a finger on this hand.</para>
+      </summary>
+      <param name="finger">HandFinger enum value for this finger.</param>
+      <param name="bonesOut">A list of bones that will be filled out for this finger.</param>
+      <returns>
+        <para>true if hand can be queried for this finger; otherwise false.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.XR.Hand.TryGetRootBone(UnityEngine.XR.Bone&amp;)">
+      <summary>
+        <para>Gets the root bone for this hand.</para>
+      </summary>
+      <param name="boneOut">A Bone struct to receive the root bone.</param>
+      <returns>
+        <para>true if hand can be queried for the root bone; otherwise false.</para>
+      </returns>
+    </member>
+    <member name="T:UnityEngine.XR.HandFinger">
+      <summary>
+        <para>Enumeration describing the AR rendering mode used with XR.Hand.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.XR.HandFinger.Index">
+      <summary>
+        <para>Index finger on a hand.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.XR.HandFinger.Middle">
+      <summary>
+        <para>Middle finger on a hand.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.XR.HandFinger.Pinky">
+      <summary>
+        <para>Pinky finger on a hand.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.XR.HandFinger.Ring">
+      <summary>
+        <para>Ring finger on a hand.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.XR.HandFinger.Thumb">
+      <summary>
+        <para>Thumb finger on a hand.</para>
+      </summary>
+    </member>
     <member name="T:UnityEngine.XR.HapticCapabilities">
       <summary>
         <para>Describes the haptic capabilities of the device at an XR.XRNode in the XR input subsystem.</para>
@@ -993,9 +1504,19 @@ Instance is used to enable and disable the inputs coming from a specific plugin.
         <para>Defines an input device in the XR input subsystem.</para>
       </summary>
     </member>
-    <member name="P:UnityEngine.XR.InputDevice.IsValid">
+    <member name="P:UnityEngine.XR.InputDevice.isValid">
       <summary>
-        <para>true if the device is currently a valid input device; otherwise false.</para>
+        <para>Read Only. True if the device is currently a valid input device; otherwise false.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEngine.XR.InputDevice.name">
+      <summary>
+        <para>Read Only. The name of the device in the XR system. This is a platform provided unique identifier for the device.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEngine.XR.InputDevice.role">
+      <summary>
+        <para>Read Only. The InputDeviceRole of the device in the XR system. This is a platform provided description of how the device is used.</para>
       </summary>
     </member>
     <member name="M:UnityEngine.XR.InputDevice.SendHapticBuffer(System.UInt32,System.Byte[])">
@@ -1024,14 +1545,168 @@ Instance is used to enable and disable the inputs coming from a specific plugin.
         <para>Stop all haptic playback for a device.</para>
       </summary>
     </member>
+    <member name="M:UnityEngine.XR.InputDevice.TryGetFeatureUsages(System.Collections.Generic.List`1&lt;UnityEngine.XR.InputFeatureUsage&gt;)">
+      <summary>
+        <para>Gets a list of all the input feature usages available on this device. For example, "Trigger" or "Device Position".</para>
+      </summary>
+      <param name="featureUsages">A List of InputFeatureUsage structures to receive the available features on this device.</param>
+      <returns>
+        <para>true if device can be queried; otherwise false.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.XR.InputDevice.TryGetFeatureValue(UnityEngine.XR.InputFeatureUsage`1&lt;System.Boolean&gt;,System.Boolean&amp;)">
+      <summary>
+        <para>Retrieves information about the input feature specified by the Usage parameter.</para>
+      </summary>
+      <param name="usage">Usage that describes the feature to retrieve.</param>
+      <param name="value">A variable of the appropriate type to receive the information about the feature.</param>
+      <returns>
+        <para>True if the feature information is retrieved; otherwise false.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.XR.InputDevice.TryGetFeatureValue(UnityEngine.XR.InputFeatureUsage`1&lt;System.UInt32&gt;,System.UInt32&amp;)">
+      <summary>
+        <para>Retrieves information about the input feature specified by the Usage parameter.</para>
+      </summary>
+      <param name="usage">Usage that describes the feature to retrieve.</param>
+      <param name="value">A variable of the appropriate type to receive the information about the feature.</param>
+      <returns>
+        <para>True if the feature information is retrieved; otherwise false.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.XR.InputDevice.TryGetFeatureValue(UnityEngine.XR.InputFeatureUsage`1&lt;System.Single&gt;,System.Single&amp;)">
+      <summary>
+        <para>Retrieves information about the input feature specified by the Usage parameter.</para>
+      </summary>
+      <param name="usage">Usage that describes the feature to retrieve.</param>
+      <param name="value">A variable of the appropriate type to receive the information about the feature.</param>
+      <returns>
+        <para>True if the feature information is retrieved; otherwise false.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.XR.InputDevice.TryGetFeatureValue(UnityEngine.XR.InputFeatureUsage`1&lt;UnityEngine.Vector2&gt;,UnityEngine.Vector2&amp;)">
+      <summary>
+        <para>Retrieves information about the input feature specified by the Usage parameter.</para>
+      </summary>
+      <param name="usage">Usage that describes the feature to retrieve.</param>
+      <param name="value">A variable of the appropriate type to receive the information about the feature.</param>
+      <returns>
+        <para>True if the feature information is retrieved; otherwise false.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.XR.InputDevice.TryGetFeatureValue(UnityEngine.XR.InputFeatureUsage`1&lt;UnityEngine.Vector3&gt;,UnityEngine.Vector3&amp;)">
+      <summary>
+        <para>Retrieves information about the input feature specified by the Usage parameter.</para>
+      </summary>
+      <param name="usage">Usage that describes the feature to retrieve.</param>
+      <param name="value">A variable of the appropriate type to receive the information about the feature.</param>
+      <returns>
+        <para>True if the feature information is retrieved; otherwise false.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.XR.InputDevice.TryGetFeatureValue(UnityEngine.XR.InputFeatureUsage`1&lt;UnityEngine.Quaternion&gt;,UnityEngine.Quaternion&amp;)">
+      <summary>
+        <para>Retrieves information about the input feature specified by the Usage parameter.</para>
+      </summary>
+      <param name="usage">Usage that describes the feature to retrieve.</param>
+      <param name="value">A variable of the appropriate type to receive the information about the feature.</param>
+      <returns>
+        <para>True if the feature information is retrieved; otherwise false.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.XR.InputDevice.TryGetFeatureValue(UnityEngine.XR.InputFeatureUsage`1&lt;UnityEngine.XR.Bone&gt;,UnityEngine.XR.Bone&amp;)">
+      <summary>
+        <para>Retrieves information about the input feature specified by the Usage parameter.</para>
+      </summary>
+      <param name="usage">Usage that describes the feature to retrieve.</param>
+      <param name="value">A variable of the appropriate type to receive the information about the feature.</param>
+      <returns>
+        <para>True if the feature information is retrieved; otherwise false.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.XR.InputDevice.TryGetFeatureValue(UnityEngine.XR.InputFeatureUsage`1&lt;UnityEngine.XR.Hand&gt;,UnityEngine.XR.Hand&amp;)">
+      <summary>
+        <para>Retrieves information about the input feature specified by the Usage parameter.</para>
+      </summary>
+      <param name="usage">Usage that describes the feature to retrieve.</param>
+      <param name="value">A variable of the appropriate type to receive the information about the feature.</param>
+      <returns>
+        <para>True if the feature information is retrieved; otherwise false.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.XR.InputDevice.TryGetFeatureValue(UnityEngine.XR.InputFeatureUsage`1&lt;UnityEngine.XR.Eyes&gt;,UnityEngine.XR.Eyes&amp;)">
+      <summary>
+        <para>Retrieves information about the input feature specified by the Usage parameter.</para>
+      </summary>
+      <param name="usage">Usage that describes the feature to retrieve.</param>
+      <param name="value">A variable of the appropriate type to receive the information about the feature.</param>
+      <returns>
+        <para>True if the feature information is retrieved; otherwise false.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.XR.InputDevice.TryGetFeatureValue(UnityEngine.XR.InputFeatureUsage`1&lt;UnityEngine.XR.InputTrackingState&gt;,UnityEngine.XR.InputTrackingState&amp;)">
+      <summary>
+        <para>Retrieves information about the input feature specified by the Usage parameter.</para>
+      </summary>
+      <param name="usage">Usage that describes the feature to retrieve.</param>
+      <param name="value">A variable of the appropriate type to receive the information about the feature.</param>
+      <returns>
+        <para>True if the feature information is retrieved; otherwise false.</para>
+      </returns>
+    </member>
     <member name="M:UnityEngine.XR.InputDevice.TryGetHapticCapabilities(UnityEngine.XR.HapticCapabilities&amp;)">
       <summary>
         <para>Gets the haptic capabilities of the device.</para>
       </summary>
       <param name="capabilities">A HapticCapabilities struct to receive the capabilities of this device.</param>
       <returns>
-        <para>true if device can be queried, false otherwise.</para>
+        <para>true if device can be queried; otherwise false.</para>
       </returns>
+    </member>
+    <member name="T:UnityEngine.XR.InputDeviceRole">
+      <summary>
+        <para>Enumeration describing the role of a XR.InputDevice in providing input.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.XR.InputDeviceRole.GameController">
+      <summary>
+        <para>This device is a game controller.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.XR.InputDeviceRole.Generic">
+      <summary>
+        <para>This device is typically a HMD or Camera.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.XR.InputDeviceRole.HardwareTracker">
+      <summary>
+        <para>This device is a hardware tracker.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.XR.InputDeviceRole.LeftHanded">
+      <summary>
+        <para>This device is a controller that represents the left hand.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.XR.InputDeviceRole.LegacyController">
+      <summary>
+        <para>This device is a legacy controller.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.XR.InputDeviceRole.RightHanded">
+      <summary>
+        <para>This device is a controller that represents the right hand.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.XR.InputDeviceRole.TrackingReference">
+      <summary>
+        <para>This device is a tracking reference used to track other devices in 3D.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.XR.InputDeviceRole.Unknown">
+      <summary>
+        <para>This device does not have a known role.</para>
+      </summary>
     </member>
     <member name="T:UnityEngine.XR.InputDevices">
       <summary>
@@ -1046,6 +1721,62 @@ Instance is used to enable and disable the inputs coming from a specific plugin.
       <returns>
         <para>An XR.InputDevice at this [[XR.XRNode].</para>
       </returns>
+    </member>
+    <member name="M:UnityEngine.XR.InputDevices.GetDevices(System.Collections.Generic.List`1&lt;UnityEngine.XR.InputDevice&gt;)">
+      <summary>
+        <para>Gets a list of active input devices available to the XR Input Subsystem.</para>
+      </summary>
+      <param name="inputDevices">A List of type InputDevices to receive the available input devices.</param>
+    </member>
+    <member name="M:UnityEngine.XR.InputDevices.GetDevicesAtXRNode(UnityEngine.XR.XRNode,System.Collections.Generic.List`1&lt;UnityEngine.XR.InputDevice&gt;)">
+      <summary>
+        <para>Gets a list of active input devices available to the XR Input Subsystem at a given XR.XRNode endpoint.</para>
+      </summary>
+      <param name="node">The XRNode that owns the requested device.</param>
+      <param name="inputDevices">A List of type InputDevices to receive the available input devices.</param>
+    </member>
+    <member name="M:UnityEngine.XR.InputDevices.GetDevicesWithRole(UnityEngine.XR.InputDeviceRole,System.Collections.Generic.List`1&lt;UnityEngine.XR.InputDevice&gt;)">
+      <summary>
+        <para>Gets a list of active input devices available to the XR Input Subsystem that match the specified role.</para>
+      </summary>
+      <param name="role">XR.InputDeviceRole that is defined for the devices returned.</param>
+      <param name="inputDevices">A List of type InputDevices to receive the available input devices.</param>
+    </member>
+    <member name="T:UnityEngine.XR.InputFeatureUsage">
+      <summary>
+        <para>Defines a generic usage that maps to an input feature on a device. Use the As method to turn into a generic usage.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEngine.XR.InputFeatureUsage.name">
+      <summary>
+        <para>The string name of this usage feature; used internally to map to an input feature on a device.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEngine.XR.InputFeatureUsage.type">
+      <summary>
+        <para>The type of this usage feature; used internally to map to an input feature on a device.</para>
+      </summary>
+    </member>
+    <member name="M:UnityEngine.XR.InputFeatureUsage.As">
+      <summary>
+        <para>Returns the generic version of this type for retrieving a feature value from a device.</para>
+      </summary>
+    </member>
+    <member name="T:UnityEngine.XR.InputFeatureUsage`1">
+      <summary>
+        <para>Defines a generic usage that maps to an input feature on a device.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEngine.XR.InputFeatureUsage_1.name">
+      <summary>
+        <para>The string name of this usage feature; used internally to map to an input feature on a device.</para>
+      </summary>
+    </member>
+    <member name="M:UnityEngine.XR.InputFeatureUsage_1.#ctor(System.String)">
+      <summary>
+        <para>Construct a usage from a usage name.</para>
+      </summary>
+      <param name="usageName">The name of the feature usage to query for.</param>
     </member>
     <member name="T:UnityEngine.XR.InputTracking">
       <summary>
@@ -1123,6 +1854,67 @@ Instance is used to enable and disable the inputs coming from a specific plugin.
       <summary>
         <para>Center tracking to the current position and orientation of the HMD.</para>
       </summary>
+    </member>
+    <member name="T:UnityEngine.XR.InputTrackingState">
+      <summary>
+        <para>Represents the values being tracked for this device.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.XR.InputTrackingState.Acceleration">
+      <summary>
+        <para>Represents acceleration being tracked for this device.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.XR.InputTrackingState.All">
+      <summary>
+        <para>Represents all InputTrackingState values being tracked for this device.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.XR.InputTrackingState.AngularAcceleration">
+      <summary>
+        <para>Represents angular acceleration being tracked for this device.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.XR.InputTrackingState.AngularVelocity">
+      <summary>
+        <para>Represents no angular velocity being tracked for this device.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.XR.InputTrackingState.None">
+      <summary>
+        <para>Represents no values being tracked for this device.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.XR.InputTrackingState.Position">
+      <summary>
+        <para>Represents position being tracked for this device.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.XR.InputTrackingState.Rotation">
+      <summary>
+        <para>Represents rotation being tracked for this device.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.XR.InputTrackingState.Velocity">
+      <summary>
+        <para>Represents velocity being tracked for this device.</para>
+      </summary>
+    </member>
+    <member name="T:UnityEngine.XR.Provider.XRStats">
+      <summary>
+        <para>Provides timing and other statistics from XR subsystems.</para>
+      </summary>
+    </member>
+    <member name="M:UnityEngine.XR.Provider.XRStats.TryGetStat(UnityEngine.Experimental.IntegratedSubsystem,System.String,System.Single&amp;)">
+      <summary>
+        <para>Retrieve a statistic for an XR subsystem.</para>
+      </summary>
+      <param name="xrSubsystem">The subsystem with which the stat is registered.</param>
+      <param name="tag">The tag used to query for a statistic.</param>
+      <param name="value">Receives the current value of the requested statistic. Contains a valid value when this method returns true.</param>
+      <returns>
+        <para>True, if the requested statistic is available, false otherwise.</para>
+      </returns>
     </member>
     <member name="T:UnityEngine.XR.XRNode">
       <summary>

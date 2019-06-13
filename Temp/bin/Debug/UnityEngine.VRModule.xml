@@ -24,6 +24,11 @@
         <para>Renders the left eye of the XR device in the Game View window or in main window on a host PC.</para>
       </summary>
     </member>
+    <member name="F:UnityEngine.XR.GameViewRenderMode.None">
+      <summary>
+        <para>Disables rendering of any eyes in the Game view or in the main window on a host PC.</para>
+      </summary>
+    </member>
     <member name="F:UnityEngine.XR.GameViewRenderMode.OcclusionMesh">
       <summary>
         <para>Renders both eyes of the XR device, and the occlusion mesh, side-by-side in the Game view or in the main window on a host PC.</para>

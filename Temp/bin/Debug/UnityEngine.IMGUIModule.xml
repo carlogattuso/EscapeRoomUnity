@@ -4547,6 +4547,12 @@ GUILayout.MaxHeight, GUILayout.ExpandWidth, GUILayout.ExpandHeight.</param>
       </summary>
       <param name="guiPoint"></param>
     </member>
+    <member name="M:UnityEngine.GUIUtility.GUIToScreenRect(UnityEngine.Rect)">
+      <summary>
+        <para>Convert a rect from GUI position to screen space.</para>
+      </summary>
+      <param name="guiRect"></param>
+    </member>
     <member name="M:UnityEngine.GUIUtility.QueryStateObject(System.Type,System.Int32)">
       <summary>
         <para>Get an existing state object from a controlID.</para>
@@ -4573,6 +4579,12 @@ GUILayout.MaxHeight, GUILayout.ExpandWidth, GUILayout.ExpandHeight.</param>
         <para>Convert a point from screen space to GUI position.</para>
       </summary>
       <param name="screenPoint"></param>
+    </member>
+    <member name="M:UnityEngine.GUIUtility.ScreenToGUIRect(UnityEngine.Rect)">
+      <summary>
+        <para>Convert a rect from screen space to GUI position.</para>
+      </summary>
+      <param name="screenRect"></param>
     </member>
     <member name="T:UnityEngine.ImagePosition">
       <summary>

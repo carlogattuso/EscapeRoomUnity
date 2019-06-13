@@ -4,6 +4,31 @@
     <assembly>
       <name>UnityEngine.VFXModule</name>
     </assembly>
+    <member name="T:UnityEngine.Experimental.VFX.VFXCameraBufferTypes">
+      <summary>
+        <para>Types of Camera buffer.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.Experimental.VFX.VFXCameraBufferTypes.Color">
+      <summary>
+        <para>Color Buffer.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.Experimental.VFX.VFXCameraBufferTypes.Depth">
+      <summary>
+        <para>Depth Buffer.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.Experimental.VFX.VFXCameraBufferTypes.None">
+      <summary>
+        <para>No Buffer.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.Experimental.VFX.VFXCameraBufferTypes.Normal">
+      <summary>
+        <para>Normal Buffer.</para>
+      </summary>
+    </member>
     <member name="T:UnityEngine.Experimental.VFX.VFXEventAttribute">
       <summary>
         <para>The class VFXEventAttribute handles properties transmitted to a system with a Experimental.VFX.VisualEffect.SendEvent.</para>
@@ -608,6 +633,33 @@
       <summary>
         <para>The maximum allowed delta time for an update interval. This limit affects fixedDeltaTime and deltaTime. The tick rate is in seconds.</para>
       </summary>
+    </member>
+    <member name="M:UnityEngine.Experimental.VFX.VFXManager.IsCameraBufferNeeded(UnityEngine.Camera)">
+      <summary>
+        <para>Queries which buffers the VFX Manager needs for the given camera.</para>
+      </summary>
+      <param name="cam">The camera for which to query needed buffers.</param>
+      <returns>
+        <para>A list of all needed buffer flags.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.Experimental.VFX.VFXManager.ProcessCamera(UnityEngine.Camera)">
+      <summary>
+        <para>Processes per camera VFX commands at this frame.</para>
+      </summary>
+      <param name="cam">The camera for which the VFX commands will be processed.</param>
+    </member>
+    <member name="M:UnityEngine.Experimental.VFX.VFXManager.SetCameraBuffer">
+      <summary>
+        <para>Sets the buffer of a given type for this camera, so it can be used by VFX Manager.</para>
+      </summary>
+      <param name="cam">The camera.</param>
+      <param name="type">The type of buffer to set.</param>
+      <param name="buffer">The buffer to set.</param>
+      <param name="x">X offset of the viewport in the buffer.</param>
+      <param name="y">Y offset of the viewport in the buffer.</param>
+      <param name="width">Width of the viewport in the buffer.</param>
+      <param name="height">Height of the viewport in the buffer.</param>
     </member>
     <member name="T:UnityEngine.Experimental.VFX.VFXSpawnerCallbacks">
       <summary>
@@ -1399,6 +1451,13 @@
       <param name="nameID">The name ID of the property retrieved by Shader.PropertyToID.</param>
       <param name="name">The name of the property.</param>
       <param name="v">The new Vector4 value.</param>
+    </member>
+    <member name="M:UnityEngine.Experimental.VFX.VisualEffect.Simulate(System.Single,System.UInt32)">
+      <summary>
+        <para>Fast-forward the visual effect by simulating all systems for several step counts using the specified delta time.</para>
+      </summary>
+      <param name="stepDeltaTime">The delta time, in seconds, the simulation applies to each step.</param>
+      <param name="stepCount">Number of steps to proceed.</param>
     </member>
     <member name="M:UnityEngine.Experimental.VFX.VisualEffect.Stop">
       <summary>

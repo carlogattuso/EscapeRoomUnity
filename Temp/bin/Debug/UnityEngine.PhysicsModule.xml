@@ -423,6 +423,15 @@
         <para>Returns the number of contacts placed in the contacts array.</para>
       </returns>
     </member>
+    <member name="M:UnityEngine.Collision.GetContacts(System.Collections.Generic.List`1&lt;UnityEngine.ContactPoint&gt;)">
+      <summary>
+        <para>Retrieves all contact points for this collision.</para>
+      </summary>
+      <param name="contacts">A list of ContactPoint used to receive the results.</param>
+      <returns>
+        <para>Returns the number of contacts placed in the contacts list.</para>
+      </returns>
+    </member>
     <member name="T:UnityEngine.CollisionDetectionMode">
       <summary>
         <para>The collision detection mode constants used for Rigidbody.collisionDetectionMode.</para>
@@ -1229,9 +1238,20 @@ Note that there is a special case when the two overlapping colliders have physic
         <para>Two colliding objects with a relative velocity below this will not bounce (default 2). Must be positive.</para>
       </summary>
     </member>
+    <member name="P:UnityEngine.Physics.clothGravity">
+      <summary>
+        <para>Cloth Gravity setting.
+Set gravity for all cloth components.</para>
+      </summary>
+    </member>
     <member name="P:UnityEngine.Physics.defaultContactOffset">
       <summary>
         <para>The default contact offset of the newly created colliders.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEngine.Physics.defaultMaxAngularSpeed">
+      <summary>
+        <para>Default maximum angular speed of the dynamic Rigidbody, in radians (default 50).</para>
       </summary>
     </member>
     <member name="P:UnityEngine.Physics.defaultPhysicsScene">
@@ -1427,9 +1447,8 @@ Note that there is a special case when the two overlapping colliders have physic
       <param name="direction">The direction into which to sweep the capsule.</param>
       <param name="results">The buffer to store the hits into.</param>
       <param name="maxDistance">The max length of the sweep.</param>
-      <param name="layermask">A that is used to selectively ignore colliders when casting a capsule.</param>
+      <param name="layerMask">A that is used to selectively ignore colliders when casting a capsule.</param>
       <param name="queryTriggerInteraction">Specifies whether this query should hit Triggers.</param>
-      <param name="layerMask"></param>
       <returns>
         <para>The amount of hits stored into the buffer.</para>
       </returns>
@@ -1500,6 +1519,16 @@ Note that there is a special case when the two overlapping colliders have physic
         <para>Layer mask constant to select default raycast layers.</para>
       </summary>
     </member>
+    <member name="M:UnityEngine.Physics.GetIgnoreCollision(UnityEngine.Collider,UnityEngine.Collider)">
+      <summary>
+        <para>Checks whether the collision detection system will ignore all collisionstriggers between collider1 and collider2/ or not.</para>
+      </summary>
+      <param name="collider1">The first collider to compare to collider2.</param>
+      <param name="collider2">The second collider to compare to collider1.</param>
+      <returns>
+        <para>Whether the collision detection system will ignore all collisionstriggers between collider1 and collider2/ or not.</para>
+      </returns>
+    </member>
     <member name="M:UnityEngine.Physics.GetIgnoreLayerCollision(System.Int32,System.Int32)">
       <summary>
         <para>Are collisions between layer1 and layer2 being ignored?</para>
@@ -1511,9 +1540,9 @@ Note that there is a special case when the two overlapping colliders have physic
       <summary>
         <para>Makes the collision detection system ignore all collisions between collider1 and collider2.</para>
       </summary>
-      <param name="collider1">Starting point of the collider.</param>
-      <param name="collider2">End point of the collider.</param>
-      <param name="ignore">Ignore collision.</param>
+      <param name="collider1">Any collider.</param>
+      <param name="collider2">Another collider you want to have collider1 to start or stop ignoring collisions with.</param>
+      <param name="ignore">Whether or not the collisions between the two colliders should be ignored or not.</param>
     </member>
     <member name="M:UnityEngine.Physics.IgnoreLayerCollision(System.Int32,System.Int32,System.Boolean)">
       <summary>
@@ -1841,6 +1870,70 @@ Note that IgnoreLayerCollision will reset the trigger state of affected collider
         <para>Represents a single instance of a 3D physics Scene.</para>
       </summary>
     </member>
+    <member name="M:UnityEngine.PhysicsScene.BoxCast(UnityEngine.Vector3,UnityEngine.Vector3,UnityEngine.Vector3,UnityEngine.RaycastHit&amp;,UnityEngine.Quaternion,System.Single,System.Int32,UnityEngine.QueryTriggerInteraction)">
+      <summary>
+        <para>Casts the box along a ray and returns detailed information on what was hit.</para>
+      </summary>
+      <param name="center">Center of the box.</param>
+      <param name="halfExtents">Half the size of the box in each dimension.</param>
+      <param name="direction">The direction in which to cast the box.</param>
+      <param name="hitInfo">If true is returned, hitInfo will contain more information about where the collider was hit. (See Also: RaycastHit).</param>
+      <param name="orientation">Rotation of the box.</param>
+      <param name="maxDistance">The max length of the cast.</param>
+      <param name="layerMask">A that is used to selectively ignore colliders when casting a capsule.</param>
+      <param name="queryTriggerInteraction">Specifies whether this query should hit Triggers.</param>
+      <returns>
+        <para>True, if any intersections were found.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.PhysicsScene.BoxCast(UnityEngine.Vector3,UnityEngine.Vector3,UnityEngine.Vector3,UnityEngine.RaycastHit[],UnityEngine.Quaternion,System.Single,System.Int32,UnityEngine.QueryTriggerInteraction)">
+      <summary>
+        <para>Casts the box along a ray and returns detailed information on what was hit.</para>
+      </summary>
+      <param name="center">Center of the box.</param>
+      <param name="halfExtents">Half the size of the box in each dimension.</param>
+      <param name="direction">The direction in which to cast the box.</param>
+      <param name="results">The buffer to store the results in.</param>
+      <param name="orientation">Rotation of the box.</param>
+      <param name="maxDistance">The max length of the cast.</param>
+      <param name="layerMask">A that is used to selectively ignore colliders when casting a capsule.</param>
+      <param name="queryTriggerInteraction">Specifies whether this query should hit Triggers.</param>
+      <returns>
+        <para>The amount of hits stored to the results buffer.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.PhysicsScene.CapsuleCast(UnityEngine.Vector3,UnityEngine.Vector3,System.Single,UnityEngine.Vector3,UnityEngine.RaycastHit&amp;,System.Single,System.Int32,UnityEngine.QueryTriggerInteraction)">
+      <summary>
+        <para>Casts a capsule against all colliders in this physics scene and returns detailed information on what was hit.</para>
+      </summary>
+      <param name="point1">The center of the sphere at the start of the capsule.</param>
+      <param name="point2">The center of the sphere at the end of the capsule.</param>
+      <param name="radius">The radius of the capsule.</param>
+      <param name="direction">The direction into which to sweep the capsule.</param>
+      <param name="hitInfo">If true is returned, hitInfo will contain more information about where the collider was hit. (See Also: RaycastHit).</param>
+      <param name="maxDistance">The max length of the sweep.</param>
+      <param name="layerMask">A that is used to selectively ignore colliders when casting a capsule.</param>
+      <param name="queryTriggerInteraction">Specifies whether this query should hit Triggers.</param>
+      <returns>
+        <para>True when the capsule sweep intersects any collider, otherwise false.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.PhysicsScene.CapsuleCast(UnityEngine.Vector3,UnityEngine.Vector3,System.Single,UnityEngine.Vector3,UnityEngine.RaycastHit[],System.Single,System.Int32,UnityEngine.QueryTriggerInteraction)">
+      <summary>
+        <para>Casts a capsule against all colliders in this physics scene and returns detailed information on what was hit.</para>
+      </summary>
+      <param name="point1">The center of the sphere at the start of the capsule.</param>
+      <param name="point2">The center of the sphere at the end of the capsule.</param>
+      <param name="radius">The radius of the capsule.</param>
+      <param name="direction">The direction into which to sweep the capsule.</param>
+      <param name="results">The buffer to store the results in.</param>
+      <param name="maxDistance">The max length of the sweep.</param>
+      <param name="layerMask">A that is used to selectively ignore colliders when casting a capsule.</param>
+      <param name="queryTriggerInteraction">Specifies whether this query should hit Triggers.</param>
+      <returns>
+        <para>The amount of hits stored to the results buffer.</para>
+      </returns>
+    </member>
     <member name="M:UnityEngine.PhysicsScene.IsEmpty">
       <summary>
         <para>Gets whether the physics Scene is empty or not.</para>
@@ -1855,6 +1948,47 @@ Note that IgnoreLayerCollision will reset the trigger state of affected collider
       </summary>
       <returns>
         <para>Is the physics scene valid?</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.PhysicsScene.OverlapBox(UnityEngine.Vector3,UnityEngine.Vector3,UnityEngine.Collider[],UnityEngine.Quaternion,System.Int32,UnityEngine.QueryTriggerInteraction)">
+      <summary>
+        <para>Find all colliders touching or inside of the given box, and store them into the buffer.</para>
+      </summary>
+      <param name="center">Center of the box.</param>
+      <param name="halfExtents">Half of the size of the box in each dimension.</param>
+      <param name="results">The buffer to store the results in.</param>
+      <param name="orientation">Rotation of the box.</param>
+      <param name="layerMask">A that is used to selectively ignore colliders when casting a ray.</param>
+      <param name="queryTriggerInteraction">Specifies whether this query should hit Triggers.</param>
+      <returns>
+        <para>The amount of colliders stored in results.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.PhysicsScene.OverlapCapsule(UnityEngine.Vector3,UnityEngine.Vector3,System.Single,UnityEngine.Collider[],System.Int32,UnityEngine.QueryTriggerInteraction)">
+      <summary>
+        <para>Check the given capsule against the physics world and return all overlapping colliders in the user-provided buffer.</para>
+      </summary>
+      <param name="point0">The center of the sphere at the start of the capsule.</param>
+      <param name="point1">The center of the sphere at the end of the capsule.</param>
+      <param name="radius">The radius of the capsule.</param>
+      <param name="results">The buffer to store the results into.</param>
+      <param name="layerMask">A that is used to selectively ignore colliders when casting a capsule.</param>
+      <param name="queryTriggerInteraction">Specifies whether this query should hit Triggers.</param>
+      <returns>
+        <para>The amount of entries written to the buffer.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.PhysicsScene.OverlapSphere(UnityEngine.Vector3,System.Single,UnityEngine.Collider[],System.Int32,UnityEngine.QueryTriggerInteraction)">
+      <summary>
+        <para>Computes and stores colliders touching or inside the sphere into the provided buffer.</para>
+      </summary>
+      <param name="position">Center of the sphere.</param>
+      <param name="radius">Radius of the sphere.</param>
+      <param name="results">The buffer to store the results into.</param>
+      <param name="layerMask">A that is used to selectively ignore colliders when casting a ray.</param>
+      <param name="queryTriggerInteraction">Specifies whether this query should hit Triggers.</param>
+      <returns>
+        <para>The amount of colliders stored into the results buffer.</para>
       </returns>
     </member>
     <member name="M:UnityEngine.PhysicsScene.Raycast(UnityEngine.Vector3,UnityEngine.Vector3,System.Single,System.Int32,UnityEngine.QueryTriggerInteraction)">
@@ -1905,6 +2039,36 @@ Note that IgnoreLayerCollision will reset the trigger state of affected collider
       <param name="step">The time to advance physics by.</param>
       <returns>
         <para>Whether the simulation was run or not.  Running the simulation during physics callbacks will always fail.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.PhysicsScene.SphereCast(UnityEngine.Vector3,System.Single,UnityEngine.Vector3,UnityEngine.RaycastHit&amp;,System.Single,System.Int32,UnityEngine.QueryTriggerInteraction)">
+      <summary>
+        <para>Casts a sphere along a ray and returns detailed information on what was hit.</para>
+      </summary>
+      <param name="origin">The center of the sphere at the start of the sweep.</param>
+      <param name="radius">The radius of the sphere.</param>
+      <param name="direction">The direction into which to sweep the sphere.</param>
+      <param name="hitInfo">If true is returned, hitInfo will contain more information about where the collider was hit. (See Also: RaycastHit).</param>
+      <param name="maxDistance">The max length of the cast.</param>
+      <param name="layerMask">A that is used to selectively ignore colliders when casting a capsule.</param>
+      <param name="queryTriggerInteraction">Specifies whether this query should hit Triggers.</param>
+      <returns>
+        <para>True when the sphere sweep intersects any collider, otherwise false.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.PhysicsScene.SphereCast(UnityEngine.Vector3,System.Single,UnityEngine.Vector3,UnityEngine.RaycastHit[],System.Single,System.Int32,UnityEngine.QueryTriggerInteraction)">
+      <summary>
+        <para>Cast sphere along the direction and store the results into buffer.</para>
+      </summary>
+      <param name="origin">The center of the sphere at the start of the sweep.</param>
+      <param name="radius">The radius of the sphere.</param>
+      <param name="direction">The direction into which to sweep the sphere.</param>
+      <param name="results">The buffer to save the results to.</param>
+      <param name="maxDistance">The max length of the cast.</param>
+      <param name="layerMask">A that is used to selectively ignore colliders when casting a capsule.</param>
+      <param name="queryTriggerInteraction">A that is used to selectively ignore colliders when casting a capsule.</param>
+      <returns>
+        <para>The amount of hits stored into the results buffer.</para>
       </returns>
     </member>
     <member name="T:UnityEngine.PhysicsSceneExtensions">
