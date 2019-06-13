@@ -30,6 +30,9 @@ public class Player : MovingObject
     public float attackTime;
     private float attackTimeCounter;
 
+#if UNITY_ANDROID
+    private Vector2 touchOrigin = -Vector2.one;
+#endif
     //Start overrides the Start function of MovingObject
     protected override void Start()
     {

@@ -8,75 +8,27 @@ public class APIAndroid
     private List<Object> inventory = new List<Object>();
     private Map map = new Map();
 
-    public APIAndroid()
-    {
-        /*List<Box> boxes = new List<Box>();
-        boxes.Add(new Box(4, 4, "Izan"));
-        boxes.Add(new Box(18, 8, "Carlo"));
-        boxes.Add(new Box(11, 18, "Mario"));
-
-        string level1 =      "bbbbbbbOOOOOOOOOOOOOObbbbbbb" +
-                             "bbbbbbbLTTTTTTTTTTTTRbbbbbbb" +
-                             "bbbbbbbL            Rbbbbbbb" +
-                             "bbbbbbbL  N         Rbbbbbbb" +
-                             "bbbbbbbL            Rbbbbbbb" +
-                             "bbbbbbbL      N     Rbbbbbbb" +
-                             "bbbbbbbL            Rbbbbbbb" +
-                             "bbbbbbblBwBc CBBwBBBrbbbbbbb" +
-                             "bbbbbbbbbbOL1ROObbbbbbbbbbbb" +
-                             "bbbbbbbbbbLT TTRbbbbbbbbbbbb" +
-                             "bbbbbbbbbbL    Rbbbbbbbbbbbb" +
-                             "bbbbbbbbbbL    RbOOOOOObbbbb" +
-                             "bbbbbbbbbbL    RbLTTTTRbbbbb" +
-                             "bbbbbbbbbbL    RbL    Rbbbbb" +
-                             "bbbbbbbbbbL    RbL    Rbbbbb" +
-                             "bbbbbbbbbbL    RbL  N Rbbbbb" +
-                             "bbbbbbbbbbL N  RbL    Rbbbbb" +
-                             "OOOOOOOOObL    Rblc Cwrbbbbb" +
-                             "LTTTTTTTTTT    RbbL2Rbbbbbbb" +
-                             "L              TTTT Rbbbbbbb" +
-                             "L                   Rbbbbbbb" +
-                             "lwwBc CwBBBwBBwBwBwBrbbbbbbb" +
-                             "OOOOL3ROObbbbbbbbbbbbbbbbbbb" +
-                             "LTTTT TTRbbbbbbbbbbbbbbbbbbb" +
-                             "L       Rbbbbbbbbbbbbbbbbbbb" +
-                             "L       Rbbbbbbbbbbbbbbbbbbb" +
-                             "L       Rbbbbbbbbbbbbbbbbbbb" +
-                             "lwBBwBBBrbbbbbbbbbbbbbbbbbbb";
-
-        Map mapa1 = new Map(level1,28,boxes);
-
-        List<Box> boxes2 = new List<Box>();
-        boxes2.Add(new Box(4, 4, "Sheila"));
-
-        string level2 =     "bbbbbbbbbbbbbbbbbb" +
-                            "bbbbbbbbbbbbbbbbbb" +
-                            "bbbbbbbbbbbbbbbbbb" +
-                            "bbbbbbbbbbbbbbbbbb" +
-                            "bbbbbbbbbbbbbbbbbb" +
-                            "bbbbbbbbbbbbbbbbbb" +
-                            "bbbbbbbbbbbbbbbbbb" +
-                            "OOOOOOOOOOOOOOOOOO" +
-                            "LTTTTTTTTTTTTTTTTR" +
-                            "L                R" +
-                            "L                R" +
-                            "lwwBc CwBBwBwwBwBr" +
-                            "OOOOL1ROObbbbbbbbb" +
-                            "LTTTT TTRbbbbbbbbb" +
-                            "L       Rbbbbbbbbb" +
-                            "L       Rbbbbbbbbb" +
-                            "L       Rbbbbbbbbb" +
-                            "lwBBwBBBrbbbbbbbbb";
-
-        Map mapa2 = new Map(level2,18, boxes2);
-
-        this.maps.Add(mapa1);
-        this.maps.Add(mapa2);*/
-    }
+    public APIAndroid(){}
 
     public PlayerStats getPlayerStats()
     {
+#if UNITY_ANDROID
+        try
+        {
+            AndroidJavaClass javaClass = new AndroidJavaClass("edu.upc.dsa.escaperoomapp.ApiUnity");
+            String stringAndroid = javaClass.CallStatic<String>("getPlayerStats");
+            Debug.Log("Stats: ");
+            Debug.Log(stringAndroid);
+        }
+        catch (Exception ex)
+        {
+            Debug.Log("Error Unity, method getPlayerStats");
+            Debug.Log(ex);
+        }
+#else
         string stringAndroid = "1,50,00:05:23,2,200,woodSword,ironShield";
+#endif
+
 
         string[] playerStatsVector = stringAndroid.Split(',');
 
@@ -95,7 +47,22 @@ public class APIAndroid
 
     public List<Object> getInventory()
     {
+#if UNITY_ANDROID
+        try
+        {
+            AndroidJavaClass javaClass = new AndroidJavaClass("edu.upc.dsa.escaperoomapp.ApiUnity");
+            String stringAndroid = javaClass.CallStatic<String>("getInventory");
+            Debug.Log("Inventory: ");
+            Debug.Log(stringAndroid);
+        }
+        catch (Exception ex)
+        {
+            Debug.Log("Error Unity, method getPlayerStats");
+            Debug.Log(ex);
+        }
+#else
         string stringAndroid = "llave,llaveR,1/llave,llaveA,2/pista,pistaAmarilla,1/pista,pistaAzul,1";
+#endif
 
         string[] inventoryVector = stringAndroid.Split('/');
 
@@ -119,6 +86,37 @@ public class APIAndroid
 
     public Map getMap(int level)
     {
+#if UNITY_ANDROID
+        try
+        {
+            AndroidJavaClass javaClass = new AndroidJavaClass("edu.upc.dsa.escaperoomapp.ApiUnity");
+            String stringAndroid = javaClass.CallStatic<String>("getMap", level);
+            Debug.Log("Map: ");
+            Debug.Log(stringAndroid);
+
+            string[] mapa1Vector = stringAndroid.Split('*');
+
+                string[] boxes1Vector = mapa1Vector[2].Split('/');
+
+                List<Box> boxes = new List<Box>();
+
+                foreach(string s in boxes1Vector)
+                {
+                    string [] sVector = s.Split(',');
+                    boxes.Add(new Box(Int32.Parse(sVector[0]), Int32.Parse(sVector[1]), sVector[2]));
+                }
+
+                Map mapObject = new Map(mapa1Vector[0], Int32.Parse(mapa1Vector[1]),boxes);
+                this.map = mapObject;
+
+                return this.map;
+        }
+        catch (Exception ex)
+        {
+            Debug.Log("Error Unity, method getPlayerStats");
+            Debug.Log(ex);
+        }
+#else
         string mapa1 =   "bbbbbbbOOOOOOOOOOOOOObbbbbbb" +
                          "bbbbbbbLTTTTTTTTTTTTRbbbbbbb" +
                          "bbbbbbbLV          VRbbbbbbb" +
@@ -212,6 +210,7 @@ public class APIAndroid
         }
         
         return this.map;
+#endif
     }
     
     public void setMap(Map map)
