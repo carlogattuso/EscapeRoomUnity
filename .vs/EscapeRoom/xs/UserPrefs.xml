@@ -2,8 +2,11 @@
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/APIAndroid.cs">
     <Files>
       <File FileName="Assets/Scripts/GameManager.cs" Line="347" Column="2" />
-      <File FileName="Assets/Scripts/APIAndroid.cs" Line="169" Column="46" />
-      <File FileName="Assets/Scripts/RedDoor.cs" Line="113" Column="1" />
+      <File FileName="Assets/Scripts/APIAndroid.cs" Line="88" Column="69" />
+      <File FileName="Assets/Scripts/RedDoor.cs" Line="109" Column="52" />
+      <File FileName="Assets/Scripts/BlueDoor.cs" Line="66" Column="50" />
+      <File FileName="Assets/Scripts/YellowDoor.cs" Line="112" Column="55" />
+      <File FileName="Assets/Scripts/BoardManager.cs" Line="174" Column="4" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">

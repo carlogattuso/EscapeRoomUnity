@@ -76,7 +76,7 @@ public class APIAndroid
 
     public PlayerStats getPlayerStats()
     {
-        string stringAndroid = "1,50,00:05:23,2,200,0,0";
+        string stringAndroid = "1,50,00:05:23,2,200,woodSword,ironShield";
 
         string[] playerStatsVector = stringAndroid.Split(',');
 
@@ -121,15 +121,15 @@ public class APIAndroid
     {
         string mapa1 =   "bbbbbbbOOOOOOOOOOOOOObbbbbbb" +
                          "bbbbbbbLTTTTTTTTTTTTRbbbbbbb" +
-                         "bbbbbbbL            Rbbbbbbb" +
+                         "bbbbbbbLV          VRbbbbbbb" +
                          "bbbbbbbL  N     X   Rbbbbbbb" +
                          "bbbbbbbL            Rbbbbbbb" +
                          "bbbbbbbL      N     Rbbbbbbb" +
                          "bbbbbbbL            Rbbbbbbb" +
                          "bbbbbbblBwBc CBBwBBBrbbbbbbb" +
                          "bbbbbbbbbbOL1ROObbbbbbbbbbbb" +
-                         "bbbbbbbbbbLT TTRbbbbbbbbbbbb" +
-                         "bbbbbbbbbbL    Rbbbbbbbbbbbb" +
+                         "bbbbbbbbbbLf fTRbbbbbbbbbbbb" +
+                         "bbbbbbbbbbLV   Rbbbbbbbbbbbb" +
                          "bbbbbbbbbbL    RbOOOOOObbbbb" +
                          "bbbbbbbbbbL    RbLTTTTRbbbbb" +
                          "bbbbbbbbbbL    RbL    Rbbbbb" +
@@ -137,15 +137,15 @@ public class APIAndroid
                          "bbbbbbbbbbL    RbL  N Rbbbbb" +
                          "bbbbbbbbbbL N  RbL    Rbbbbb" +
                          "OOOOOOOOObL    Rblc Cwrbbbbb" +
-                         "LTTTTTTTTTT    RbbL3Rbbbbbbb" +
-                         "L              TTTT Rbbbbbbb" +
-                         "L                   Rbbbbbbb" +
-                         "lwwBc CwBBBwBBwBwBwBrbbbbbbb" +
+                         "LTTTTTTTTTT    ROOL3RObbbbbb" +
+                         "LV             TTTf fRbbbbbb" +
+                         "L                    Rbbbbbb" +
+                         "lwwBc CwBBBwBBwBwBwBBrbbbbbb" +
                          "OOOOL3ROObbbbbbbbbbbbbbbbbbb" +
-                         "LTTTT TTRbbbbbbbbbbbbbbbbbbb" +
+                         "LTTTf fTRbbbbbbbbbbbbbbbbbbb" +
+                         "LV      Rbbbbbbbbbbbbbbbbbbb" +
                          "L       Rbbbbbbbbbbbbbbbbbbb" +
-                         "L       Rbbbbbbbbbbbbbbbbbbb" +
-                         "L       Rbbbbbbbbbbbbbbbbbbb" +
+                         "L      VRbbbbbbbbbbbbbbbbbbb" +
                          "lwBBwBBBrbbbbbbbbbbbbbbbbbbb*28*"+
                          "4,4,Capital de España?-Madrid-Real/"+
                          "18,8,En qué equipo juega Messi?-Barcelona-Empieza por B/"+
@@ -164,7 +164,7 @@ public class APIAndroid
                        "L                R" +
                        "lwwBc CwBBwBwwBwBr" +
                        "OOOOL3ROObbbbbbbbb" +
-                       "LTTTT TTRbbbbbbbbb" +
+                       "LTTTf fTRbbbbbbbbb" +
                        "L       Rbbbbbbbbb" +
                        "L       Rbbbbbbbbb" +
                        "L       Rbbbbbbbbb" +

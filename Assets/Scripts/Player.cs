@@ -10,6 +10,8 @@ public class Player : MovingObject
     public int pointsPerPurplePotion = 10;              //Number of points to add to player food points when picking up a food object.
     public int pointsPerRedPotion = 20;              //Number of points to add to player food points when picking up a soda object.
 
+    public AudioClip playerFootStep;
+
     private int damageToEnemy;
     public Text lifeText;
 
@@ -162,6 +164,7 @@ public class Player : MovingObject
         if (Move(xDir, yDir, out hit))
         {
             //Call RandomizeSfx of SoundManager to play the move sound, passing in two audio clips to choose from.
+            SoundManager.instance.PlaySingle(playerFootStep);
         }
 
         if ((hit.transform!=null)&&(hit.transform.CompareTag("RedDoor")))

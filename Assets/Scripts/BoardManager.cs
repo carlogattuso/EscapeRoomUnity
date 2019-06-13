@@ -20,6 +20,7 @@ public class BoardManager : MonoBehaviour
     public GameObject cornerLeft;
     public GameObject roundCornerLeft;
     public GameObject roundCornerRight;
+    public GameObject flagOuterWall;
 
     //Floors
     public GameObject[] floors;
@@ -33,6 +34,7 @@ public class BoardManager : MonoBehaviour
     public GameObject yellowDoor;
     public GameObject exit;
     public GameObject enemy;
+    public GameObject candle;
 
     private Transform boardHolder;                                  
     private List<Vector3> gridPositions = new List<Vector3>();   
@@ -127,10 +129,14 @@ public class BoardManager : MonoBehaviour
                     toInstantiate = floors[Random.Range(0, floors.Length)];
                     Instantiate(toInstantiate, dimension, i);
                     break;
+                case 'f':
+                    toInstantiate = flagOuterWall;
+                    Instantiate(toInstantiate, dimension, i);
+                    break;
                 case 'b':
                     //Background
                     break;
-                 default:
+                default:
                     toInstantiate = floors[Random.Range(0, floors.Length)];
                     Instantiate(toInstantiate, dimension, i);
                     break;
@@ -155,6 +161,10 @@ public class BoardManager : MonoBehaviour
                     break;
                 case 'X':
                     toInstantiate = exit;
+                    Instantiate(toInstantiate, dimension, i);
+                    break;
+                case 'V':
+                    toInstantiate = candle;
                     Instantiate(toInstantiate, dimension, i);
                     break;
             }

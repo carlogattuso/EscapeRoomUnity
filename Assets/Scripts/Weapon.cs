@@ -17,7 +17,7 @@ public class Weapon : MonoBehaviour
         switch (GameManager.instance.getWeapon())
         {
             //Blocking walls
-            case "swordBasic":
+            case "woodSword":
                 spriteRenderer.sprite = woodSword;
                 GameManager.instance.damageToEnemy = 15;
                 break;
