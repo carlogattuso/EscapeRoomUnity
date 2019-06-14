@@ -10,7 +10,7 @@ using System;
 public class GameManager : MonoBehaviour
 {
     public float levelStartDelay = 2f;                      //Time to wait before starting level, in seconds.
-    public float turnDelay = 0.1f;                          //Delay between each Player turn.
+    public float turnDelay = 0.02f;                          //Delay between each Player turn.
     public static GameManager instance = null;              //Static instance of GameManager which allows it to be accessed by any other script.
 
     //User variables

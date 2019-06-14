@@ -160,7 +160,7 @@ public class APIAndroid
 
 #else
 
-        string mapa1 =   "bbbbbbbOOOOOOOOOOOOOObbbbbbb" +
+        string mapa3 =   "bbbbbbbOOOOOOOOOOOOOObbbbbbb" +
                          "bbbbbbbLTTTTTTTTTTTTRbbbbbbb" +
                          "bbbbbbbLV    H     VRbbbbbbb" +
                          "bbbbbbbL  N     X   Rbbbbbbb" +
@@ -201,31 +201,82 @@ public class APIAndroid
                          "3,7,Jaimito-Los enemigos son muy peligrosos en este castillo...-Aunque parezca que no se mueven.../" +
                          "12,16,Pedrito-Has comprado pistas?-En la tienda puedes hacerlo...";
 
-        string mapa2 = "bbbbbbbbbbbbbbbbbb" +
-                       "bbbbbbbbbbbbbbbbbb" +
-                       "bbbbbbbbbbbbbbbbbb" +
-                       "bbbbbbbbbbbbbbbbbb" +
-                       "bbbbbbbbbbbbbbbbbb" +
-                       "bbbbbbbbbbbbbbbbbb" +
-                       "bbbbbbbbbbbbbbbbbb" +
-                       "OOOOOOOOOOOOOOOOOO" +
-                       "LTTTTTTTTTTTTTTTTR" +
-                       "L                R" +
-                       "L                R" +
-                       "lwwBc CwBBwBwwBwBr" +
-                       "OOOOL3ROObbbbbbbbb" +
-                       "LTTTf fTRbbbbbbbbb" +
-                       "L       Rbbbbbbbbb" +
-                       "L       Rbbbbbbbbb" +
-                       "L       Rbbbbbbbbb" +
-                       "lwBBwBBBrbbbbbbbbb*18*"+
-                       "4,4,Quien es el más feo de la UPC?-Mario-Empieza por M";
+        string mapa1 = "bbbbbbbbbbbbbbbbbbbbbbb" +
+                       "bbbbbbbbbbbbbbbbbbbbbbb" +
+                       "bbbbbbbbbbbbbbbbbbbbbbb" +
+                       "bbbbbbbbbbbbbbbbbbbbbbb" +
+                       "OOOOOOOOOOOOOOOOOO00000" +
+                       "LTTTTTTTTTTTTTTTTTTTTTR" +
+                       "L N  R    X           R" +
+                       "L  L1R                R" +
+                       "L  L RTTTTTTTT1TTTTTTTR" +
+                       "L  L RL NN            R" +
+                       "L HL RL N  RLTTTTTTTTTR" +
+                       "LBBL RL   NRL         R" +
+                       "L00L RL    RL         R" +
+                       "bbLT2TTT2TTTT2TTTTTT TR" +
+                       "bbL            RL     R" +
+                       "bbL     v      RL   H R" +
+                       "lwwBc CwBBwBl rwBwBwBwr" +
+                       "OOOOL3ROObbbL Rbbbbbbbb" +
+                       "LTTTf fTRbbbL Rbbbbbbbb" +
+                       "L       RLTTl lTTTTTTrb" +
+                       "L       RL        N HRb" +
+                       "L       RLwwwwrwwwwwwrb" +
+                       "lwBBwBBBrbbbbbbbbbbbbbb*23*" +
+                       "4,4,Quien va acabar el Unity?-Izan-Se llama iz.../" +
+                       "3,8,Como sigue la canción Cristina?-Cristina-Si te fijas ya te lo he dicho/" +
+                       "7,8,Despues del 1 va el...?-2-Va antes que el 3/" +
+                       "12,8,Despues del 3 va el...?-4-Va antes que el 5/" +
+                       "3,14,Como se llama el novio de la hermana del Mario?-JSON-El nombre lo utilizamos constantemente./" +
+                       "13,13,Que nota saco Carlo Gattuso en el primer control de telematica?-0.8-Puede ser que suspendiera./" +
+                       "7,6,Pepito-Ten cuidado donde pisas...-Podrias llevarte una sorpresa.../" +
+                       "2,6,vida-20/" +
+                       "19,1,dinero-10/" +
+                       "19,6,dinero-20/" +
+                       "1,11,vida-100";
+
+
+        string mapa2 = "OOOOOOOOObb" +
+                       "LTTTTTTTRbb" +
+                       "L      XRbb" +
+                       "L H v   Rbb" +
+                       "lwwBc Cwrbb" +
+                       "OOOOL3ROObb" +
+                       "LTTTf fTRbb" +
+                       "L       Rbb" +
+                       "L       Rbb" +
+                       "L       Rbb" +
+                       "lwBBwBBBrbb*11*" +
+                       "4,4,Quien es el más tonto del pueblo?-Carlo-Tiene una altura peculiar"+
+                       "1,6,vida-20/"+
+                       "3,6,Pedrito-Donde crees que vas con esa vida?-Coge este cofre que lo necesitarás...";
+
+        string mapa4 = "bbbbbbbbbbbbb" +
+                       "OOOOOOOOOOOOO" +
+                       "OOOOOOOOOOOOO" +
+                       "LTTTTTTTTTRbb" +
+                       "LH        HRb" +
+                       "L          Rb" +
+                       "l   t      Rb" +
+                       "LH         Rb" +
+                       "LwBBwBBBBl Rb" +
+                       "LTTTTTTTTT3bb" +
+                       "L      v   Rb" +
+                       "L          Rb" +
+                       "lwBBwBBBBwwrb*13*" +
+                       "9,2,Que es lo que más deseas en este mundo?-Aprobar DSA-Si no lo haces tendrás que pagar 10 créditos otra vez./" +
+                       "0,4,vida-100/" +
+                       "9,7,vida-100/" +
+                       "0,7,vida-100/" +
+                       "6,1,Pedrito-Nadie pensaba que llegarias hasta aquí, pero lo has conseguido-entra ahí dentro a por lo que te pertenece.";
+
 
         switch (level)
         {
             case 1:
                 //Cogemos el mapa 1
-                string[] mapa1Vector = mapa1.Split('*');
+                string[] mapa1Vector = mapa4.Split('*');
 
                 string[] boxes1Vector = mapa1Vector[2].Split('/');
 
@@ -258,6 +309,42 @@ public class APIAndroid
 
                 Map mapObject2 = new Map(mapa2Vector[0], Int32.Parse(mapa2Vector[1]), boxes2);
                 this.map = mapObject2;
+
+                break;
+            case 3:
+                //Cogemos el mapa 1
+                string[] mapa3Vector = mapa3.Split('*');
+
+                string[] boxes3Vector = mapa3Vector[2].Split('/');
+
+                List<Box> boxes3 = new List<Box>();
+
+                foreach (string s in boxes3Vector)
+                {
+                    string[] sVector = s.Split(',');
+                    boxes3.Add(new Box(Int32.Parse(sVector[0]), Int32.Parse(sVector[1]), sVector[2]));
+                }
+
+                Map mapObject3 = new Map(mapa3Vector[0], Int32.Parse(mapa3Vector[1]), boxes3);
+                this.map = mapObject3;
+
+                break;
+            case 4:
+                //Cogemos el mapa 1
+                string[] mapa4Vector = mapa4.Split('*');
+
+                string[] boxes4Vector = mapa4Vector[2].Split('/');
+
+                List<Box> boxes4 = new List<Box>();
+
+                foreach (string s in boxes4Vector)
+                {
+                    string[] sVector = s.Split(',');
+                    boxes4.Add(new Box(Int32.Parse(sVector[0]), Int32.Parse(sVector[1]), sVector[2]));
+                }
+
+                Map mapObject4 = new Map(mapa4Vector[0], Int32.Parse(mapa4Vector[1]), boxes4);
+                this.map = mapObject4;
 
                 break;
         }
