@@ -37,7 +37,6 @@ public class APIAndroid
         string stringAndroid = "1,50,00:05:23,2,200,woodSword,ironShield";
 #endif
 
-
         string[] playerStatsVector = stringAndroid.Split(',');
 
         PlayerStats player = new PlayerStats(Int32.Parse(playerStatsVector[0]), Int32.Parse(playerStatsVector[1]),
@@ -76,16 +75,16 @@ public class APIAndroid
             stringAndroid = "llave,llaveR,1/llave,llaveA,2/pista,pistaAmarilla,1/pista,pistaAzul,1";
 
 #else
-        string stringAndroid = "llave,llaveR,1/llave,llaveA,2/pista,pistaAmarilla,1/pista,pistaAzul,1";
+        string stringAndroid = "llave,llaveR,1/llave,llaveB,2/pista,pistaAmarilla,1/pista,pistaAzul,1";
 #endif
 
         string[] inventoryVector = stringAndroid.Split('/');
 
         List<Object> inventoryList = new List<Object>();
 
-        foreach(string s in inventoryVector)
+        foreach (string s in inventoryVector)
         {
-            string [] sVector = s.Split(',');
+            string[] sVector = s.Split(',');
             Object o = new Object(sVector[0], sVector[1], sVector[2]);
             inventoryList.Add(o);
         }
@@ -160,37 +159,47 @@ public class APIAndroid
         return this.map;
 
 #else
+
         string mapa1 =   "bbbbbbbOOOOOOOOOOOOOObbbbbbb" +
                          "bbbbbbbLTTTTTTTTTTTTRbbbbbbb" +
-                         "bbbbbbbLV          VRbbbbbbb" +
+                         "bbbbbbbLV    H     VRbbbbbbb" +
                          "bbbbbbbL  N     X   Rbbbbbbb" +
                          "bbbbbbbL            Rbbbbbbb" +
                          "bbbbbbbL      N     Rbbbbbbb" +
-                         "bbbbbbbL            Rbbbbbbb" +
+                         "bbbbbbbL H          Rbbbbbbb" +
                          "bbbbbbblBwBc CBBwBBBrbbbbbbb" +
                          "bbbbbbbbbbOL1ROObbbbbbbbbbbb" +
                          "bbbbbbbbbbLf fTRbbbbbbbbbbbb" +
-                         "bbbbbbbbbbLV   Rbbbbbbbbbbbb" +
+                         "bbbbbbbbbbLV v Rbbbbbbbbbbbb" +
                          "bbbbbbbbbbL    RbOOOOOObbbbb" +
                          "bbbbbbbbbbL    RbLTTTTRbbbbb" +
-                         "bbbbbbbbbbL    RbL    Rbbbbb" +
+                         "bbbbbbbbbbL  H RbL    Rbbbbb" +
                          "bbbbbbbbbbL    RbL    Rbbbbb" +
                          "bbbbbbbbbbL    RbL  N Rbbbbb" +
                          "bbbbbbbbbbL N  RbL    Rbbbbb" +
                          "OOOOOOOOObL    Rblc Cwrbbbbb" +
                          "LTTTTTTTTTT    ROOL3RObbbbbb" +
-                         "LV             TTTf fRbbbbbb" +
+                         "LV  v   H      TTTf fRbbbbbb" +
                          "L                    Rbbbbbb" +
                          "lwwBc CwBBBwBBwBwBwBBrbbbbbb" +
                          "OOOOL3ROObbbbbbbbbbbbbbbbbbb" +
                          "LTTTf fTRbbbbbbbbbbbbbbbbbbb" +
-                         "LV      Rbbbbbbbbbbbbbbbbbbb" +
-                         "L       Rbbbbbbbbbbbbbbbbbbb" +
+                         "LV  t  vRbbbbbbbbbbbbbbbbbbb" +
+                         "L     H Rbbbbbbbbbbbbbbbbbbb" +
                          "L      VRbbbbbbbbbbbbbbbbbbb" +
-                         "lwBBwBBBrbbbbbbbbbbbbbbbbbbb*28*"+
-                         "4,4,Capital de España?-Madrid-Real/"+
-                         "18,8,En qué equipo juega Messi?-Barcelona-Empieza por B/"+
-                         "11,18,Mas vale tarde que...?-nunca-jamás";
+                         "lwBBwBBBrbbbbbbbbbbbbbbbbbbb*28*" +
+                         "4,4,Capital de España?-Madrid-Real/" +
+                         "18,8,En qué equipo juega Messi?-Barcelona-Empieza por B/" +
+                         "11,18,Mas vale tarde que...?-nunca-jamás/" +
+                         "5,1,vida-20/" +
+                         "7,7,dinero-15/" +
+                         "16,6,dinero-30/" +
+                         "12,13,vida-10/" +
+                         "8,20,dinero-10/" +
+                         "12,24,vida-50/" +
+                         "6,2,Pepito-Ten cuidado donde pisas...-Podrias llevarte una sorpresa.../" +
+                         "3,7,Jaimito-Los enemigos son muy peligrosos en este castillo...-Aunque parezca que no se mueven.../" +
+                         "12,16,Pedrito-Has comprado pistas?-En la tienda puedes hacerlo...";
 
         string mapa2 = "bbbbbbbbbbbbbbbbbb" +
                        "bbbbbbbbbbbbbbbbbb" +
@@ -232,6 +241,7 @@ public class APIAndroid
                 this.map = mapObject;
 
                 break;
+
             case 2:
                 //Cogemos el mapa 2
                 string[] mapa2Vector = mapa2.Split('*');
@@ -269,10 +279,27 @@ public class APIAndroid
         stringUnity += playerStats.getCash() + ",";
         stringUnity += playerStats.getTime() + ",";
         stringUnity += playerStats.getEnemiesSlained() + ",";
+        stringUnity += playerStats.getLife() + ",";
         stringUnity += playerStats.getWeapon() + ",";
         stringUnity += playerStats.getShield() + ",";
 
         return stringUnity;
+
+#if UNITY_ANDROID
+        try
+        {
+            AndroidJavaClass javaClass = new AndroidJavaClass("edu.upc.dsa.escaperoomapp.ApiUnity");
+            javaClass.CallStatic("sendStats", stringUnity);
+            Debug.Log("stringStats: ");
+            Debug.Log(stringUnity);
+
+        }
+        catch (Exception ex)
+        {
+            Debug.Log("Error Unity, method getPlayerStats");
+            Debug.Log(ex);
+        }
+#endif
     }
 
     public string sendInventory(List<Object> inventory)
@@ -288,5 +315,20 @@ public class APIAndroid
         }
 
         return stringUnity;
+
+#if UNITY_ANDROID
+        try
+        {
+            AndroidJavaClass javaClass = new AndroidJavaClass("edu.upc.dsa.escaperoomapp.ApiUnity");
+            javaClass.CallStatic("sendInventory", stringUnity);
+            Debug.Log("stringStats: ");
+            Debug.Log(stringUnity);
+        }
+        catch (Exception ex)
+        {
+            Debug.Log("Error Unity, method sendInventory");
+            Debug.Log(ex);
+        }
+#endif
     }
 }

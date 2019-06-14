@@ -61,7 +61,7 @@ public class Enemy : MovingObject
     protected override void AttemptMove<T>(ref int xDir, ref int yDir)
     {
         //Check if skipMove is true, if so set it to false and skip this turn.
-        if (skipMove)
+        if (skipMove || !movable)
         {
             skipMove = false;
             return;

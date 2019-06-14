@@ -305,7 +305,7 @@ It does not make a lot of sense to wait for acknowledgement forever. This parame
     </member>
     <member name="P:UnityEngine.Networking.ConnectionConfig.UsePlatformSpecificProtocols">
       <summary>
-        <para>When starting a server use protocols that make use of platform specific optimisations where appropriate rather than cross-platform protocols. (Playstation/Xbox consoles only).</para>
+        <para>When starting a server use protocols that make use of platform specific optimisations where appropriate rather than cross-platform protocols. (Sony consoles only).</para>
       </summary>
     </member>
     <member name="M:UnityEngine.Networking.ConnectionConfig.Validate(UnityEngine.Networking.ConnectionConfig)">
@@ -965,15 +965,6 @@ DisconnectNetworkHost can only be called by the group owner on the relay server.
       <param name="hostId">Host ID associated with this connection.</param>
       <param name="error">Error (can be cast to Networking.NetworkError for more information).</param>
     </member>
-    <member name="M:UnityEngine.Networking.NetworkTransport.DoesEndPointUsePlatformProtocols(System.Net.EndPoint)">
-      <summary>
-        <para>Check if the transport is using a platform specific protocol.</para>
-      </summary>
-      <param name="endPoint">EndPoint instance to check.</param>
-      <returns>
-        <para>True if the given endpoint is using a platform protocol.</para>
-      </returns>
-    </member>
     <member name="M:UnityEngine.Networking.NetworkTransport.FinishSendMulticast(System.Int32,System.Byte&amp;)">
       <summary>
         <para>Finalizes sending of a message to a group of connections. Only one multicast message at a time is allowed per host.</para>
@@ -1485,12 +1476,6 @@ Can only be called by the relay group owner.</para>
       <param name="version">Version part of the credentials associated with this broadcast.</param>
       <param name="subversion">Subversion part of the credentials associated with this broadcast.</param>
       <param name="error">Error (can be cast to Networking.NetworkError for more information).</param>
-    </member>
-    <member name="M:UnityEngine.Networking.NetworkTransport.SetMulticastLock(System.Boolean)">
-      <summary>
-        <para>Enable or disable a multicast lock.</para>
-      </summary>
-      <param name="enabled"></param>
     </member>
     <member name="M:UnityEngine.Networking.NetworkTransport.SetPacketStat(System.Int32,System.Int32,System.Int32,System.Int32)">
       <summary>

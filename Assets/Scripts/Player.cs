@@ -15,13 +15,18 @@ public class Player : MovingObject
     private int damageToEnemy;
     public Text lifeText;
 
+    public Text cashText;
+
     private Animator animator;                  //Used to store a reference to the Player's animator component.
-    //private Vector2 touchOrigin = -Vector2.one; //Used to store location of screen touch origin for mobile controls.
+    private Vector2 touchOrigin = -Vector2.one; //Used to store location of screen touch origin for mobile controls.
 
     private RedDoor redDoor;
     private BlueDoor blueDoor;
     private YellowDoor yellowDoor;
     private string currentDoor = null;
+
+    private Chest chest;
+    private Aldeano aldeano;
 
     private bool playerMoving;
     private Vector2 lastMove;
@@ -49,8 +54,8 @@ public class Player : MovingObject
         //If it's not the player's turn, exit the function.
         if (!GameManager.instance.playersTurn) return;
 
-        float horizontalFloat = 0f;
-        float verticalFloat = 0f;
+        float horizontalFloat;
+        float verticalFloat;
         int horizontal = 0;     //Used to store the horizontal move direction.
         int vertical = 0;       //Used to store the vertical move direction.
 
@@ -101,20 +106,14 @@ public class Player : MovingObject
                     
                     //Set touchOrigin.x to -1 so that our else if statement will evaluate false and not repeat immediately.
                     touchOrigin.x = -1;
-
+                    
                     //Check if the difference along the x axis is greater than the difference along the y axis.
                     if (Mathf.Abs(x) > Mathf.Abs(y))
-                    {
                         //If x is greater than zero, set horizontal to 1, otherwise set it to -1
                         horizontal = x > 0 ? 1 : -1;
-                        horizontalFloat = horizontal;
-                    }
                     else
-                    {
                         //If y is greater than zero, set horizontal to 1, otherwise set it to -1
                         vertical = y > 0 ? 1 : -1;
-                        verticalFloat = vertical;
-                    }
                 }
             }
             
@@ -133,10 +132,6 @@ public class Player : MovingObject
                 AttemptMove<Enemy>(ref horizontal, ref vertical);
                 playerMoving = true;
                 lastMove = new Vector2(horizontalFloat, verticalFloat);
-            }
-            else
-            {
-                GameManager.instance.playersTurn = false;
             }
         }
 
@@ -205,6 +200,25 @@ public class Player : MovingObject
             this.currentDoor = "yellow";
 
             yellowDoor.ShowDialog();
+        }
+
+        else if ((hit.transform != null) && (hit.transform.CompareTag("Chest")))
+        {
+            Chest hitComponent = hit.transform.GetComponent<Chest>();
+
+            if (!hitComponent.opened)
+            {
+                chest = hitComponent as Chest;
+                chest.OpenChest();
+            }
+        }
+
+        else if ((hit.transform != null) && (hit.transform.CompareTag("Villager")))
+        {
+            Aldeano hitComponent = hit.transform.GetComponent<Aldeano>();
+
+            aldeano = hitComponent as Aldeano;
+            aldeano.LaunchDialog();
         }
 
         //Set the playersTurn boolean of GameManager to false now that players turn is over.
@@ -352,5 +366,21 @@ public class Player : MovingObject
                 this.yellowDoor.ShowClueDialog();
                 break;
         }
+    }
+
+    public void setLifeTextListener(int value)
+    {
+        int newValue = GameManager.instance.playerStats.getLife() + value;
+        this.lifeText.text = "Life: " + newValue;
+        GameManager.instance.playerStats.setLife(newValue);
+        Debug.Log("Life value: " + GameManager.instance.playerStats.getLife());
+    }
+
+    public void setCashTextListener(int value)
+    {
+        int newValue = GameManager.instance.playerStats.getCash() + value;
+        this.lifeText.text = "Cash: " + newValue;
+        GameManager.instance.playerStats.setCash(newValue);
+        Debug.Log("Life value: " + GameManager.instance.playerStats.getCash());
     }
 }

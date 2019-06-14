@@ -95,7 +95,7 @@ public class BlueDoor : MonoBehaviour
     }
     public void OpenDoorWithKey()
     {
-        if (!GameManager.instance.FindKey("llaveA"))
+        if (!GameManager.instance.FindKey("llaveB"))
         {
             keyErrorTrigger.TriggerDialogue();
             return;

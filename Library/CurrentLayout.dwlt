@@ -21,7 +21,7 @@ MonoBehaviour:
   m_ShowMode: 4
   m_Title: 
   m_RootView: {fileID: 4}
-  m_MinSize: {x: 950, y: 300}
+  m_MinSize: {x: 950, y: 448}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &2
 MonoBehaviour:
@@ -76,7 +76,7 @@ MonoBehaviour:
   - {fileID: 20}
   - {fileID: 21}
   m_Selected: 2
-  m_LastSelected: 0
+  m_LastSelected: 1
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -167,7 +167,7 @@ MonoBehaviour:
   m_MinSize: {x: 507, y: 398}
   m_MaxSize: {x: 14002, y: 14048}
   vertical: 1
-  controlID: 107
+  controlID: 108
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -192,7 +192,7 @@ MonoBehaviour:
   m_MinSize: {x: 507, y: 398}
   m_MaxSize: {x: 14002, y: 14048}
   vertical: 0
-  controlID: 108
+  controlID: 109
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -217,7 +217,7 @@ MonoBehaviour:
   m_MinSize: {x: 232, y: 398}
   m_MaxSize: {x: 10002, y: 14048}
   vertical: 1
-  controlID: 109
+  controlID: 110
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -242,7 +242,7 @@ MonoBehaviour:
   m_MinSize: {x: 206, y: 124}
   m_MaxSize: {x: 8006, y: 4024}
   vertical: 0
-  controlID: 110
+  controlID: 111
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -262,8 +262,8 @@ MonoBehaviour:
     y: 0
     width: 926
     height: 487
-  m_MinSize: {x: 102, y: 124}
-  m_MaxSize: {x: 4002, y: 4024}
+  m_MinSize: {x: 100, y: 100}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 14}
   m_Panes:
   - {fileID: 15}
@@ -346,7 +346,7 @@ MonoBehaviour:
         m_IsRenaming: 0
         m_OriginalEventType: 11
         m_IsRenamingFilename: 0
-        m_ClientGUIView: {fileID: 2}
+        m_ClientGUIView: {fileID: 0}
       m_SearchString: 
     m_ExpandedScenes: []
     m_CurrenRootInstanceID: 0
@@ -564,8 +564,8 @@ MonoBehaviour:
     height: 468
   m_PersistentViewDataDictionary: {fileID: 0}
   m_ResetOnNextRepaint: 0
-  m_SelectedAssetPath: Assets/Sprites/Items/Candle/Candle2.png
-  m_SelectedSpriteRectGUID: eb02ba7cdc38946a287419ab028d15ac
+  m_SelectedAssetPath: "Assets/Sprites/mun\u0303eco1/mun\u0303eco1_front.png"
+  m_SelectedSpriteRectGUID: 4df6c53d55c3540709f998cc7a3aea3f
   m_LastUsedModuleTypeName: UnityEditor.SpriteFrameModule
 --- !u!114 &18
 MonoBehaviour:
@@ -813,10 +813,10 @@ MonoBehaviour:
       e32: 0
       e33: 1
   m_PreviewAnimator: {fileID: 0}
-  m_AnimatorController: {fileID: 9100000, guid: 501e73e6358174b38a353d90a43d86b1,
+  m_AnimatorController: {fileID: 9100000, guid: e91602884408d4111a4e4957135ce32e,
     type: 2}
   m_BreadCrumbs:
-  - m_Target: {fileID: 1107224650467417292, guid: 501e73e6358174b38a353d90a43d86b1,
+  - m_Target: {fileID: 1107070529777084106, guid: e91602884408d4111a4e4957135ce32e,
       type: 2}
     m_ScrollPosition: {x: 0, y: 0}
   stateMachineGraph: {fileID: 0}
@@ -858,7 +858,7 @@ MonoBehaviour:
   m_PersistentViewDataDictionary: {fileID: 0}
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: 4020
+  m_LastSelectedObjectID: -1748
 --- !u!114 &21
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -897,20 +897,20 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Sprites/Items
+    - Assets/Prefabs
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Sprites/Items
+  - Assets/Prefabs
   m_LastFoldersGridSize: -1
   m_LastProjectPath: /Users/carlogattuso/EscapeRoom
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 131}
-    m_SelectedIDs: 2a0b0000
-    m_LastClickedID: 2858
-    m_ExpandedIDs: 00000000180a0000360a00002a0b0000aa0c000000ca9a3b
+    scrollPos: {x: 0, y: 7}
+    m_SelectedIDs: aa0c0000
+    m_LastClickedID: 3242
+    m_ExpandedIDs: 000000001c0a0000e60c000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -938,7 +938,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 4c0a0000
     m_LastClickedID: 2636
-    m_ExpandedIDs: 00000000180a0000360a00002a0b0000aa0c0000
+    m_ExpandedIDs: 000000001c0a00003a0a0000320b0000b40c0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 

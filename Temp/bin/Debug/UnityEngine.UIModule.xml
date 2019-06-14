@@ -388,7 +388,7 @@ See Also: CanvasRenderer.SetMaterialCount, CanvasRenderer.SetTexture.</para>
     </member>
     <member name="M:UnityEngine.CanvasRenderer.SetMesh(UnityEngine.Mesh)">
       <summary>
-        <para>Sets the Mesh used by this renderer. Note the Mesh must be read/write enabled.</para>
+        <para>Sets the Mesh used by this renderer.</para>
       </summary>
       <param name="mesh"></param>
     </member>

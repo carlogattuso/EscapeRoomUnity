@@ -306,40 +306,6 @@
       </summary>
       <param name="editorUndoName">Unique name used for the undo stack.</param>
     </member>
-    <member name="T:UnityEngine.Experimental.TerrainAPI.TerrainCallbacks">
-      <summary>
-        <para>This static class provides events that Unity triggers when Terrain data changes.</para>
-      </summary>
-    </member>
-    <member name="?:UnityEngine.Experimental.TerrainAPI.TerrainCallbacks.heightmapChanged(UnityEngine.Experimental.TerrainAPI.TerrainCallbacks/HeightmapChangedCallback)">
-      <summary>
-        <para>This event is triggered after there are changes to Terrain height data.</para>
-      </summary>
-      <param name="value"></param>
-    </member>
-    <member name="?:UnityEngine.Experimental.TerrainAPI.TerrainCallbacks.textureChanged(UnityEngine.Experimental.TerrainAPI.TerrainCallbacks/TextureChangedCallback)">
-      <summary>
-        <para>This event is triggered after there are changes to Terrain textures.</para>
-      </summary>
-      <param name="value"></param>
-    </member>
-    <member name="T:UnityEngine.Experimental.TerrainAPI.TerrainCallbacks.HeightmapChangedCallback">
-      <summary>
-        <para>Use this delegate type with heightChange to monitor all changes to the Terrain heightmap.</para>
-      </summary>
-      <param name="terrain">The Terrain object that references a changed TerrainData asset.</param>
-      <param name="heightRegion">The heightmap region that changed, in samples.</param>
-      <param name="synched">Indicates whether the changes were fully synchronized back to CPU memory.</param>
-    </member>
-    <member name="T:UnityEngine.Experimental.TerrainAPI.TerrainCallbacks.TextureChangedCallback">
-      <summary>
-        <para>Use this delegate type with textureChanged to monitor all the changes to Terrain textures.</para>
-      </summary>
-      <param name="terrain">The Terrain object that references a changed TerrainData asset.</param>
-      <param name="textureName">The name of the texture that changed.</param>
-      <param name="texelRegion">The region of the Terrain texture that changed, in texel coordinates.</param>
-      <param name="synched">Indicates whether the changes were fully synchronized back to CPU memory.</param>
-    </member>
     <member name="T:UnityEngine.Experimental.TerrainAPI.TerrainPaintUtility">
       <summary>
         <para>A set of utility functions for custom terrain paint tools.</para>
@@ -741,11 +707,6 @@
         <para>Grouping ID for auto connect.</para>
       </summary>
     </member>
-    <member name="P:UnityEngine.Terrain.heightmapFormat">
-      <summary>
-        <para>Graphics format of the terrain heightmap.</para>
-      </summary>
-    </member>
     <member name="P:UnityEngine.Terrain.heightmapMaximumLOD">
       <summary>
         <para>Lets you essentially lower the heightmap resolution used for rendering.</para>
@@ -754,6 +715,16 @@
     <member name="P:UnityEngine.Terrain.heightmapPixelError">
       <summary>
         <para>An approximation of how many pixels the terrain will pop in the worst case when switching lod.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEngine.Terrain.heightmapRenderTextureFormat">
+      <summary>
+        <para>RenderTextureFormat of the terrain heightmap.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEngine.Terrain.heightmapTextureFormat">
+      <summary>
+        <para>Texture format of the terrain heightmap.</para>
       </summary>
     </member>
     <member name="P:UnityEngine.Terrain.leftNeighbor">
@@ -791,24 +762,9 @@
         <para>The type of the material used to render the terrain. Could be one of the built-in types or custom. See Terrain.MaterialType.</para>
       </summary>
     </member>
-    <member name="P:UnityEngine.Terrain.normalmapFormat">
-      <summary>
-        <para>Graphics format of the Terrain normal map texture.</para>
-      </summary>
-    </member>
-    <member name="P:UnityEngine.Terrain.normalmapRenderTextureFormat">
-      <summary>
-        <para>Render texture format of the Terrain normal map texture.</para>
-      </summary>
-    </member>
     <member name="P:UnityEngine.Terrain.normalmapTexture">
       <summary>
         <para>Returns the normal map texture computed from sampling the heightmap. It is only used when terrain is rendered using instancing.</para>
-      </summary>
-    </member>
-    <member name="P:UnityEngine.Terrain.normalmapTextureFormat">
-      <summary>
-        <para>Texture format of the Terrain normal map texture.</para>
       </summary>
     </member>
     <member name="P:UnityEngine.Terrain.patchBoundsMultiplier">
@@ -839,11 +795,6 @@
     <member name="P:UnityEngine.Terrain.rightNeighbor">
       <summary>
         <para>Terrain right neighbor.</para>
-      </summary>
-    </member>
-    <member name="P:UnityEngine.Terrain.shadowCastingMode">
-      <summary>
-        <para>Allows you to set the shadow casting mode for the terrain.</para>
       </summary>
     </member>
     <member name="P:UnityEngine.Terrain.terrainData">
@@ -989,11 +940,6 @@
     <member name="F:UnityEngine.TerrainChangedFlags.Heightmap">
       <summary>
         <para>Indicates a change to the heightmap data.</para>
-      </summary>
-    </member>
-    <member name="F:UnityEngine.TerrainChangedFlags.HeightmapResolution">
-      <summary>
-        <para>Indicates a change to the heightmap resolution.</para>
       </summary>
     </member>
     <member name="F:UnityEngine.TerrainChangedFlags.RemoveDirtyDetailsImmediately">
@@ -1166,44 +1112,6 @@
         <para>Color of the waving grass that the terrain has.</para>
       </summary>
     </member>
-    <member name="P:UnityEngine.TerrainData.AlphamapTextureName">
-      <summary>
-        <para>The name for the Terrain alpha map textures.</para>
-      </summary>
-    </member>
-    <member name="M:UnityEngine.TerrainData.CopyActiveRenderTextureToHeightmap(UnityEngine.RectInt,UnityEngine.Vector2Int,UnityEngine.TerrainHeightmapSyncControl)">
-      <summary>
-        <para>Copies the specified part of the active RenderTexture to the Terrain heightmap texture.</para>
-      </summary>
-      <param name="sourceRect">The part of the active Render Texture to copy.</param>
-      <param name="dest">The X and Y coordinates of the heightmap texture to copy into.</param>
-      <param name="syncControl">Controls how CPU synchronization is performed.</param>
-    </member>
-    <member name="M:UnityEngine.TerrainData.CopyActiveRenderTextureToTexture(System.String,System.Int32,UnityEngine.RectInt,UnityEngine.Vector2Int,System.Boolean)">
-      <summary>
-        <para>Copies the specified part of the active RenderTexture to the Terrain texture.</para>
-      </summary>
-      <param name="textureName">The name of the Terrain texture to copy into.</param>
-      <param name="textureIndex">The index of the Terrain texture to copy into.</param>
-      <param name="sourceRect">The part of the active Render Texture to copy.</param>
-      <param name="dest">The X and Y coordinates of the Terrain texture to copy into.</param>
-      <param name="allowDelayedCPUSync">Specifies whether to allow delayed CPU synchronization of the texture.</param>
-    </member>
-    <member name="M:UnityEngine.TerrainData.DirtyHeightmapRegion(UnityEngine.RectInt,UnityEngine.TerrainHeightmapSyncControl)">
-      <summary>
-        <para>Marks the specified part of the heightmap as dirty.</para>
-      </summary>
-      <param name="region">The rectangular region to mark as dirty.</param>
-      <param name="syncControl">Controls how CPU synchronization is performed.</param>
-    </member>
-    <member name="M:UnityEngine.TerrainData.DirtyTextureRegion(System.String,UnityEngine.RectInt,System.Boolean)">
-      <summary>
-        <para>Marks the specified part of the Terrain texture as dirty.</para>
-      </summary>
-      <param name="textureName">The name of the Terrain texture.</param>
-      <param name="region">The rectangular region to mark as dirty.</param>
-      <param name="allowDelayedCPUSync">Specifies whether to allow delayed CPU synchronization of the texture.</param>
-    </member>
     <member name="M:UnityEngine.TerrainData.GetAlphamaps(System.Int32,System.Int32,System.Int32,System.Int32)">
       <summary>
         <para>Returns the alpha map at a position x, y given a width and height.</para>
@@ -1253,35 +1161,10 @@
     </member>
     <member name="M:UnityEngine.TerrainData.GetInterpolatedHeight(System.Single,System.Single)">
       <summary>
-        <para>Gets an interpolated height at a point x,y. The x and y coordinates are clamped to [0, 1].</para>
+        <para>Gets an interpolated height at a point x,y.</para>
       </summary>
-      <param name="x">X coordinate of the point in the range of [0, 1].</param>
-      <param name="y">Y coordinate of the point in the range of [0, 1].</param>
-    </member>
-    <member name="M:UnityEngine.TerrainData.GetInterpolatedHeights(System.Single,System.Single,System.Int32,System.Int32,System.Single,System.Single)">
-      <summary>
-        <para>Gets an array of terrain height values using the normalized x,y coordinates.</para>
-      </summary>
-      <param name="xBase">The base x coordinate.</param>
-      <param name="yBase">The base y coordinate.</param>
-      <param name="xCount">The number of queries along the X axis.</param>
-      <param name="yCount">The number of queries along the Y axis.</param>
-      <param name="xInterval">The interval between each query along the X axis.</param>
-      <param name="yInterval">The interval between each query along the Y axis.</param>
-    </member>
-    <member name="M:UnityEngine.TerrainData.GetInterpolatedHeights(System.Single[,],System.Int32,System.Int32,System.Single,System.Single,System.Int32,System.Int32,System.Single,System.Single)">
-      <summary>
-        <para>Fills the array with Terrain height values using normalized x,y coordinates.</para>
-      </summary>
-      <param name="results">The array to fill with height values.</param>
-      <param name="resultXOffset">The offset from the beginning of the array, along the X axis, at which to start filling in height values.</param>
-      <param name="resultYOffset">The offset from the beginning of the array, along the Y axis, at which to start filling in height values.</param>
-      <param name="xBase">The base x coordinate.</param>
-      <param name="yBase">The base y coordinate.</param>
-      <param name="xCount">The number of queries along the X axis.</param>
-      <param name="yCount">The number of queries along the Y axis.</param>
-      <param name="xInterval">The interval between each query along the X axis.</param>
-      <param name="yInterval">The interval between each query along the Y axis.</param>
+      <param name="x"></param>
+      <param name="y"></param>
     </member>
     <member name="M:UnityEngine.TerrainData.GetInterpolatedNormal(System.Single,System.Single)">
       <summary>
@@ -1397,25 +1280,7 @@
       <param name="index">The index of the tree instance.</param>
       <param name="instance">The new TreeInstance value.</param>
     </member>
-    <member name="M:UnityEngine.TerrainData.SetTreeInstances(UnityEngine.TreeInstance[],System.Boolean)">
-      <summary>
-        <para>Sets the Tree Instance array, and optionally snaps Trees onto the surface of the Terrain heightmap.</para>
-      </summary>
-      <param name="instances">The array of TreeInstance objects.</param>
-      <param name="snapToHeightmap">Specifies whether to snap Trees to the Terrain heightmap.</param>
-    </member>
-    <member name="M:UnityEngine.TerrainData.SyncHeightmap">
-      <summary>
-        <para>Performs synchronization queued by previous calls to CopyActiveRenderTextureToHeightmap and DirtyHeightmapRegion, which makes the height data and LOD data used for tessellation up to date.</para>
-      </summary>
-    </member>
-    <member name="M:UnityEngine.TerrainData.SyncTexture(System.String)">
-      <summary>
-        <para>Performs synchronization queued by previous calls to CopyActiveRenderTextureToAlphamap and DirtyAlphamapRegion, which makes CPU data of the alpha map textures up to date.</para>
-      </summary>
-      <param name="textureName">The name of the Terrain texture to synchronize.</param>
-    </member>
-    <member name="M:UnityEngine.TerrainData.UpdateDirtyRegion(System.Int32,System.Int32,System.Int32,System.Int32,System.Boolean)">
+    <member name="M:UnityEngine.TerrainData.UpdateDirtyRegion">
       <summary>
         <para>Triggers an update to integrate modifications done to the heightmap outside of unity.</para>
       </summary>
@@ -1423,7 +1288,6 @@
       <param name="y">Start Y position of the dirty heightmap region.</param>
       <param name="width">Width of the the dirty heightmap region.</param>
       <param name="height">Width of the the dirty heightmap region.</param>
-      <param name="syncHeightmapTextureImmediately">Update immediately, instead of deferring the update.</param>
     </member>
     <member name="T:UnityEngine.TerrainExtensions">
       <summary>
@@ -1449,26 +1313,6 @@
       <param name="y"></param>
       <param name="width"></param>
       <param name="height"></param>
-    </member>
-    <member name="T:UnityEngine.TerrainHeightmapSyncControl">
-      <summary>
-        <para>Controls what Terrain heightmap data to synchronize when there are changes to the heightmap texture.</para>
-      </summary>
-    </member>
-    <member name="F:UnityEngine.TerrainHeightmapSyncControl.HeightAndLod">
-      <summary>
-        <para>Synchronizes height data of the heightmap texture from the GPU back to CPU memory. Then computes LOD data, used for determining the tessellation level, from the height data.</para>
-      </summary>
-    </member>
-    <member name="F:UnityEngine.TerrainHeightmapSyncControl.HeightOnly">
-      <summary>
-        <para>Synchronizes only height data of the heightmap texture from the GPU back to CPU memory.</para>
-      </summary>
-    </member>
-    <member name="F:UnityEngine.TerrainHeightmapSyncControl.None">
-      <summary>
-        <para>Does not synchronize the height data nor the LOD data.</para>
-      </summary>
     </member>
     <member name="T:UnityEngine.TerrainLayer">
       <summary>

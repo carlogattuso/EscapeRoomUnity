@@ -34,7 +34,10 @@ public class BoardManager : MonoBehaviour
     public GameObject yellowDoor;
     public GameObject exit;
     public GameObject enemy;
+    public GameObject toni;
     public GameObject candle;
+    public GameObject chest;
+    public GameObject [] villagers;
 
     private Transform boardHolder;                                  
     private List<Vector3> gridPositions = new List<Vector3>();   
@@ -165,6 +168,18 @@ public class BoardManager : MonoBehaviour
                     break;
                 case 'V':
                     toInstantiate = candle;
+                    Instantiate(toInstantiate, dimension, i);
+                    break;
+                case 'H':
+                    toInstantiate = chest;
+                    Instantiate(toInstantiate, dimension, i);
+                    break;
+                case 'v':
+                    toInstantiate = villagers[Random.Range(0, villagers.Length)];
+                    Instantiate(toInstantiate, dimension, i);
+                    break;
+                case 't':
+                    toInstantiate = toni;
                     Instantiate(toInstantiate, dimension, i);
                     break;
             }

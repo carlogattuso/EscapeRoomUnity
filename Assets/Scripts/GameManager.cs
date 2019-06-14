@@ -201,7 +201,6 @@ public class GameManager : MonoBehaviour
     //Coroutine to move enemies in sequence.
     IEnumerator MoveEnemies()
     {
-        bool someoneHasMoved = false;
         //While enemiesMoving is true player is unable to move.
         enemiesMoving = true;
 
@@ -211,7 +210,6 @@ public class GameManager : MonoBehaviour
         //If there are no enemies spawned (IE in first level):
         if (enemies.Count == 0)
         {
-            someoneHasMoved = true;
             //Wait for turnDelay seconds between moves, replaces delay caused by enemies moving when there are none.
             yield return new WaitForSeconds(turnDelay);
         }
@@ -219,21 +217,11 @@ public class GameManager : MonoBehaviour
         //Loop through List of Enemy objects.
         for (int i = 0; i < enemies.Count; i++)
         {
-            if (enemies[i].CheckIfMovable())
-            {
                 //Call the MoveEnemy function of Enemy at index i in the enemies List.
                 enemies[i].MoveEnemy();
 
-                someoneHasMoved = true;
-
                 //Wait for Enemy's moveTime before moving next Enemy, 
                 yield return new WaitForSeconds(enemies[i].moveTime);
-            }
-        }
-
-        if (!someoneHasMoved)
-        {
-            yield return new WaitForSeconds(turnDelay);
         }
 
         //Once Enemies are done moving, set playersTurn to true so player can move.
