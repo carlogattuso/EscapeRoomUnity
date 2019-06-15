@@ -38,6 +38,7 @@ public class BoardManager : MonoBehaviour
     public GameObject candle;
     public GameObject chest;
     public GameObject [] villagers;
+    public GameObject tramp;
 
     private Transform boardHolder;                                  
     private List<Vector3> gridPositions = new List<Vector3>();   
@@ -180,6 +181,10 @@ public class BoardManager : MonoBehaviour
                     break;
                 case 't':
                     toInstantiate = toni;
+                    Instantiate(toInstantiate, dimension, i);
+                    break;
+                case 'P':
+                    toInstantiate = tramp;
                     Instantiate(toInstantiate, dimension, i);
                     break;
             }

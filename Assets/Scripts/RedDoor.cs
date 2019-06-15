@@ -103,6 +103,7 @@ public class RedDoor : MonoBehaviour
 
         this.spriteRenderer.sprite = openSprite;
         gameObject.layer = 2;
+        
 
         if (clueUsed)
         {

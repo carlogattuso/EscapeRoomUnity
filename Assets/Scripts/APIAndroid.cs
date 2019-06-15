@@ -34,7 +34,7 @@ public class APIAndroid
             stringAndroid = "1,50,00:05:23,2,200,woodSword,ironShield";
 
 #else
-        string stringAndroid = "1,50,00:05:23,2,200,woodSword,ironShield";
+        string stringAndroid = "3,50,00:05:23,2,200,goldSword,goldShield";
 #endif
 
         string[] playerStatsVector = stringAndroid.Split(',');
@@ -160,10 +160,10 @@ public class APIAndroid
 
 #else
 
-        string mapa3 =   "bbbbbbbOOOOOOOOOOOOOObbbbbbb" +
+        string mapa1 =   "bbbbbbbOOOOOOOOOOOOOObbbbbbb" +
                          "bbbbbbbLTTTTTTTTTTTTRbbbbbbb" +
                          "bbbbbbbLV    H     VRbbbbbbb" +
-                         "bbbbbbbL  N     X   Rbbbbbbb" +
+                         "bbbbbbbL        X   Rbbbbbbb" +
                          "bbbbbbbL            Rbbbbbbb" +
                          "bbbbbbbL      N     Rbbbbbbb" +
                          "bbbbbbbL H          Rbbbbbbb" +
@@ -178,13 +178,13 @@ public class APIAndroid
                          "bbbbbbbbbbL    RbL  N Rbbbbb" +
                          "bbbbbbbbbbL N  RbL    Rbbbbb" +
                          "OOOOOOOOObL    Rblc Cwrbbbbb" +
-                         "LTTTTTTTTTT    ROOL3RObbbbbb" +
+                         "LTTTTTTTTTT    ROOL2RObbbbbb" +
                          "LV  v   H      TTTf fRbbbbbb" +
                          "L                    Rbbbbbb" +
                          "lwwBc CwBBBwBBwBwBwBBrbbbbbb" +
                          "OOOOL3ROObbbbbbbbbbbbbbbbbbb" +
                          "LTTTf fTRbbbbbbbbbbbbbbbbbbb" +
-                         "LV  t  vRbbbbbbbbbbbbbbbbbbb" +
+                         "LV     vRbbbbbbbbbbbbbbbbbbb" +
                          "L     H Rbbbbbbbbbbbbbbbbbbb" +
                          "L      VRbbbbbbbbbbbbbbbbbbb" +
                          "lwBBwBBBrbbbbbbbbbbbbbbbbbbb*28*" +
@@ -201,7 +201,7 @@ public class APIAndroid
                          "3,7,Jaimito-Los enemigos son muy peligrosos en este castillo...-Aunque parezca que no se mueven.../" +
                          "12,16,Pedrito-Has comprado pistas?-En la tienda puedes hacerlo...";
 
-        string mapa1 = "bbbbbbbbbbbbbbbbbbbbbbb" +
+        string mapa2 = "bbbbbbbbbbbbbbbbbbbbbbb" +
                        "bbbbbbbbbbbbbbbbbbbbbbb" +
                        "bbbbbbbbbbbbbbbbbbbbbbb" +
                        "bbbbbbbbbbbbbbbbbbbbbbb" +
@@ -210,11 +210,11 @@ public class APIAndroid
                        "L N  R    X           R" +
                        "L  L1R                R" +
                        "L  L RTTTTTTTT1TTTTTTTR" +
-                       "L  L RL NN            R" +
+                       "L  L RL N             R" +
                        "L HL RL N  RLTTTTTTTTTR" +
                        "LBBL RL   NRL         R" +
                        "L00L RL    RL         R" +
-                       "bbLT2TTT2TTTT2TTTTTT TR" +
+                       "bbLf2fTf2fTTf2fTTTTT TR" +
                        "bbL            RL     R" +
                        "bbL     v      RL   H R" +
                        "lwwBc CwBBwBl rwBwBwBwr" +
@@ -237,46 +237,46 @@ public class APIAndroid
                        "1,11,vida-100";
 
 
-        string mapa2 = "OOOOOOOOObb" +
+        string mapa3 = "OOOOOOOOObb" +
                        "LTTTTTTTRbb" +
-                       "L      XRbb" +
+                       "LV     XRbb" +
                        "L H v   Rbb" +
                        "lwwBc Cwrbb" +
-                       "OOOOL3ROObb" +
+                       "OOOOL2ROObb" +
                        "LTTTf fTRbb" +
-                       "L       Rbb" +
-                       "L       Rbb" +
+                       "LV      Rbb" +
+                       "L  P   VRbb" +
                        "L       Rbb" +
                        "lwBBwBBBrbb*11*" +
-                       "4,4,Quien es el más tonto del pueblo?-Carlo-Tiene una altura peculiar"+
+                       "4,4,Quien es el más tonto del pueblo?-Carlo-Tiene una altura peculiar/"+
                        "1,6,vida-20/"+
                        "3,6,Pedrito-Donde crees que vas con esa vida?-Coge este cofre que lo necesitarás...";
 
         string mapa4 = "bbbbbbbbbbbbb" +
-                       "OOOOOOOOOOOOO" +
-                       "OOOOOOOOOOOOO" +
-                       "LTTTTTTTTTRbb" +
+                       "bbbbbbbbbbbbb" +
+                       "OOOOOOOOOOOOb" +
+                       "LTTTTTTTTTTRb" +
                        "LH        HRb" +
                        "L          Rb" +
                        "l   t      Rb" +
                        "LH         Rb" +
-                       "LwBBwBBBBl Rb" +
-                       "LTTTTTTTTT3bb" +
-                       "L      v   Rb" +
-                       "L          Rb" +
+                       "LwBBwBBBBc Rb" +
+                       "LTTTTTTTTf3bb" +
+                       "LV     v   Rb" +
+                       "L         VRb" +
                        "lwBBwBBBBwwrb*13*" +
                        "9,2,Que es lo que más deseas en este mundo?-Aprobar DSA-Si no lo haces tendrás que pagar 10 créditos otra vez./" +
                        "0,4,vida-100/" +
-                       "9,7,vida-100/" +
+                       "9,7,dinero-20/" +
                        "0,7,vida-100/" +
-                       "6,1,Pedrito-Nadie pensaba que llegarias hasta aquí, pero lo has conseguido-entra ahí dentro a por lo que te pertenece.";
+                       "6,1,Pedrito-Nadie pensaba que llegarias hasta aquí...-pero lo has conseguido-entra ahí dentro a por lo que te pertenece.";
 
 
         switch (level)
         {
             case 1:
                 //Cogemos el mapa 1
-                string[] mapa1Vector = mapa4.Split('*');
+                string[] mapa1Vector = mapa1.Split('*');
 
                 string[] boxes1Vector = mapa1Vector[2].Split('/');
 
@@ -370,6 +370,8 @@ public class APIAndroid
         stringUnity += playerStats.getWeapon() + ",";
         stringUnity += playerStats.getShield() + ",";
 
+        stringUnity = stringUnity.TrimEnd(',');
+
         return stringUnity;
 
 #if UNITY_ANDROID
@@ -401,6 +403,25 @@ public class APIAndroid
             stringUnity += "/";
         }
 
+        stringUnity = stringUnity.TrimEnd('/');
+
+        stringUnity = stringUnity.TrimEnd(',');
+
+#if UNITY_ANDROID
+        try
+        {
+            AndroidJavaClass javaClass = new AndroidJavaClass("edu.upc.dsa.escaperoomapp.ApiUnity");
+            javaClass.CallStatic("sendInventory", stringUnity);
+            Debug.Log("stringInventory: ");
+            Debug.Log(stringUnity);
+
+        }
+        catch (Exception ex)
+        {
+            Debug.Log("Error Unity, method getPlayerStats");
+            Debug.Log(ex);
+        }
+#endif
         return stringUnity;
 
 #if UNITY_ANDROID

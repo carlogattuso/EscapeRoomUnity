@@ -87,6 +87,7 @@
     <Compile Include="Assets\Scripts\Shield.cs" />
     <Compile Include="Assets\Scripts\SoundManager.cs" />
     <Compile Include="Assets\Scripts\SupportBackScript.cs" />
+    <Compile Include="Assets\Scripts\Tramp.cs" />
     <Compile Include="Assets\Scripts\Weapon.cs" />
     <Compile Include="Assets\Scripts\WelcomeDialogue.cs" />
     <Compile Include="Assets\Scripts\YellowDoor.cs" />

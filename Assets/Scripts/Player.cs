@@ -30,7 +30,7 @@ public class Player : MovingObject
 
     private bool playerMoving;
     private Vector2 lastMove;
-
+    
     private bool attacking;
     public float attackTime;
     private float attackTimeCounter;
@@ -246,7 +246,6 @@ public class Player : MovingObject
         hitEnemy.DamageEnemy(damageToEnemy);
     }
 
-
     //OnTriggerEnter2D is sent when another object enters a trigger collider attached to this object (2D physics only).
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -259,34 +258,15 @@ public class Player : MovingObject
             //Disable the player object since level is over.
             enabled = false;
         }
-
-        //Check if the tag of the trigger collided with is Food.
-        else if (other.tag == "Food")
-        {
-            //Add pointsPerFood to the players current food total.
-            //food += pointsPerFood;
-
-            //Disable the food object the player collided with.
-            other.gameObject.SetActive(false);
-        }
-
-        //Check if the tag of the trigger collided with is Soda.
-        else if (other.tag == "Soda")
-        {
-            //Add pointsPerSoda to players food points total
-            //food += pointsPerSoda;
-
-            //Disable the soda object the player collided with.
-            other.gameObject.SetActive(false);
-        }
     }
-
 
     //Restart reloads the scene when called.
     private void Restart()
     {
         GameManager.instance.playerStats.setLevel(GameManager.instance.playerStats.getLevel()+1);
         GameManager.instance.SetTime();
+        GameManager.instance.SendPlayerStats();
+        GameManager.instance.SendInventory();
         //Load the last scene loaded, in this case Main, the only scene in the game.
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
     }

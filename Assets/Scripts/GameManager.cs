@@ -21,6 +21,8 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public int damageToPlayer = 20;
     [HideInInspector] public int damageToEnemy = 10;
 
+    [HideInInspector] public bool finalBossKilled = false;
+
     //Counter variables
     float secondsCount;
     float minuteCount;
@@ -191,11 +193,32 @@ public class GameManager : MonoBehaviour
     //GameOver is called when the player reaches 0 food points
     public void GameOver()
     {
+        doingSetup = true;
+
         LevelText.text = "Game Over";
         LevelImage.SetActive(true);
-        //Inicializamos el inventario en la base de datos
+
+        TimeObject.SetActive(false);
+        SlainedEnemies.SetActive(false);
+        Cash.SetActive(false);
+        Life.SetActive(false);
+
         //Disable this GameManager.
         enabled = false;
+
+        Application.Quit();
+    }
+
+    public void SendPlayerStats()
+    {
+        string finalDeNivel = APIAndroid.sendPlayerStats(this.playerStats);
+        Debug.Log("Final De Nivel: "+finalDeNivel);
+    }
+
+    public void SendInventory()
+    {
+        string finalDeNivel = APIAndroid.sendInventory(this.inventory);
+        Debug.Log("Final De Nivel : " + finalDeNivel);
     }
 
     //Coroutine to move enemies in sequence.

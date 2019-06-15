@@ -28,6 +28,7 @@ public class Chest : MonoBehaviour
         position.x = this.transform.position.x;
         position.y = this.transform.position.y;
 
+        Debug.Log(position.x + "," + position.y);
         //Pediriamos a android la pista en la posicion del cofre
         this.chestParameters = GameManager.instance.getBox(position).getAttribute();
 
