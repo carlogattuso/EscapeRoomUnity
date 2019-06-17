@@ -35,6 +35,8 @@ public class Player : MovingObject
     public float attackTime;
     private float attackTimeCounter;
 
+    public DialogueTrigger finalDialogue;
+
 #if UNITY_ANDROID
     private Vector2 touchOrigin = -Vector2.one;
 #endif
@@ -219,6 +221,15 @@ public class Player : MovingObject
 
             aldeano = hitComponent as Aldeano;
             aldeano.LaunchDialog();
+        }
+
+        else if ((hit.transform != null) && (hit.transform.CompareTag("Diamond")))
+        {
+            if (GameManager.instance.finalBossKilled)
+            {
+                finalDialogue.TriggerDialogue();
+                GameManager.instance.final = true;
+            }
         }
 
         //Set the playersTurn boolean of GameManager to false now that players turn is over.

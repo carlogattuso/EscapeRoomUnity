@@ -34,7 +34,7 @@ public class APIAndroid
             stringAndroid = "1,50,00:05:23,2,200,woodSword,ironShield";
 
 #else
-        string stringAndroid = "3,50,00:05:23,2,200,goldSword,goldShield";
+        string stringAndroid = "4,50,00:05:23,2,200,goldSword,goldShield";
 #endif
 
         string[] playerStatsVector = stringAndroid.Split(',');
@@ -207,12 +207,12 @@ public class APIAndroid
                        "bbbbbbbbbbbbbbbbbbbbbbb" +
                        "OOOOOOOOOOOOOOOOOO00000" +
                        "LTTTTTTTTTTTTTTTTTTTTTR" +
-                       "L N  R    X           R" +
+                       "L N  R    X   V     V R" +
                        "L  L1R                R" +
-                       "L  L RTTTTTTTT1TTTTTTTR" +
+                       "L  L RTTTTTTTf1fTTTTTTR" +
                        "L  L RL N             R" +
                        "L HL RL N  RLTTTTTTTTTR" +
-                       "LBBL RL   NRL         R" +
+                       "LBBL RL   NRL        VR" +
                        "L00L RL    RL         R" +
                        "bbLf2fTf2fTTf2fTTTTT TR" +
                        "bbL            RL     R" +
@@ -220,8 +220,8 @@ public class APIAndroid
                        "lwwBc CwBBwBl rwBwBwBwr" +
                        "OOOOL3ROObbbL Rbbbbbbbb" +
                        "LTTTf fTRbbbL Rbbbbbbbb" +
-                       "L       RLTTl lTTTTTTrb" +
-                       "L       RL        N HRb" +
+                       "LV      RLTTl lTTTTTTrb" +
+                       "L      VRL        N HRb" +
                        "L       RLwwwwrwwwwwwrb" +
                        "lwBBwBBBrbbbbbbbbbbbbbb*23*" +
                        "4,4,Quien va acabar el Unity?-Izan-Se llama iz.../" +
@@ -230,11 +230,11 @@ public class APIAndroid
                        "12,8,Despues del 3 va el...?-4-Va antes que el 5/" +
                        "3,14,Como se llama el novio de la hermana del Mario?-JSON-El nombre lo utilizamos constantemente./" +
                        "13,13,Que nota saco Carlo Gattuso en el primer control de telematica?-0.8-Puede ser que suspendiera./" +
-                       "7,6,Pepito-Ten cuidado donde pisas...-Podrias llevarte una sorpresa.../" +
+                       "7,6,Pepito-El segundo nivel no será tan fácil como piensas...-No creo que lo consigas.../" +
                        "2,6,vida-20/" +
                        "19,1,dinero-10/" +
                        "19,6,dinero-20/" +
-                       "1,11,vida-100";
+                       "1,11,vida-20";
 
 
         string mapa3 = "OOOOOOOOObb" +
@@ -245,7 +245,7 @@ public class APIAndroid
                        "OOOOL2ROObb" +
                        "LTTTf fTRbb" +
                        "LV      Rbb" +
-                       "L  P   VRbb" +
+                       "L      VRbb" +
                        "L       Rbb" +
                        "lwBBwBBBrbb*11*" +
                        "4,4,Quien es el más tonto del pueblo?-Carlo-Tiene una altura peculiar/"+
@@ -257,7 +257,7 @@ public class APIAndroid
                        "OOOOOOOOOOOOb" +
                        "LTTTTTTTTTTRb" +
                        "LH        HRb" +
-                       "L          Rb" +
+                       "L   P      Rb" +
                        "l   t      Rb" +
                        "LH         Rb" +
                        "LwBBwBBBBc Rb" +
@@ -266,10 +266,10 @@ public class APIAndroid
                        "L         VRb" +
                        "lwBBwBBBBwwrb*13*" +
                        "9,2,Que es lo que más deseas en este mundo?-Aprobar DSA-Si no lo haces tendrás que pagar 10 créditos otra vez./" +
-                       "0,4,vida-100/" +
+                       "0,4,vida-30/" +
                        "9,7,dinero-20/" +
-                       "0,7,vida-100/" +
-                       "6,1,Pedrito-Nadie pensaba que llegarias hasta aquí...-pero lo has conseguido-entra ahí dentro a por lo que te pertenece.";
+                       "0,7,vida-45/" +
+                       "6,1,Pedrito-Nadie pensaba que llegarias hasta aquí...-Pero lo has conseguido...-entra ahí dentro a por lo que te pertenece.";
 
 
         switch (level)
@@ -358,7 +358,7 @@ public class APIAndroid
         this.map = map;
     }
 
-    public string sendPlayerStats(PlayerStats playerStats)
+    public void sendPlayerStats(PlayerStats playerStats)
     {
         string stringUnity = "";
 
@@ -371,8 +371,6 @@ public class APIAndroid
         stringUnity += playerStats.getShield() + ",";
 
         stringUnity = stringUnity.TrimEnd(',');
-
-        return stringUnity;
 
 #if UNITY_ANDROID
         try
@@ -391,7 +389,33 @@ public class APIAndroid
 #endif
     }
 
-    public string sendInventory(List<Object> inventory)
+    public void sendFinalStats(PlayerStats playerStats)
+    {
+        string stringUnity = "";
+
+        stringUnity += playerStats.getCash() + ",";
+        stringUnity += playerStats.getTime() + ",";
+
+        stringUnity = stringUnity.TrimEnd(',');
+
+#if UNITY_ANDROID
+        try
+        {
+            AndroidJavaClass javaClass = new AndroidJavaClass("edu.upc.dsa.escaperoomapp.ApiUnity");
+            javaClass.CallStatic("sendFinalStats", stringUnity);
+            Debug.Log("stringFinalStats: ");
+            Debug.Log(stringUnity);
+
+        }
+        catch (Exception ex)
+        {
+            Debug.Log("Error Unity, method getFinalStats");
+            Debug.Log(ex);
+        }
+#endif
+    }
+
+    public void sendInventory(List<Object> inventory)
     {
         string stringUnity = "";
 
@@ -413,23 +437,6 @@ public class APIAndroid
             AndroidJavaClass javaClass = new AndroidJavaClass("edu.upc.dsa.escaperoomapp.ApiUnity");
             javaClass.CallStatic("sendInventory", stringUnity);
             Debug.Log("stringInventory: ");
-            Debug.Log(stringUnity);
-
-        }
-        catch (Exception ex)
-        {
-            Debug.Log("Error Unity, method getPlayerStats");
-            Debug.Log(ex);
-        }
-#endif
-        return stringUnity;
-
-#if UNITY_ANDROID
-        try
-        {
-            AndroidJavaClass javaClass = new AndroidJavaClass("edu.upc.dsa.escaperoomapp.ApiUnity");
-            javaClass.CallStatic("sendInventory", stringUnity);
-            Debug.Log("stringStats: ");
             Debug.Log(stringUnity);
         }
         catch (Exception ex)

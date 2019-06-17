@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public int damageToEnemy = 10;
 
     [HideInInspector] public bool finalBossKilled = false;
+    [HideInInspector] public bool final = false;
 
     //Counter variables
     float secondsCount;
@@ -108,6 +109,7 @@ public class GameManager : MonoBehaviour
         doingSetup = true;
 
         this.map = APIAndroid.getMap(this.playerStats.getLevel());
+        this.finalBossKilled = false;
 
         TimeObject = GameObject.Find("Time");
         SlainedEnemies = GameObject.Find("SlainedEnemies");
@@ -203,22 +205,49 @@ public class GameManager : MonoBehaviour
         Cash.SetActive(false);
         Life.SetActive(false);
 
-        //Disable this GameManager.
-        enabled = false;
+        Invoke("QuitApplication", levelStartDelay);
+    }
 
+    public void CheckIfVictory()
+    {
+        if(this.final == true)
+        {
+            this.Victory();
+        }
+    }
+
+    public void Victory()
+    {
+        doingSetup = true;
+
+        this.SetTime();
+        this.APIAndroid.sendFinalStats(this.playerStats);
+        this.SendInventory();
+        LevelText.text = "Felicidades!! Has conseguido el diamante en " + this.playerStats.getTime() +"\nVuelve Pronto!";
+        LevelImage.SetActive(true);
+
+        TimeObject.SetActive(false);
+        SlainedEnemies.SetActive(false);
+        Cash.SetActive(false);
+        Life.SetActive(false);
+
+        Invoke("QuitApplication", levelStartDelay);
+    }
+
+    public void QuitApplication()
+    {
+        enabled = false;
         Application.Quit();
     }
 
     public void SendPlayerStats()
     {
-        string finalDeNivel = APIAndroid.sendPlayerStats(this.playerStats);
-        Debug.Log("Final De Nivel: "+finalDeNivel);
+        APIAndroid.sendPlayerStats(this.playerStats);
     }
 
     public void SendInventory()
     {
-        string finalDeNivel = APIAndroid.sendInventory(this.inventory);
-        Debug.Log("Final De Nivel : " + finalDeNivel);
+        APIAndroid.sendInventory(this.inventory);
     }
 
     //Coroutine to move enemies in sequence.
@@ -233,6 +262,7 @@ public class GameManager : MonoBehaviour
         //If there are no enemies spawned (IE in first level):
         if (enemies.Count == 0)
         {
+            finalBossKilled = true;
             //Wait for turnDelay seconds between moves, replaces delay caused by enemies moving when there are none.
             yield return new WaitForSeconds(turnDelay);
         }

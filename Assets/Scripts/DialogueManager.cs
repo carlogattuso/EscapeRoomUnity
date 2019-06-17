@@ -63,5 +63,6 @@ public class DialogueManager : MonoBehaviour
     {
         animator.SetBool("IsOpen", false);
         GameManager.instance.doingSetup = false;
+        GameManager.instance.CheckIfVictory();
     }
 }
