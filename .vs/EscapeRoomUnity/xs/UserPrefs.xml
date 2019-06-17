@@ -1,9 +1,10 @@
 ﻿<Properties StartupConfiguration="{ADBE05FE-320F-6F78-1502-296ED921C523}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/GameManager.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/APIAndroid.cs">
     <Files>
-      <File FileName="Assets/Scripts/Player.cs" Line="118" Column="18" />
-      <File FileName="Assets/Scripts/APIAndroid.cs" Line="37" Column="1" />
-      <File FileName="Assets/Scripts/GameManager.cs" Line="299" Column="1" />
+      <File FileName="Assets/Scripts/Player.cs" Line="60" Column="33" />
+      <File FileName="Assets/Scripts/APIAndroid.cs" Line="37" Column="57" />
+      <File FileName="Assets/Scripts/GameManager.cs" Line="240" Column="20" />
+      <File FileName="Assets/Scripts/SoundManager.cs" Line="31" Column="17" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

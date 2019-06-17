@@ -34,7 +34,7 @@ public class APIAndroid
             stringAndroid = "1,50,00:05:23,2,200,woodSword,ironShield";
 
 #else
-        string stringAndroid = "4,50,00:05:23,2,200,goldSword,goldShield";
+        string stringAndroid = "4,50,00:00:00,0,400,woodSword,woodShield";
 #endif
 
         string[] playerStatsVector = stringAndroid.Split(',');
@@ -80,6 +80,7 @@ public class APIAndroid
 
         string[] inventoryVector = stringAndroid.Split('/');
 
+
         List<Object> inventoryList = new List<Object>();
 
         foreach (string s in inventoryVector)
@@ -116,11 +117,11 @@ public class APIAndroid
         catch (Exception ex)
         {
 
-            Debug.Log("Error Unity, method getPlayerStats");
+            Debug.Log("Error Unity, method getMAP");
             Debug.Log(ex);
         }
 
-        if (stringAndroid == null)
+        if (stringAndroid.Equals(null)) {
             stringAndroid = "bbbbbbbbbbbbbbbbbb" +
                        "bbbbbbbbbbbbbbbbbb" +
                        "bbbbbbbbbbbbbbbbbb" +
@@ -140,7 +141,10 @@ public class APIAndroid
                        "L       Rbbbbbbbbb" +
                        "lwBBwBBBrbbbbbbbbb*18*" +
                        "4,4,Quien es el más feo de la UPC?-Mario-Empieza por M";
+        }
 
+        Debug.Log("Procesado: ");
+        Debug.Log(stringAndroid);
 
         string[] mapa1Vector = stringAndroid.Split('*');
 

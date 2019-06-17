@@ -18,7 +18,7 @@ public class Player : MovingObject
     public Text cashText;
 
     private Animator animator;                  //Used to store a reference to the Player's animator component.
-    private Vector2 touchOrigin = -Vector2.one; //Used to store location of screen touch origin for mobile controls.
+    //private Vector2 touchOrigin = -Vector2.one; //Used to store location of screen touch origin for mobile controls.
 
     private RedDoor redDoor;
     private BlueDoor blueDoor;
@@ -56,8 +56,8 @@ public class Player : MovingObject
         //If it's not the player's turn, exit the function.
         if (!GameManager.instance.playersTurn) return;
 
-        float horizontalFloat;
-        float verticalFloat;
+        float horizontalFloat = 0f;
+        float verticalFloat = 0f;
         int horizontal = 0;     //Used to store the horizontal move direction.
         int vertical = 0;       //Used to store the vertical move direction.
 
